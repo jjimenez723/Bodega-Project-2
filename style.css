@@ -33,3 +33,78 @@
   .hamburger { display: none !important; }
 }
 
+/* Map control panel resizer */
+#panel-resizer {
+  flex: 0 0 14px;
+  width: 14px;
+  min-width: 14px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  align-self: stretch;
+  z-index: 998;
+}
+
+#panel-resizer::before {
+  content: "";
+  width: 4px;
+  height: 48px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(1, 89, 65, 0.25), rgba(1, 89, 65, 0.6));
+  transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.75;
+}
+
+#panel-resizer:hover::before,
+#panel-resizer:focus-visible::before,
+#panel-resizer.active::before {
+  background: rgba(1, 89, 65, 0.85);
+  box-shadow: 0 0 0 4px rgba(1, 89, 65, 0.12), 0 0 12px rgba(1, 89, 65, 0.2);
+  opacity: 1;
+}
+
+#panel-resizer:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.45);
+  outline-offset: 2px;
+}
+
+body.panel-resizing-x,
+body.panel-resizing-y {
+  user-select: none;
+}
+
+body.panel-resizing-x {
+  cursor: col-resize;
+}
+
+body.panel-resizing-y {
+  cursor: row-resize;
+}
+
+#control-panel.no-transition {
+  transition: none !important;
+}
+
+#control-panel.collapsed + #panel-resizer {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  #panel-resizer {
+    flex: 0 0 12px;
+    width: 100%;
+    height: 12px;
+    min-height: 12px;
+    cursor: row-resize;
+  }
+
+  #panel-resizer::before {
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(1, 89, 65, 0.25), rgba(1, 89, 65, 0.6));
+  }
+}
