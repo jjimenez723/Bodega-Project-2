@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
+const repoName = 'Bodega-Project-2';
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+
 export default defineConfig({
+  base: isGithubActions ? `/${repoName}/` : '/',
   root: '.',
   publicDir: 'public',
   build: {

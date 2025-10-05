@@ -1,5 +1,5 @@
 {
-  "name": "bodega-project-main",
+  "name": "@jjimenez723/bodega-project-main",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,7 +11,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "vite": "^7.1.9"
+  },
+  "dependencies": {
+    "user": "^0.0.0"
   }
 }
