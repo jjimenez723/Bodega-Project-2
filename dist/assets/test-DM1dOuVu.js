@@ -1,0 +1,1 @@
+import{o as n,i,a as o}from"./enhancements-m85IZWfI.js";function p(){n(()=>{const e=L.map("map").setView([40.7,-74],12);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(e);function a(){leafletImage(e,function(t){if(!t){alert("leaflet-image did not return a map canvas.");return}document.body.appendChild(t)})}window.exportMap=a})}i();o();p();
