@@ -1,4 +1,4 @@
-﻿import { onDocumentReady } from '../utils/dom.js';
+import { onDocumentReady } from '../utils/dom.js';
 import { loadGeoJson, toHeatmapPoints } from './dataService.mjs';
 import { withBasePath } from '../utils/paths.js';
 
@@ -392,7 +392,7 @@ function setupLayerToggles(map, state, heatmapControls, legendControls) {
 
 function setupLegend(map, state) {
   let legendElement = null;
-  const legendControl = L.control({ position: 'bottomleft' });
+  const legendControl = L.control({ position: 'bottomright' });
   legendControl.onAdd = () => {
     legendElement = L.DomUtil.create('div', 'map-legend');
     legendElement.innerHTML = "" +

@@ -70,17 +70,34 @@ export function initMapPanelControls() {
 
     updateShowButton();
 
-    const observer = new MutationObserver(() => {
+    const panelObserver = new MutationObserver(() => {
       updateShowButton();
       if (!controlPanel.classList.contains('collapsed')) {
         window.requestAnimationFrame(updateAxis);
       }
     });
-    observer.observe(controlPanel, { attributes: true, attributeFilter: ['class'] });
+    panelObserver.observe(controlPanel, { attributes: true, attributeFilter: ['class'] });
 
+    const mapContainer = document.getElementById('main-flex-container');
     const resizer = document.getElementById('panel-resizer');
-    const container = document.getElementById('main-flex-container');
-    if (!resizer || !container) return;
+    const header = document.querySelector('.sticky-header');
+
+    let lastAvailableHeight = null;
+    const syncAvailableHeight = () => {
+      const body = document.body;
+      if (!body) return lastAvailableHeight;
+      const headerHeight = header ? Math.round(header.getBoundingClientRect().height) : 0;
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+      const available = Math.max(viewportHeight - headerHeight, 0);
+      body.style.setProperty('--map-header-offset', headerHeight + 'px');
+      body.style.setProperty('--map-available-height', available + 'px');
+      lastAvailableHeight = available;
+      return available;
+    };
+
+    syncAvailableHeight();
+
+    if (!resizer || !mapContainer) return;
 
     const mediaQuery = window.matchMedia('(max-width: 700px)');
     const panelMin = { width: 240, height: 160 };
@@ -105,14 +122,23 @@ export function initMapPanelControls() {
       });
     };
 
+    const ensureAvailableHeight = () => {
+      const previous = lastAvailableHeight;
+      const current = syncAvailableHeight();
+      if (typeof current === 'number' && current !== previous) {
+        queueInvalidate();
+      }
+      return current;
+    };
+
     const panelMaxWidth = () => {
-      const available = container.getBoundingClientRect().width || window.innerWidth;
+      const available = mapContainer.getBoundingClientRect().width || window.innerWidth;
       const limit = available - mapMin.width;
       return limit > panelMin.width ? limit : panelMin.width;
     };
 
     const panelMaxHeight = () => {
-      const available = container.getBoundingClientRect().height || window.innerHeight;
+      const available = mapContainer.getBoundingClientRect().height || window.innerHeight;
       const limit = available - mapMin.height;
       return limit > panelMin.height ? limit : panelMin.height;
     };
@@ -141,6 +167,7 @@ export function initMapPanelControls() {
     };
 
     updateAxis = () => {
+      ensureAvailableHeight();
       if (controlPanel.classList.contains('collapsed')) return;
       const isMobileLayout = mediaQuery.matches;
       if (isMobileLayout) {
@@ -166,6 +193,13 @@ export function initMapPanelControls() {
       }
       queueInvalidate();
     };
+
+    if (header && typeof ResizeObserver !== 'undefined') {
+      const headerObserver = new ResizeObserver(() => {
+        ensureAvailableHeight();
+      });
+      headerObserver.observe(header);
+    }
 
     const stopDragging = () => {
       if (activePointer === null) return;
@@ -239,7 +273,11 @@ export function initMapPanelControls() {
     });
 
     const handleResize = () => {
-      if (controlPanel.classList.contains('collapsed')) return;
+      ensureAvailableHeight();
+      if (controlPanel.classList.contains('collapsed')) {
+        queueInvalidate();
+        return;
+      }
       if (mediaQuery.matches) {
         applyMobileHeight(lastMobileHeight);
       } else {

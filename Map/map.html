@@ -81,6 +81,37 @@
         font-size: 0.8rem;
       }
     }
+
+    body.map-page {
+      --map-header-offset: 0px;
+      --map-available-height: calc(100vh - var(--map-header-offset));
+    }
+
+    @media (min-width: 701px) {
+      body.map-page #main-flex-container {
+        height: var(--map-available-height) !important;
+        min-height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+      }
+
+      body.map-page #control-panel {
+        height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding-bottom: 2.5rem;
+        scroll-padding-bottom: 2.5rem;
+        scrollbar-gutter: stable both-edges;
+      }
+
+      body.map-page #map-area,
+      body.map-page #map-area #map {
+        height: var(--map-available-height) !important;
+        min-height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+      }
+    }
+
   </style>
 </head>
 <body class="map-page">
