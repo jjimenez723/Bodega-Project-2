@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story | Rutgers Newark Bodega Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/story.css" />
+  <link rel="stylesheet" href="../assets/css/nav-mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header class="sticky-header">
+    <nav>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="menu">
+        <li><a href="../">Home</a></li>
+        <li><a href="../story/" class="active">Story</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+        <li><a href="../kpi-builder/">KPI Builder</a></li>
+        <li><a href="../#kpis">Data Visualization</a></li>
+        <li><a href="../#team">Team</a></li>
+      </ul>
+    </nav>
+    <div class="logo-bar">
+      <img src="../images/7.png" alt="NJ STEM Ecosystem Logo" />
+      <img src="../images/6.png" alt="USDA Logo" />
+      <img src="../images/5.png" alt="Rutgers Logo" />
+      <img src="../images/4.png" alt="BCC Logo" />
+    </div>
+  </header>
+  <main>
+    <svg class="storyline" viewBox="0 0 200 2000" preserveAspectRatio="xMidYMin slice">
+      <path d="M100,0 C60,100 140,200 100,300 C60,400 140,500 100,600 C60,700 140,800 100,900 C60,1000 140,1100 100,1200 C60,1300 140,1400 100,1500 C60,1600 140,1700 100,1800 C60,1900 100,2000 100,2000" stroke="var(--accent)" stroke-width="4" fill="none" />
+    </svg>
+    <!-- supply-chain line removed -->
+    <section class="chapter" aria-label="Chapter 1">
+      <i class="fas fa-seedling icon"></i>
+      <div class="chapter-media">
+        <img src="../images/images%202/Carousel/IMG_0007.JPG" alt="Seed planted" />
+      </div>
+      <div class="chapter-content">
+        <h2 class="chapter-title">Chapter 1 â€“ A Seed Is Planted</h2>
+        <p class="chapter-body">In late 2023, Dr. Kevin Lyons of Rutgers passes the torch to Dr. Edward Sanchez, challenging him to prototype a hyper-local food supply chain that links Newarkâ€™s community gardens to corner bodegas. âœ¦</p>
+      </div>
+    </section>
+    <section class="chapter" aria-label="Chapter 2">
+      <i class="fas fa-users icon"></i>
+      <div class="chapter-media">
+        <img src="../images/images%202/Carousel/IMG_0011.JPG" alt="Core team building" />
+      </div>
+      <div class="chapter-content">
+        <h2 class="chapter-title">Chapter 2 â€“ Building the Core Team</h2>
+        <p class="chapter-body">Early 2024: Dr. Sanchez recruits Kevin Kim (3SP Club), who in turn connects with Jensy Jimenezâ€”fresh off his Title V Peer-Leader role and data-analytics bootcamp. Together, they outline needs for logistics, data wrangling, and community outreach. âœ¦</p>
+      </div>
+    </section>
+    <section class="chapter" aria-label="Chapter 3">
+      <i class="fas fa-project-diagram icon"></i>
+      <div class="chapter-media">
+        <img src="../images/images%202/Carousel/IMG_0015.JPG" alt="Vision to pilot" />
+      </div>
+      <div class="chapter-content">
+        <h2 class="chapter-title">Chapter 3 â€“ From Vision to Pilot</h2>
+        <p class="chapter-body">Spring 2024 sees weekly white-board sessions where the trio map warehouse utilization KPIs, sketch cold-chain routes, and secure initial produce commitments from two urban gardens in the Ironbound. âœ¦</p>
+      </div>
+    </section>
+    <section class="chapter" aria-label="Chapter 4">
+      <i class="fas fa-user-friends icon"></i>
+      <div class="chapter-media">
+        <img src="../images/images%202/Carousel/IMG_2061.JPG" alt="Flow-Chain cohort" />
+      </div>
+      <div class="chapter-content">
+        <h2 class="chapter-title">Chapter 4 â€“ The Flow-Chain Cohort</h2>
+        <p class="chapter-body">By Summer 2024 Estrella Luna, Shanandra Ubiera, Michael La Torre, Riley Oâ€™Sullivan, and Yulissa Aguila joinâ€”rounding out biology, communications, business ops, marketing, and full-stack skills. Team Flow Chain is born. âœ¦</p>
+      </div>
+    </section>
+    <section class="chapter" aria-label="Chapter 5">
+      <i class="fas fa-chart-line icon"></i>
+      <div class="chapter-media">
+        <img src="../images/images%202/Carousel/IMG_2064.JPG" alt="Looking ahead" />
+      </div>
+      <div class="chapter-content">
+        <h2 class="chapter-title">Chapter 5 â€“ Looking Ahead</h2>
+        <p class="chapter-body">Nothing here is finishedâ€”yet. The next milestones: integrate IoT temp loggers, publish our open-source dashboard, and onboard ten bodegas by Summer 2026. The seedling has sprouted; now we cultivate. âœ¦</p>
+      </div>
+    </section>
+  </main>
+  
+  <nav id="mobileNav" class="offcanvas" aria-label="Site">
+    <a href="../">Home</a>
+    <a href="../story/">Story</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../Map/">Fast vs. Fresh Food Map</a>
+    <a href="../kpi-builder/">KPI Builder</a>
+    <a href="../#kpis">Data Visualization</a>
+    <a href="../#team">Team</a>
+  </nav>
+  <div id="navOverlay" class="overlay" hidden></div>
+  <script type="module" src="/src/pages/story.js"></script>
+</body>
+</html> 
+

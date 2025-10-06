@@ -14,12 +14,13 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        story: resolve(__dirname, 'story.html'),
-        gallery: resolve(__dirname, 'gallery.html'),
-        kpi: resolve(__dirname, 'kpi-builder.html'),
+        story: resolve(__dirname, 'story/index.html'),
+        gallery: resolve(__dirname, 'gallery/index.html'),
+        kpi: resolve(__dirname, 'kpi-builder/index.html'),
         test: resolve(__dirname, 'Test.html'),
-        map: resolve(__dirname, 'Map/map.html')
+        map: resolve(__dirname, 'Map/index.html')
       }
     }
   }
 });
+

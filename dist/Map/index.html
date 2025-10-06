@@ -79,11 +79,42 @@
         font-size: 0.8rem;
       }
     }
+
+    body.map-page {
+      --map-header-offset: 0px;
+      --map-available-height: calc(100vh - var(--map-header-offset));
+    }
+
+    @media (min-width: 701px) {
+      body.map-page #main-flex-container {
+        height: var(--map-available-height) !important;
+        min-height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+      }
+
+      body.map-page #control-panel {
+        height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding-bottom: 2.5rem;
+        scroll-padding-bottom: 2.5rem;
+        scrollbar-gutter: stable both-edges;
+      }
+
+      body.map-page #map-area,
+      body.map-page #map-area #map {
+        height: var(--map-available-height) !important;
+        min-height: var(--map-available-height) !important;
+        max-height: var(--map-available-height) !important;
+      }
+    }
+
   </style>
-  <script type="module" crossorigin src="/assets/map-Hpc5GWBN.js"></script>
+  <script type="module" crossorigin src="/assets/map-CjyMk9fr.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/enhancements-m85IZWfI.js">
   <link rel="modulepreload" crossorigin href="/assets/paths-CH8zUY__.js">
-  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-BlI6_K0s.css">
+  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-C54aWS2Q.css">
 </head>
 <body class="map-page">
   <header class="sticky-header">
@@ -92,13 +123,13 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="menu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../story.html">Story</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../kpi-builder.html">KPI Builder</a></li>
-        <li><a href="map.html">Fast vs. Fresh Food Map</a></li>
-        <li><a href="../index.html#kpis">Data Visualization</a></li>
-        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../story/">Story</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../kpi-builder/">KPI Builder</a></li>
+        <li><a href="./" class="active">Fast vs. Fresh Food Map</a></li>
+        <li><a href="../#kpis">Data Visualization</a></li>
+        <li><a href="../#team">Team</a></li>
       </ul>
     </nav>
     <div class="logo-bar">
@@ -110,7 +141,7 @@
   </header>
   <div id="main-flex-container">
     <aside id="control-panel">
-      <button id="restorePanelBtn" title="Restore panel" aria-label="Restore panel" style="display:none;position:absolute;top:0.7em;left:0.7em;font-size:1.5em;z-index:10;background:none;border:none;cursor:pointer;">»</button>
+      <button id="restorePanelBtn" title="Restore panel" aria-label="Restore panel" style="display:none;position:absolute;top:0.7em;left:0.7em;font-size:1.5em;z-index:10;background:none;border:none;cursor:pointer;">Â»</button>
       <div style="display: flex; align-items: center; justify-content: space-between;">
         <h2 class="panel-title" tabindex="0">Map Controls</h2>
         <div style="display: flex; gap: 0.5em; align-items: center;">
@@ -189,11 +220,12 @@
         <div class="layer-controls" aria-label="Map display controls">
           <button id="layerModeBtn">Switch to Cluster View</button>
           <button id="borderToggleBtn">Hide Newark Border</button>
+          <button id="legendToggleBtn" aria-pressed="true">Hide Map Legend</button>
         </div>
       </div>
     </aside>
     <div id="panel-resizer" data-axis="x" role="separator" aria-orientation="vertical" aria-label="Resize map control panel" tabindex="0"></div>
-    <button id="showPanelBtn" title="Show panel" aria-label="Show panel" style="display:none;position:fixed;left:0;top:50%;transform:translateY(-50%);font-size:2.2em;z-index:3001;background:#015941;color:#fff;border:none;border-radius:0 1.2em 1.2em 0;padding:0.2em 0.5em;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">→</button>
+    <button id="showPanelBtn" title="Show panel" aria-label="Show panel" style="display:none;position:fixed;left:0;top:50%;transform:translateY(-50%);font-size:2.2em;z-index:3001;background:#015941;color:#fff;border:none;border-radius:0 1.2em 1.2em 0;padding:0.2em 0.5em;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">â†’</button>
     <main id="map-area">
       <div id="map"></div>
     </main>
@@ -213,15 +245,17 @@
   <!-- Your map logic -->
 
   <nav id="mobileNav" class="offcanvas" aria-label="Site">
-    <a href="../index.html">Home</a>
-    <a href="../story.html">Story</a>
-    <a href="../gallery.html">Gallery</a>
-    <a href="../kpi-builder.html">KPI Builder</a>
-    <a href="map.html">Fast vs. Fresh Food Map</a>
-    <a href="../index.html#kpis">Data Visualization</a>
-    <a href="../index.html#team">Team</a>
+    <a href="../">Home</a>
+    <a href="../story/">Story</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../kpi-builder/">KPI Builder</a>
+    <a href="./" class="active">Fast vs. Fresh Food Map</a>
+    <a href="../#kpis">Data Visualization</a>
+    <a href="../#team">Team</a>
   </nav>
   <div id="navOverlay" class="overlay" hidden></div>
 </body>
 </html>
+
+
 
