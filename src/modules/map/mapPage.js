@@ -11,6 +11,13 @@ const DATA_URLS = {
 const DEFAULT_HEAT_INTENSITY = 1;
 const DEFAULT_HEAT_RADIUS = 60;
 
+const NEWARK_BOUNDARY_BOX = Object.freeze({
+  southWest: [40.6737966266808, -74.2513883524854],
+  northEast: [40.7882755927157, -74.1140973062534]
+});
+const MAP_MAX_BOUNDS_PADDING = 0.03;
+const MAP_FIT_BOUNDS_PADDING = 0.015;
+
 function createCustomIcon(className, iconHtml) {
   return L.divIcon({
     html: iconHtml,
@@ -106,18 +113,30 @@ export function initMapPage() {
     const mapElement = document.getElementById('map');
     if (!mapElement) return;
 
+    const newarkBounds = L.latLngBounds(
+      NEWARK_BOUNDARY_BOX.southWest,
+      NEWARK_BOUNDARY_BOX.northEast
+    );
+    const paddedMaxBounds = newarkBounds.pad(MAP_MAX_BOUNDS_PADDING);
+    const defaultFitBounds = newarkBounds.pad(MAP_FIT_BOUNDS_PADDING);
+
     const map = L.map('map', {
-      minZoom: 10,
       maxZoom: 18,
-      center: [40.7357, -74.1724],
+      center: newarkBounds.getCenter(),
       zoom: 13,
-      maxBounds: L.latLngBounds([40.65, -74.30], [40.85, -74.05]),
-      maxBoundsViscosity: 0.8,
+      minZoom: 12,
+      maxBounds: paddedMaxBounds,
+      maxBoundsViscosity: 1,
       scrollWheelZoom: true,
       doubleClickZoom: true,
       touchZoom: true,
-      bounceAtZoomLimits: true
+      bounceAtZoomLimits: false
     });
+
+    map.fitBounds(defaultFitBounds);
+    const minZoomForBounds = map.getBoundsZoom(paddedMaxBounds, false);
+    map.setMinZoom(minZoomForBounds);
+    map.setMaxBounds(paddedMaxBounds);
     window.map = map;
 
     const baseLayers = {
@@ -134,6 +153,7 @@ export function initMapPage() {
     const state = {
       showHeatmap: true,
       showBorder: true,
+      showLegend: true,
       heatSettings: { radius: DEFAULT_HEAT_RADIUS, intensity: DEFAULT_HEAT_INTENSITY },
       produce: {
         raw: [],
@@ -197,14 +217,21 @@ export function initMapPage() {
           style: { opacity: 0, fillOpacity: 0 },
           interactive: false
         }).addTo(map);
+
+        const boundaryBounds = state.overlays.boundary.getBounds();
+        const paddedBoundaryBounds = boundaryBounds.pad(MAP_MAX_BOUNDS_PADDING);
+        map.fitBounds(boundaryBounds.pad(MAP_FIT_BOUNDS_PADDING));
+        map.setMaxBounds(paddedBoundaryBounds);
+        const minZoomForBoundary = map.getBoundsZoom(paddedBoundaryBounds, false);
+        map.setMinZoom(minZoomForBoundary);
       }
 
       const heatmapControls = setupHeatmapControls(map, state);
-      const layerControls = setupLayerToggles(map, state, heatmapControls);
-      setupLegend(map);
+      const legendControls = setupLegend(map, state);
+      const layerControls = setupLayerToggles(map, state, heatmapControls, legendControls);
       setupAccessibilityToggle(map, state, baseLayers, heatmapControls);
       setupFilterControls(map, state, layerControls, heatmapControls);
-      setupExportControls(map, state, layerControls, heatmapControls);
+      setupExportControls(map, state, layerControls, heatmapControls, legendControls);
     } catch (error) {
       console.error('Failed to initialize map', error);
     }
@@ -269,10 +296,11 @@ function setupHeatmapControls(map, state) {
   return { refresh: apply };
 }
 
-function setupLayerToggles(map, state, heatmapControls) {
+function setupLayerToggles(map, state, heatmapControls, legendControls) {
   const produceToggle = document.getElementById('produceToggle');
   const fastfoodToggle = document.getElementById('fastfoodToggle');
   const layerModeBtn = document.getElementById('layerModeBtn');
+  const legendToggleBtn = document.getElementById('legendToggleBtn');
 
   const isActive = toggle => !toggle || toggle.classList.contains('active');
 
@@ -308,12 +336,23 @@ function setupLayerToggles(map, state, heatmapControls) {
     }
   };
 
+  const refreshLegendToggle = () => {
+    if (legendToggleBtn) {
+      legendToggleBtn.textContent = state.showLegend ? 'Hide Map Legend' : 'Show Map Legend';
+      legendToggleBtn.setAttribute('aria-pressed', state.showLegend ? 'true' : 'false');
+    }
+    if (legendControls && typeof legendControls.applyVisibility === 'function') {
+      legendControls.applyVisibility();
+    }
+  };
+
   const refresh = () => {
     if (layerModeBtn) {
       layerModeBtn.textContent = state.showHeatmap ? 'Switch to Cluster View' : 'Switch to Heatmap View';
     }
     updateProduce();
     updateFastFood();
+    refreshLegendToggle();
     if (state.showHeatmap) heatmapControls.refresh();
   };
 
@@ -331,6 +370,13 @@ function setupLayerToggles(map, state, heatmapControls) {
     });
   }
 
+  if (legendToggleBtn) {
+    legendToggleBtn.addEventListener('click', () => {
+      state.showLegend = !state.showLegend;
+      refreshLegendToggle();
+    });
+  }
+
   if (layerModeBtn) {
     layerModeBtn.addEventListener('click', () => {
       state.showHeatmap = !state.showHeatmap;
@@ -343,19 +389,39 @@ function setupLayerToggles(map, state, heatmapControls) {
   return { refresh };
 }
 
-function setupLegend(map) {
+
+function setupLegend(map, state) {
+  let legendElement = null;
   const legendControl = L.control({ position: 'bottomleft' });
   legendControl.onAdd = () => {
-    const div = L.DomUtil.create('div', 'map-legend');
-    div.innerHTML = "" +
+    legendElement = L.DomUtil.create('div', 'map-legend');
+    legendElement.innerHTML = "" +
       "<div><i class='fas fa-apple-alt fresh-food-icon' style='font-size: 16px; margin-right: 6px;'></i> Fresh Food</div>" +
       "<div><i class='fas fa-hamburger fast-food-icon' style='font-size: 16px; margin-right: 6px;'></i> Fast Food</div>" +
       "<div><span class='legend-line' style='border-color:#008000'></span> Newark</div>" +
       "<div><span class='legend-circle'></span> Filter</div>" +
       "<div><span class='legend-cluster'></span> Clusters</div>";
-    return div;
+    legendElement.setAttribute('role', 'group');
+    legendElement.setAttribute('aria-label', 'Map legend');
+    legendElement.setAttribute('aria-hidden', state.showLegend ? 'false' : 'true');
+    return legendElement;
   };
   legendControl.addTo(map);
+
+  const applyVisibility = () => {
+    if (!legendElement) return;
+    legendElement.classList.toggle('is-hidden', !state.showLegend);
+    legendElement.setAttribute('aria-hidden', String(!state.showLegend));
+  };
+
+  applyVisibility();
+
+  return {
+    applyVisibility,
+    get element() {
+      return legendElement;
+    }
+  };
 }
 
 function setupAccessibilityToggle(map, state, baseLayers, heatmapControls) {
@@ -482,7 +548,7 @@ function setupFilterControls(map, state, layerControls, heatmapControls) {
   }
 }
 
-function setupExportControls(map, state, layerControls, heatmapControls) {
+function setupExportControls(map, state, layerControls, heatmapControls, legendControls) {
   const controlPanel = document.getElementById('control-panel');
   const exportImgBtn = document.getElementById('exportImgBtn');
   const exportSpinner = document.getElementById('exportSpinner');
@@ -585,6 +651,9 @@ function setupExportControls(map, state, layerControls, heatmapControls) {
           state.showHeatmap = previousShowHeatmap;
           layerControls.refresh();
           heatmapControls.refresh();
+          if (legendControls && typeof legendControls.applyVisibility === 'function') {
+            legendControls.applyVisibility();
+          }
           if (exportSpinner) exportSpinner.style.display = 'none';
           exportImgBtn.removeAttribute('disabled');
           controlPanel.classList.remove('collapsed');
