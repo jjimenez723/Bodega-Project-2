@@ -1,4 +1,5 @@
 ﻿import { onDocumentReady } from '../utils/dom.js';
+import { withBasePath } from '../utils/paths.js';
 
 export function initKpiBuilder() {
   onDocumentReady(() => {
@@ -208,7 +209,7 @@ export function initKpiBuilder() {
       enableDrag(offcanvas, offcanvas.querySelector('.offcanvas-header'));
     
       // Load CSV & init Handsontable
-      Papa.parse('/data/Supply_Chain_KPI_Builder.csv',{
+      Papa.parse(withBasePath('data/Supply_Chain_KPI_Builder.csv'),{
         download:true,header:true,dynamicTyping:true,complete:(res)=>{
           hotData=res.data.filter(r=>r.Produce);
           // Normalize distributor keys (remove dot after Dist) to avoid nested path issues

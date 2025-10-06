@@ -1,10 +1,11 @@
 ﻿import { onDocumentReady } from '../utils/dom.js';
 import { loadGeoJson, toHeatmapPoints } from './dataService.mjs';
+import { withBasePath } from '../utils/paths.js';
 
 const DATA_URLS = {
-  produce: '/data/fixed_fresh_food.geojson',
-  fastFood: '/data/fast_food.geojson',
-  boundary: '/data/newark_boundary_corrected.geojson'
+  produce: withBasePath('data/fixed_fresh_food.geojson'),
+  fastFood: withBasePath('data/fast_food.geojson'),
+  boundary: withBasePath('data/newark_boundary_corrected.geojson')
 };
 
 const DEFAULT_HEAT_INTENSITY = 1;

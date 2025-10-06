@@ -1,0 +1,1 @@
+const c=/^(?:[a-z]+:)?\/\//i;function u(s){if(!s)return"/";if(c.test(s))return s;const t="/",i=t.endsWith("/")?t.slice(0,-1):t,o=s.startsWith("/")?s.slice(1):s,n=`${i}/${o}`;return n.startsWith("/")?n:`/${n}`}export{u as w};
