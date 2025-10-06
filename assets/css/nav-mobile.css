@@ -1,4 +1,4 @@
-﻿/* nav-mobile.css â€“ mobile off-canvas navigation styles */
+/* nav-mobile.css &ndash; mobile off-canvas navigation styles */
 :root {
   --brand-red: #C42D4D;
   --hamburger-size: 40px;
@@ -96,7 +96,7 @@
   .menu { display: flex !important; }
 }
 
-/* Desktop â€“ restore original nav */
+/* Desktop &ndash; restore original nav */
 @media (min-width: 768px) {
   .hamburger,
   #mobileNav,
