@@ -1302,11 +1302,16 @@ body {
 header,
 .sticky-header {
   background-color: #ba0c2fd9 !important;
-  padding: 1rem 0 0;
+  padding: 0.5rem 0;
   position: sticky;
   top: 0;
   z-index: 999;
   box-shadow: 0 2px 6px #0003;
+}
+.sticky-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .menu {
   display: flex;

@@ -127,6 +127,9 @@ main {
   .timeline {
     display: block;
   }
+  .storyline path {
+    stroke-width: 5.2;
+  }
   .chapter:nth-child(odd) {
     flex-direction: row;
     text-align: left;
