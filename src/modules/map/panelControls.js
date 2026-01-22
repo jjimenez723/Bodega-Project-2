@@ -1,63 +1,71 @@
-import { onDocumentReady } from '../utils/dom.js';
+import { onDocumentReady } from "../utils/dom.js";
 
 function safeInvalidateMap() {
-  if (window.map && typeof window.map.invalidateSize === 'function') {
+  // Safely refresh Leaflet layout if the map is ready.
+  if (window.map && typeof window.map.invalidateSize === "function") {
     window.setTimeout(() => window.map.invalidateSize(), 120);
   }
 }
 
 export function initMapPanelControls() {
+  // Enable panel resizing, compact mode, and show/hide behavior.
   onDocumentReady(() => {
-    const controlPanel = document.getElementById('control-panel');
+    const controlPanel = document.getElementById("control-panel");
     if (!controlPanel) return;
 
-    const compactBtn = document.getElementById('compactPanelBtn');
-    const minimizeBtn = document.getElementById('minimizePanelBtn');
-    const restoreBtn = document.getElementById('restorePanelBtn');
-    const showPanelBtn = document.getElementById('showPanelBtn');
+    const compactBtn = document.getElementById("compactPanelBtn");
+    const minimizeBtn = document.getElementById("minimizePanelBtn");
+    const restoreBtn = document.getElementById("restorePanelBtn");
+    const showPanelBtn = document.getElementById("showPanelBtn");
 
     let wasCompact = false;
     let updateAxis = () => {};
 
     if (compactBtn) {
-      compactBtn.addEventListener('click', () => {
-        if (controlPanel.classList.contains('collapsed')) return;
-        controlPanel.classList.toggle('compact');
-        const icon = compactBtn.querySelector('i');
+      compactBtn.addEventListener("click", () => {
+        if (controlPanel.classList.contains("collapsed")) return;
+        controlPanel.classList.toggle("compact");
+        const icon = compactBtn.querySelector("i");
         if (icon) {
-          icon.classList.toggle('fa-expand-alt', controlPanel.classList.contains('compact'));
-          icon.classList.toggle('fa-compress-alt', !controlPanel.classList.contains('compact'));
+          icon.classList.toggle(
+            "fa-expand-alt",
+            controlPanel.classList.contains("compact"),
+          );
+          icon.classList.toggle(
+            "fa-compress-alt",
+            !controlPanel.classList.contains("compact"),
+          );
         }
         safeInvalidateMap();
-        if (!controlPanel.classList.contains('collapsed')) {
+        if (!controlPanel.classList.contains("collapsed")) {
           window.requestAnimationFrame(updateAxis);
         }
       });
     }
 
     if (minimizeBtn) {
-      minimizeBtn.addEventListener('click', () => {
-        if (controlPanel.classList.contains('collapsed')) return;
-        wasCompact = controlPanel.classList.contains('compact');
-        controlPanel.classList.add('collapsed');
-        controlPanel.classList.remove('compact');
+      minimizeBtn.addEventListener("click", () => {
+        if (controlPanel.classList.contains("collapsed")) return;
+        wasCompact = controlPanel.classList.contains("compact");
+        controlPanel.classList.add("collapsed");
+        controlPanel.classList.remove("compact");
         safeInvalidateMap();
       });
     }
 
     if (restoreBtn) {
-      restoreBtn.addEventListener('click', () => {
-        controlPanel.classList.remove('collapsed');
-        if (wasCompact) controlPanel.classList.add('compact');
+      restoreBtn.addEventListener("click", () => {
+        controlPanel.classList.remove("collapsed");
+        if (wasCompact) controlPanel.classList.add("compact");
         safeInvalidateMap();
         window.requestAnimationFrame(updateAxis);
       });
     }
 
     if (showPanelBtn) {
-      showPanelBtn.addEventListener('click', () => {
-        controlPanel.classList.remove('collapsed');
-        if (wasCompact) controlPanel.classList.add('compact');
+      showPanelBtn.addEventListener("click", () => {
+        controlPanel.classList.remove("collapsed");
+        if (wasCompact) controlPanel.classList.add("compact");
         safeInvalidateMap();
         window.requestAnimationFrame(updateAxis);
       });
@@ -65,52 +73,65 @@ export function initMapPanelControls() {
 
     const updateShowButton = () => {
       if (!showPanelBtn) return;
-      showPanelBtn.style.display = controlPanel.classList.contains('collapsed') ? 'block' : 'none';
+      showPanelBtn.style.display = controlPanel.classList.contains("collapsed")
+        ? "block"
+        : "none";
     };
 
     updateShowButton();
 
+    // Keep the show button synced to collapsed state.
     const panelObserver = new MutationObserver(() => {
       updateShowButton();
-      if (!controlPanel.classList.contains('collapsed')) {
+      if (!controlPanel.classList.contains("collapsed")) {
         window.requestAnimationFrame(updateAxis);
       }
     });
-    panelObserver.observe(controlPanel, { attributes: true, attributeFilter: ['class'] });
+    panelObserver.observe(controlPanel, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
-    const mapContainer = document.getElementById('main-flex-container');
-    const resizer = document.getElementById('panel-resizer');
-    const header = document.querySelector('.sticky-header');
+    const mapContainer = document.getElementById("main-flex-container");
+    const resizer = document.getElementById("panel-resizer");
+    const header = document.querySelector(".sticky-header");
 
     let lastAvailableHeight = null;
     const syncAvailableHeight = () => {
       const body = document.body;
       if (!body) return lastAvailableHeight;
-      const headerHeight = header ? Math.round(header.getBoundingClientRect().height) : 0;
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+      const headerHeight = header
+        ? Math.round(header.getBoundingClientRect().height)
+        : 0;
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight || 0;
       const available = Math.max(viewportHeight - headerHeight, 0);
-      body.style.setProperty('--map-header-offset', headerHeight + 'px');
-      body.style.setProperty('--map-available-height', available + 'px');
+      body.style.setProperty("--map-header-offset", headerHeight + "px");
+      body.style.setProperty("--map-available-height", available + "px");
       lastAvailableHeight = available;
       return available;
     };
 
+    // Seed height values before attaching listeners.
     syncAvailableHeight();
 
     if (!resizer || !mapContainer) return;
 
-    const mediaQuery = window.matchMedia('(max-width: 700px)');
+    const mediaQuery = window.matchMedia("(max-width: 700px)");
     const panelMin = { width: 240, height: 160 };
     const mapMin = { width: 320, height: 260 };
 
     let lastDesktopWidth = controlPanel.getBoundingClientRect().width || 340;
     let lastMobileHeight = Math.max(
       panelMin.height,
-      Math.min(controlPanel.getBoundingClientRect().height || panelMin.height, window.innerHeight * 0.45)
+      Math.min(
+        controlPanel.getBoundingClientRect().height || panelMin.height,
+        window.innerHeight * 0.45,
+      ),
     );
     let rafToken = null;
     let activePointer = null;
-    let dragAxis = resizer.dataset.axis === 'y' ? 'y' : 'x';
+    let dragAxis = resizer.dataset.axis === "y" ? "y" : "x";
     let startSize = 0;
     let startPointer = 0;
 
@@ -125,26 +146,31 @@ export function initMapPanelControls() {
     const ensureAvailableHeight = () => {
       const previous = lastAvailableHeight;
       const current = syncAvailableHeight();
-      if (typeof current === 'number' && current !== previous) {
+      if (typeof current === "number" && current !== previous) {
         queueInvalidate();
       }
       return current;
     };
 
     const panelMaxWidth = () => {
-      const available = mapContainer.getBoundingClientRect().width || window.innerWidth;
+      const available =
+        mapContainer.getBoundingClientRect().width || window.innerWidth;
       const limit = available - mapMin.width;
       return limit > panelMin.width ? limit : panelMin.width;
     };
 
     const panelMaxHeight = () => {
-      const available = mapContainer.getBoundingClientRect().height || window.innerHeight;
+      const available =
+        mapContainer.getBoundingClientRect().height || window.innerHeight;
       const limit = available - mapMin.height;
       return limit > panelMin.height ? limit : panelMin.height;
     };
 
     const applyDesktopWidth = (value) => {
-      const constrained = Math.min(Math.max(value, panelMin.width), panelMaxWidth());
+      const constrained = Math.min(
+        Math.max(value, panelMin.width),
+        panelMaxWidth(),
+      );
       controlPanel.style.width = `${constrained}px`;
       lastDesktopWidth = constrained;
     };
@@ -158,43 +184,52 @@ export function initMapPanelControls() {
     };
 
     const clearDesktopSizing = () => {
-      controlPanel.style.removeProperty('width');
+      controlPanel.style.removeProperty("width");
     };
 
     const clearMobileSizing = () => {
-      controlPanel.style.removeProperty('height');
-      controlPanel.style.removeProperty('flex-basis');
+      controlPanel.style.removeProperty("height");
+      controlPanel.style.removeProperty("flex-basis");
     };
 
     updateAxis = () => {
       ensureAvailableHeight();
-      if (controlPanel.classList.contains('collapsed')) return;
+      if (controlPanel.classList.contains("collapsed")) return;
       const isMobileLayout = mediaQuery.matches;
       if (isMobileLayout) {
-        lastDesktopWidth = controlPanel.getBoundingClientRect().width || lastDesktopWidth;
-        dragAxis = 'y';
+        lastDesktopWidth =
+          controlPanel.getBoundingClientRect().width || lastDesktopWidth;
+        dragAxis = "y";
         clearDesktopSizing();
         const maxHeight = panelMaxHeight();
-        lastMobileHeight = Math.min(Math.max(lastMobileHeight, panelMin.height), maxHeight);
+        lastMobileHeight = Math.min(
+          Math.max(lastMobileHeight, panelMin.height),
+          maxHeight,
+        );
         applyMobileHeight(lastMobileHeight);
-        resizer.dataset.axis = 'y';
-        resizer.setAttribute('aria-orientation', 'horizontal');
-        resizer.setAttribute('aria-label', 'Resize map control panel height');
+        resizer.dataset.axis = "y";
+        resizer.setAttribute("aria-orientation", "horizontal");
+        resizer.setAttribute("aria-label", "Resize map control panel height");
       } else {
-        lastMobileHeight = controlPanel.getBoundingClientRect().height || lastMobileHeight;
-        dragAxis = 'x';
+        lastMobileHeight =
+          controlPanel.getBoundingClientRect().height || lastMobileHeight;
+        dragAxis = "x";
         clearMobileSizing();
         const maxWidth = panelMaxWidth();
-        lastDesktopWidth = Math.min(Math.max(lastDesktopWidth, panelMin.width), maxWidth);
+        lastDesktopWidth = Math.min(
+          Math.max(lastDesktopWidth, panelMin.width),
+          maxWidth,
+        );
         applyDesktopWidth(lastDesktopWidth);
-        resizer.dataset.axis = 'x';
-        resizer.setAttribute('aria-orientation', 'vertical');
-        resizer.setAttribute('aria-label', 'Resize map control panel width');
+        resizer.dataset.axis = "x";
+        resizer.setAttribute("aria-orientation", "vertical");
+        resizer.setAttribute("aria-label", "Resize map control panel width");
       }
       queueInvalidate();
     };
 
-    if (header && typeof ResizeObserver !== 'undefined') {
+    // Track header height changes when supported.
+    if (header && typeof ResizeObserver !== "undefined") {
       const headerObserver = new ResizeObserver(() => {
         ensureAvailableHeight();
       });
@@ -206,18 +241,18 @@ export function initMapPanelControls() {
       try {
         resizer.releasePointerCapture(activePointer);
       } catch (_) {
-        /* no-op */
+        /* pointer capture may fail */
       }
       activePointer = null;
-      resizer.classList.remove('active');
-      controlPanel.classList.remove('no-transition');
-      document.body.classList.remove('panel-resizing-x', 'panel-resizing-y');
+      resizer.classList.remove("active");
+      controlPanel.classList.remove("no-transition");
+      document.body.classList.remove("resize-x", "resize-y");
       queueInvalidate();
     };
 
     const handlePointerMove = (event) => {
       if (activePointer === null) return;
-      if (dragAxis === 'x') {
+      if (dragAxis === "x") {
         const delta = event.clientX - startPointer;
         applyDesktopWidth(startSize + delta);
       } else {
@@ -227,17 +262,18 @@ export function initMapPanelControls() {
       queueInvalidate();
     };
 
-    resizer.addEventListener('pointerdown', (event) => {
-      if (controlPanel.classList.contains('collapsed')) return;
-      dragAxis = resizer.dataset.axis === 'y' ? 'y' : 'x';
+    resizer.addEventListener("pointerdown", (event) => {
+      if (controlPanel.classList.contains("collapsed")) return;
+      dragAxis = resizer.dataset.axis === "y" ? "y" : "x";
       activePointer = event.pointerId;
-      startSize = dragAxis === 'x'
-        ? controlPanel.getBoundingClientRect().width
-        : controlPanel.getBoundingClientRect().height;
-      startPointer = dragAxis === 'x' ? event.clientX : event.clientY;
-      controlPanel.classList.add('no-transition');
-      resizer.classList.add('active');
-      document.body.classList.add(dragAxis === 'x' ? 'panel-resizing-x' : 'panel-resizing-y');
+      startSize =
+        dragAxis === "x"
+          ? controlPanel.getBoundingClientRect().width
+          : controlPanel.getBoundingClientRect().height;
+      startPointer = dragAxis === "x" ? event.clientX : event.clientY;
+      controlPanel.classList.add("no-transition");
+      resizer.classList.add("active");
+      document.body.classList.add(dragAxis === "x" ? "resize-x" : "resize-y");
       try {
         resizer.setPointerCapture(activePointer);
       } catch (_) {
@@ -246,27 +282,33 @@ export function initMapPanelControls() {
       event.preventDefault();
     });
 
-    resizer.addEventListener('pointermove', handlePointerMove);
-    resizer.addEventListener('pointerup', (event) => {
+    resizer.addEventListener("pointermove", handlePointerMove);
+    resizer.addEventListener("pointerup", (event) => {
       handlePointerMove(event);
       stopDragging();
     });
-    resizer.addEventListener('pointercancel', stopDragging);
-    window.addEventListener('pointerup', stopDragging);
-    window.addEventListener('blur', stopDragging);
+    resizer.addEventListener("pointercancel", stopDragging);
+    window.addEventListener("pointerup", stopDragging);
+    window.addEventListener("blur", stopDragging);
 
     const keyboardStep = 24;
-    resizer.addEventListener('keydown', (event) => {
-      if (controlPanel.classList.contains('collapsed')) return;
-      const axis = resizer.dataset.axis === 'y' ? 'y' : 'x';
-      if (axis === 'x' && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+    resizer.addEventListener("keydown", (event) => {
+      if (controlPanel.classList.contains("collapsed")) return;
+      const axis = resizer.dataset.axis === "y" ? "y" : "x";
+      if (
+        axis === "x" &&
+        (event.key === "ArrowLeft" || event.key === "ArrowRight")
+      ) {
         event.preventDefault();
-        const delta = event.key === 'ArrowLeft' ? -keyboardStep : keyboardStep;
+        const delta = event.key === "ArrowLeft" ? -keyboardStep : keyboardStep;
         applyDesktopWidth(lastDesktopWidth + delta);
         queueInvalidate();
-      } else if (axis === 'y' && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
+      } else if (
+        axis === "y" &&
+        (event.key === "ArrowUp" || event.key === "ArrowDown")
+      ) {
         event.preventDefault();
-        const delta = event.key === 'ArrowUp' ? -keyboardStep : keyboardStep;
+        const delta = event.key === "ArrowUp" ? -keyboardStep : keyboardStep;
         applyMobileHeight(lastMobileHeight + delta);
         queueInvalidate();
       }
@@ -274,7 +316,7 @@ export function initMapPanelControls() {
 
     const handleResize = () => {
       ensureAvailableHeight();
-      if (controlPanel.classList.contains('collapsed')) {
+      if (controlPanel.classList.contains("collapsed")) {
         queueInvalidate();
         return;
       }
@@ -286,18 +328,22 @@ export function initMapPanelControls() {
       queueInvalidate();
     };
 
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', updateAxis);
-    } else if (typeof mediaQuery.addListener === 'function') {
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updateAxis);
+    } else if (typeof mediaQuery.addListener === "function") {
       mediaQuery.addListener(updateAxis);
     }
 
-    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     updateAxis();
 
-    controlPanel.addEventListener('transitionend', (event) => {
-      if ((event.propertyName === 'width' || event.propertyName === 'height') && !controlPanel.classList.contains('collapsed')) {
+    // Invalidate after panel transitions finish.
+    controlPanel.addEventListener("transitionend", (event) => {
+      if (
+        (event.propertyName === "width" || event.propertyName === "height") &&
+        !controlPanel.classList.contains("collapsed")
+      ) {
         queueInvalidate();
       }
     });

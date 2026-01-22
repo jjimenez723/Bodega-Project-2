@@ -17,7 +17,7 @@
   
   <style>
     /* Beautiful Layer Toggle Styles for Map */
-    .layer-toggle-group {
+    .layer-group {
       display: flex;
       background: #f8f9fa;
       border-radius: 12px;
@@ -61,7 +61,7 @@
     
     /* Responsive design for layer toggles */
     @media (max-width: 768px) {
-      .layer-toggle-group {
+      .layer-group {
         flex-direction: column;
         gap: 4px;
         padding: 8px;
@@ -153,15 +153,15 @@
       </div>
       <div id="exportSpinner" role="status" aria-live="polite" aria-label="Exporting, please wait"></div>
       <div class="panel-section">
-        <h3 class="panel-section-title">Layers</h3>
+        <h3 class="panel-sub">Layers</h3>
         <div class="controls" aria-label="Layer toggles">
-          <div class="layer-toggle-group">
+          <div class="layer-group">
             <button class="layer-toggle active" data-layer="fresh" id="produceToggle">Fresh Food</button>
             <button class="layer-toggle active" data-layer="fast" id="fastfoodToggle">Fast Food</button>
           </div>
         </div>
         <div class="controls" aria-label="Heatmap controls">
-          <div class="slider-compact-row">
+          <div class="slider-row">
             <label class="slider-label">
               <span class="long-label">Intensity:</span>
               <span class="short-label">Int.</span>
@@ -177,7 +177,7 @@
       </div>
       <hr class="panel-divider" />
       <div class="panel-section">
-        <h3 class="panel-section-title">Filter & Center</h3>
+        <h3 class="panel-sub">Filter & Center</h3>
         <button id="centerFilterBtn">Center / Filter</button>
         <div class="center-controls" aria-label="Filter controls">
           <div class="row">
@@ -192,7 +192,7 @@
       </div>
       <hr class="panel-divider" />
       <div class="panel-section">
-        <h3 class="panel-section-title">Export & Share</h3>
+        <h3 class="panel-sub">Export & Share</h3>
         <div class="export-controls" aria-label="Export and share controls">
           <button id="exportImgBtn">Export as Image</button>
           <button id="shareLinkBtn">
@@ -202,7 +202,7 @@
             <span class="long-label">Print</span>
           </button>
         </div>
-        <div class="legend-export-controls">
+        <div class="legend-tools">
           <label for="legendPosition"><strong>Legend Position for Export:</strong></label>
           <select id="legendPosition" aria-label="Legend position for export" style="width:100%">
             <option value="top-right">Top Right</option>
@@ -214,7 +214,7 @@
       </div>
       <hr class="panel-divider" />
       <div class="panel-section">
-        <h3 class="panel-section-title">Map Display</h3>
+        <h3 class="panel-sub">Map Display</h3>
         <div class="layer-controls" aria-label="Map display controls">
           <button id="layerModeBtn">Switch to Cluster View</button>
           <button id="borderToggleBtn">Hide Newark Border</button>

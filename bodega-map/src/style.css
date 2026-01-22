@@ -1,3 +1,4 @@
+/* Base typography and colors */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links */
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,6 +24,7 @@ a:hover {
   color: #535bf2;
 }
 
+/* Page layout */
 body {
   margin: 0;
   display: flex;
@@ -35,6 +38,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* App container */
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -42,6 +46,7 @@ h1 {
   text-align: center;
 }
 
+/* Logo tiles */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -55,14 +60,17 @@ h1 {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
+/* Card block */
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
+/* Helper text */
+.docs {
   color: #888;
 }
 
+/* Button styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -82,6 +90,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light theme overrides */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

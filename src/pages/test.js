@@ -1,8 +1,10 @@
-﻿import { initOffcanvasNav } from '../modules/navigation/offcanvasNav.js';
-import { initMobileEnhancements } from '../modules/mobile/enhancements.js';
-import { initTestPage } from '../modules/site/testPage.js';
+import { initOffcanvasNav } from "../modules/navigation/offcanvasNav.js";
+import { initMobileEnhancements } from "../modules/mobile/enhancements.js";
+import { initTestPage } from "../modules/site/testPage.js";
 
+// Initialize shared navigation and mobile helpers.
 initOffcanvasNav();
 initMobileEnhancements();
-initTestPage();
 
+// Boot the test page map export sample.
+initTestPage();

@@ -1,6 +1,6 @@
 /* nav-mobile.css &ndash; mobile off-canvas navigation styles */
 :root {
-  --brand-red: #C42D4D;
+  --brand-red: #c42d4d;
   --hamburger-size: 40px;
   --panel-width: 70vw;
   --panel-max: 320px;
@@ -30,13 +30,21 @@
   height: 3px;
   background: #000 !important;
   margin: 0 auto;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 /* X icon animation */
-.hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger.is-open span:nth-child(2) { opacity: 0; }
-.hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
 /* Off-canvas panel */
 #mobileNav {
@@ -89,16 +97,22 @@
 }
 
 /* Hide legacy horizontal menu on mobile */
-.menu { display: none !important; }
+.menu {
+  display: none !important;
+}
 
 @media (min-width: 768px) {
   /* restore desktop horizontal menu */
-  .menu { display: flex !important; }
+  .menu {
+    display: flex !important;
+  }
 }
 
 /* Desktop &ndash; restore original nav */
 @media (min-width: 768px) {
   .hamburger,
   #mobileNav,
-  #navOverlay { display: none !important; }
-} 
+  #navOverlay {
+    display: none !important;
+  }
+}

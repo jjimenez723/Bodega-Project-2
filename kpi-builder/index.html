@@ -45,7 +45,7 @@
     }
     
     /* Beautiful Role Toggle Styles */
-    .role-selector-container {
+    .role-bar {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -53,7 +53,7 @@
       padding: 1rem;
     }
     
-    .role-toggle-group {
+    .role-group {
       display: flex;
       background: #f8f9fa;
       border-radius: 12px;
@@ -95,7 +95,7 @@
     
     /* Responsive design for role toggles */
     @media (max-width: 768px) {
-      .role-toggle-group {
+      .role-group {
         flex-direction: column;
         gap: 4px;
         padding: 8px;
@@ -326,8 +326,8 @@
   <!-- Main container for KPI Builder -->
   <div class="container-fluid mt-4 flex-grow-1 d-flex flex-column">
     <!-- Beautiful Role Toggle Selector -->
-    <div class="role-selector-container">
-      <div class="role-toggle-group">
+    <div class="role-bar">
+      <div class="role-group">
         <button class="role-toggle" data-role="Farm" id="roleFarm">Farm</button>
         <button class="role-toggle" data-role="Distributor" id="roleDistributor">Distributor</button>
         <button class="role-toggle" data-role="Bodega" id="roleBodega">Bodega</button>
