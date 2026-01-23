@@ -62,17 +62,17 @@ body {
   flex-wrap: wrap;
 }
 .logo-bar img {
-  height: 32px;
-  max-width: 80px;
+  height: 40px;
+  max-width: 100px;
   object-fit: contain;
   margin: 0 0.2em;
+  border-radius: 5px;
   transition: all 0.3s ease;
   filter: grayscale(100%);
 }
 .logo-bar img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   filter: grayscale(0%);
-  filter: drop-shadow(0 2px 4px rgba(1, 89, 65, 0.2));
 }
 
 /* Hero block */
@@ -1503,6 +1503,11 @@ body.map-page .sticky-header {
 }
 .logo-bar img:hover {
   transform: scale(1.05);
+}
+.logo-bar img:focus,
+.logo-bar img:focus-visible {
+  transform: scale(1.25);
+  filter: grayscale(0%);
 }
 .hero {
   background: url(/assets/Rutgers%20Newark%20Bodega%20Project-SnIpSxoO.jpg)
