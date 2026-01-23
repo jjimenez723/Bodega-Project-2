@@ -17,20 +17,17 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* Override to keep header fixed throughout story page */
+/* Override to keep header in normal flow on story page */
 .sticky-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  z-index: 1000;
   padding-bottom: 10px;
 }
 
-/* Offset main content to account for fixed header height */
+/* Provide spacing below the header for the storyline */
 main {
   position: relative;
-  padding-top: 6rem;
+  padding-top: 0;
   padding-bottom: clamp(4rem, 10vw, 8rem);
 }
 
