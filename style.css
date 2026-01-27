@@ -924,9 +924,14 @@ footer a {
     min-height: 48px !important;
   }
   .social-link {
-    padding: 0.6rem 1.2rem !important;
-    font-size: 1rem !important;
-    border-radius: 8px !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+  }
+  .social-link svg {
+    width: 22px !important;
+    height: 22px !important;
   }
   .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
@@ -1624,6 +1629,7 @@ body.map-page .sticky-header {
   min-height: 380px;
   position: relative;
   transition: transform 0.3s;
+  margin: 0.5rem;
   height: 100%;
 }
 .card-inner {
@@ -1636,7 +1642,7 @@ body.map-page .sticky-header {
 }
 .team-card:hover .card-inner,
 .team-card:focus-within .card-inner {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
 .card-front,
 .card-back {
@@ -1681,7 +1687,7 @@ body.map-page .sticky-header {
   font-size: 0.95rem;
 }
 .card-back {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
   justify-content: flex-start;
   overflow-y: auto;
 }
@@ -1698,24 +1704,34 @@ body.map-page .sticky-header {
   justify-content: center;
 }
 .social-link {
-  color: #015941;
-  background: #f1f5f9;
-  padding: 0.4em 0.8em;
-  border-radius: 0.5em;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition:
-    background 0.2s,
-    color 0.2s;
-  border: 1.5px solid #015941;
-  display: inline-block;
-  min-width: fit-content;
-  text-align: center;
-}
-.social-link:hover {
-  background: #015941;
+  --linkedin-blue: #0a66c2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--linkedin-blue);
   color: #fff;
+  text-decoration: none;
+  border: 1px solid var(--linkedin-blue);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.social-link svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.social-link:hover,
+.social-link:focus-visible {
+  background: #004182;
+  border-color: #004182;
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.35);
+  transform: translateY(-1px);
+}
+.social-link:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 3px;
 }
 @media (max-width: 700px) {
   .team-card,
