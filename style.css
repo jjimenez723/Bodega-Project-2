@@ -195,6 +195,12 @@ body {
 .footer-nav-group a:focus {
   transform: translateX(4px);
 }
+.site-footer a:focus,
+.site-footer a:focus-visible,
+.site-footer a:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
 .footer-credits h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
@@ -1444,7 +1450,7 @@ body {
 body.map-page header,
 body.map-page .sticky-header {
   background-color: #ba0c2fd9 !important;
-  padding: 0.5rem 0;
+  padding: 0;
   position: relative;
   z-index: 999;
   box-shadow: 0 2px 6px #0003;
@@ -1605,10 +1611,10 @@ body.map-page .sticky-header {
 }
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
   margin-top: 2rem;
+  align-items: stretch;
 }
 .team-card {
   background: none;
@@ -1618,6 +1624,7 @@ body.map-page .sticky-header {
   min-height: 380px;
   position: relative;
   transition: transform 0.3s;
+  height: 100%;
 }
 .card-inner {
   position: relative;
@@ -1645,6 +1652,7 @@ body.map-page .sticky-header {
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
+  overflow: hidden;
 }
 .card-front img {
   width: 160px;
@@ -1675,6 +1683,7 @@ body.map-page .sticky-header {
 .card-back {
   transform: rotateY(180deg);
   justify-content: flex-start;
+  overflow-y: auto;
 }
 .card-back .bio {
   color: #374151;

@@ -17,9 +17,9 @@
 
   <style>
     /* KPI Builder specific tweaks */
-    html,body{height:100%}
-    body{display:flex;flex-direction:column}
-    #hot{height:calc(100vh - 200px);width:100%} /* Dynamic height to show all rows */
+    html, body { min-height: 100%; height: auto; }
+    body { display: flex; flex-direction: column; min-height: 100vh; overflow-y: auto; }
+    #hot { width: 100%; height: clamp(360px, 55vh, 640px); min-height: 360px; }
     .offcanvas.draggable{transition:none!important}
     
     /* Ensure the table takes up available space */
@@ -27,12 +27,6 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-    }
-    
-    /* Make the table container flexible */
-    #hot {
-      flex: 1;
-      min-height: 400px;
     }
     
     /* Reduce spacing for more table space */
