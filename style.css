@@ -6,6 +6,11 @@ body {
   color: #222;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Header and main navigation */
 .sticky-header {
   position: relative;
