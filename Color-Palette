@@ -1,0 +1,15 @@
+Color Name	Hex Code	Usage Description
+Primary / Forest Green	#2F4A2C	Core brand color, headers, nav, key UI text
+Primary Light	#ACB7AB	Soft backgrounds, cards, subtle sections
+Primary Dark	#233821	Hover/active for primary elements
+Secondary / Leaf Green (Accessible)	#4A7428	Supporting brand color for tags, icons, highlights
+Secondary Light	#B7C7A9	Secondary backgrounds, chips
+Secondary Dark	#38571E	Hover/active for secondary elements
+Accent / Deep Teal (Accessible)	#2F6F7D	CTAs, links, focus rings (derived from logo blue)
+Surface / Cream Paper	#F9F1E0	Main background
+Border / Sand	#E1D5C2	Dividers, input borders, subtle strokes
+Text-Secondary / Slate	#464646	Body text, labels, secondary UI copy
+Text-Primary / Ink	#1E1E1A	Headings, primary UI text
+Success / Pine	#2B7448	Success states, positive banners (white text)
+Warning / Amber	#9B610F	Warning states, caution banners (white text)
+Error / Brick	#B6433A	Error states, destructive actions (white text)

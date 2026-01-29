@@ -72,6 +72,23 @@
   padding: 1rem;
   width: 100%;
 }
+#mobileNav .mobile-nav-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0;
+}
+#mobileNav .mobile-nav-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.6rem 1rem 0.2rem;
+}
+#mobileNav .mobile-nav-group a {
+  padding-left: 1.75rem;
+  font-size: calc(var(--link-fs) - 0.1rem);
+}
 #mobileNav.is-open {
   transform: translateX(0);
   visibility: visible;

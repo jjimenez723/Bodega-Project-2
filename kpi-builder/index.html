@@ -295,18 +295,17 @@
         <li><a href="../">Home</a></li>
         <li><a href="../story/">Story</a></li>
         <li><a href="../gallery/">Gallery</a></li>
-        <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
-        <li><a href="../kpi-builder/" class="active">KPI Builder</a></li>
-        <li><a href="../#kpis">Data Visualization</a></li>
+        <li class="menu-item has-submenu">
+          <button class="menu-link menu-toggle" type="button" aria-haspopup="true">Tools</button>
+          <ul class="submenu">
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="./" class="active">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+          </ul>
+        </li>
         <li><a href="../#team">Team</a></li>
       </ul>
     </nav>
-    <div class="logo-bar">
-      <img src="../images/7.png" alt="NJ STEM Ecosystem Logo" />
-      <img src="../images/6.png" alt="USDA Logo" />
-      <img src="../images/5.png" alt="Rutgers Logo" />
-      <img src="../images/4.png" alt="BCC Logo" />
-    </div>
   </header>
 
   <!-- Hero Section -->
@@ -598,9 +597,12 @@
     <a href="../">Home</a>
     <a href="../story/">Story</a>
     <a href="../gallery/">Gallery</a>
-    <a href="../Map/">Fast vs. Fresh Food Map</a>
-    <a href="../kpi-builder/">KPI Builder</a>
-    <a href="../#kpis">Data Visualization</a>
+    <div class="mobile-nav-group" role="group" aria-label="Tools">
+      <span class="mobile-nav-title">Tools</span>
+      <a href="../Map/">Fast vs. Fresh Food Map</a>
+      <a href="./" class="active">KPI Builder</a>
+      <a href="../#kpis">Data Visualization</a>
+    </div>
     <a href="../#team">Team</a>
   </nav>
   <div id="navOverlay" class="overlay" hidden></div>
