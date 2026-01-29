@@ -1538,7 +1538,9 @@ body.map-page .sticky-header {
   background: none;
   border: none;
   cursor: pointer;
-  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
   margin: 0;
   line-height: 1.1;
   color: inherit;
@@ -1569,7 +1571,7 @@ body.map-page .sticky-header {
 .menu .submenu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -50px;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
