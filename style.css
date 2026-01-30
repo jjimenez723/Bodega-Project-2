@@ -103,6 +103,35 @@ body {
   margin: 0 auto;
 }
 
+/* Home page: float menu on hero top-right, remove red bar */
+.home-page .sticky-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.home-page .sticky-header nav {
+  background: transparent;
+  justify-content: flex-end;
+  padding: 1.25rem clamp(1.5rem, 4vw, 3rem);
+}
+.home-page .menu {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.home-page .menu li a,
+.home-page .menu li .menu-link {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.home-page .menu li a:hover,
+.home-page .menu li .menu-link:hover,
+.home-page .menu li .menu-link:focus-visible {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
 /* Footer menu */
 .site-footer {
   --footer-bg: var(--brand-red);
@@ -830,7 +859,7 @@ footer a {
     overflow-x: hidden !important;
     width: 100vw !important;
     box-sizing: border-box !important;
-    min-height: 60vh !important;
+    min-height: 70vh !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1569,9 +1598,9 @@ body.map-page .sticky-header {
   left: -50px;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.1rem;
   min-width: 220px;
-  padding: 0.5rem;
+  padding: 0.35rem;
   margin: 0;
   list-style: none;
   background: var(--submenu-bg, #fff);
@@ -1586,13 +1615,14 @@ body.map-page .sticky-header {
   z-index: 2000;
 }
 .menu .submenu a {
-  color: var(--submenu-text, #0f172a) !important;
-  padding: 0.45rem 0.75rem;
+  color: #000 !important;
+  padding: 0.3rem 0.65rem;
   font-size: 0.95rem;
-  line-height: 1.3;
+  line-height: 1.2;
   border-radius: 0.5rem;
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
   background: transparent;
 }
 .menu .submenu a::after {
@@ -1601,7 +1631,7 @@ body.map-page .sticky-header {
 .menu .submenu a:hover,
 .menu .submenu a:focus {
   background: var(--submenu-hover-bg, #e2e8f0);
-  color: var(--submenu-text, #0f172a) !important;
+  color: #000 !important;
 }
 .menu .has-submenu:hover > .submenu,
 .menu .has-submenu:focus-within > .submenu {
@@ -3064,7 +3094,7 @@ body.resize-y {
   text-align: center;
   padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
   gap: clamp(0.75rem, 2vw, 1.5rem);
-  min-height: clamp(320px, 60vh, 520px);
+  min-height: 70vh;
 }
 
 .hero::before,
