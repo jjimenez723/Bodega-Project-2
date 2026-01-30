@@ -1152,6 +1152,16 @@ select:focus {
   border-color: #2563eb;
   z-index: 2;
 }
+.sticky-header .menu .menu-link:focus,
+.sticky-header .menu .menu-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+.sticky-header .menu .menu-link:active {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
 button:hover,
 .export-controls button:hover,
 .layer-controls button:hover,
@@ -1603,10 +1613,12 @@ body.map-page .sticky-header {
   padding: 0.35rem;
   margin: 0;
   list-style: none;
-  background: var(--submenu-bg, #fff);
-  border: 1px solid var(--submenu-border, #e5e7eb);
+  background: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
   border-radius: 0.75rem;
-  box-shadow: var(--submenu-shadow, 0 14px 30px #00000026);
+  box-shadow: var(--submenu-shadow);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
@@ -1615,14 +1627,17 @@ body.map-page .sticky-header {
   z-index: 2000;
 }
 .menu .submenu a {
-  color: #000 !important;
-  padding: 0.3rem 0.65rem;
+  color: var(--submenu-text) !important;
+  padding: 0.45rem 0.85rem;
   font-size: 0.95rem;
   line-height: 1.2;
   border-radius: 0.5rem;
   text-decoration: none;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
   background: transparent;
 }
 .menu .submenu a::after {
@@ -1630,8 +1645,9 @@ body.map-page .sticky-header {
 }
 .menu .submenu a:hover,
 .menu .submenu a:focus {
-  background: var(--submenu-hover-bg, #e2e8f0);
-  color: #000 !important;
+  background-color: var(--submenu-hover-bg);
+  border-radius: 5px;
+  color: var(--submenu-text) !important;
 }
 .menu .has-submenu:hover > .submenu,
 .menu .has-submenu:focus-within > .submenu {
@@ -2684,11 +2700,11 @@ footer a {
   --nav-gap: clamp(0.75rem, 1.4vw, 1.4rem);
   --nav-padding-x: clamp(1rem, 3vw, 2.5rem);
   --nav-padding-y: clamp(0.35rem, 1.1vw, 0.7rem);
-  --submenu-bg: #ffffff;
-  --submenu-text: #0f172a;
-  --submenu-border: rgba(15, 23, 42, 0.15);
-  --submenu-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
-  --submenu-hover-bg: rgba(15, 23, 42, 0.08);
+  --submenu-bg: transparent;
+  --submenu-text: #fff;
+  --submenu-border: transparent;
+  --submenu-shadow: none;
+  --submenu-hover-bg: #fff3;
 }
 /* Unified page background */
 body,
