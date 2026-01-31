@@ -3296,3 +3296,236 @@ body.resize-y {
   max-width: 720px;
   margin: 0 auto;
 }
+
+/* Fixed header + brand layout */
+:root {
+  --header-height: 88px;
+  --header-bg: #ffffff;
+  --header-border: rgba(15, 23, 42, 0.12);
+  --header-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --nav-text: #0f172a;
+  --nav-muted: #64748b;
+  --nav-accent: #015941;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  padding-top: var(--header-height);
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1600;
+  background: var(--header-bg) !important;
+  box-shadow: var(--header-shadow);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.home-page .sticky-header,
+body.map-page .sticky-header {
+  position: fixed;
+  background: var(--header-bg) !important;
+  box-shadow: var(--header-shadow);
+}
+
+.home-page .sticky-header .main-nav,
+body.map-page .sticky-header .main-nav {
+  justify-content: space-between;
+  padding: 0.75rem clamp(1.25rem, 4vw, 3rem);
+  background: transparent;
+}
+
+.sticky-header .main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: var(--header-height);
+  padding: 0.75rem clamp(1.25rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background: transparent;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: var(--nav-text);
+  min-width: 0;
+}
+
+.nav-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(1, 89, 65, 0.2);
+  box-shadow: 0 8px 18px rgba(1, 89, 65, 0.18);
+  background: #fff;
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.1;
+}
+
+.nav-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--nav-muted);
+}
+
+.nav-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--nav-accent);
+}
+
+.main-nav .menu {
+  margin-left: auto;
+  gap: 0.6rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.main-nav .menu li a,
+.main-nav .menu li .menu-link {
+  color: var(--nav-text) !important;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+}
+
+.main-nav .menu li a:hover,
+.main-nav .menu li .menu-link:hover,
+.main-nav .menu li .menu-link:focus-visible {
+  background: rgba(1, 89, 65, 0.12);
+  color: var(--nav-accent) !important;
+}
+
+.main-nav .menu li a.active {
+  background: rgba(1, 89, 65, 0.18);
+  color: var(--nav-accent) !important;
+}
+
+.main-nav .menu li a::after,
+.main-nav .menu li .menu-link::before {
+  display: none;
+}
+
+.main-nav .menu .submenu {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  left: 0;
+  top: calc(100% + 0.35rem);
+}
+
+.main-nav .menu .submenu a {
+  color: var(--nav-text) !important;
+}
+
+.main-nav .menu .submenu a:hover,
+.main-nav .menu .submenu a:focus {
+  background: rgba(1, 89, 65, 0.08);
+  color: var(--nav-accent) !important;
+}
+
+.home-page .menu li a,
+.home-page .menu li .menu-link {
+  color: var(--nav-text) !important;
+  text-shadow: none;
+}
+
+.hamburger {
+  top: calc((var(--header-height) - var(--hamburger-size)) / 2) !important;
+}
+
+/* Footer brand block */
+.footer-brand {
+  gap: 0.75rem;
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.footer-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(1, 89, 65, 0.2);
+  box-shadow: 0 8px 18px rgba(1, 89, 65, 0.18);
+  background: #fff;
+}
+
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-eyebrow {
+  color: var(--nav-muted);
+}
+
+.footer-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--nav-accent);
+}
+
+.footer-tagline {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header-height: 74px;
+  }
+
+  .nav-title {
+    font-size: 0.95rem;
+  }
+
+  .nav-eyebrow {
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-brand-text {
+    display: none;
+  }
+
+  .nav-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-logo {
+    width: 52px;
+    height: 52px;
+  }
+}

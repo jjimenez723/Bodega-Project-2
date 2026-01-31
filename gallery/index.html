@@ -11,10 +11,14 @@
 </head>
 <body>
   <header class="sticky-header">
-    <nav>
-      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <nav class="main-nav">
+      <a class="nav-brand" href="../" aria-label="Rutgers Newark Bodega Project">
+        <img src="../Logo.jpeg" alt="Rutgers Newark Bodega Project logo" class="nav-logo" />
+        <span class="nav-brand-text">
+          <span class="nav-eyebrow">Rutgers Newark</span>
+          <span class="nav-title">Bodega Project</span>
+        </span>
+      </a>
       <ul class="menu">
         <li><a href="../">Home</a></li>
         <li><a href="../story/">Story</a></li>
@@ -29,6 +33,9 @@
         </li>
         <li><a href="../#team">Team</a></li>
       </ul>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
 
@@ -90,7 +97,13 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <p class="footer-eyebrow">Rutgers Newark Bodega Project</p>
+        <div class="footer-brand-header">
+          <img src="../Logo.jpeg" alt="Rutgers Newark Bodega Project logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <p class="footer-eyebrow">Rutgers Newark</p>
+            <p class="footer-title">Bodega Project</p>
+          </div>
+        </div>
         <p class="footer-tagline">Building a sustainable, data-informed, and hyperlocal food supply chain linking farms to bodegas.</p>
         <div class="footer-contact">
           <a href="mailto:esanchez2@bergen.edu">esanchez2@bergen.edu</a>
