@@ -994,6 +994,10 @@ footer a {
     margin-bottom: 1.5rem !important;
     border-radius: 12px !important;
   }
+  .kpi-list,
+  .farm-list {
+    --list-scale: 1.03;
+  }
   .kpi-list li,
   .farm-list li {
     padding: 1rem !important;
@@ -2438,11 +2442,15 @@ footer a {
   text-align: center;
 }
 #kpis.content-section,
+#urban-agriculture.content-section {
+  border: 1px solid rgba(1, 89, 65, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px #0000000d;
+}
 #kpis.content-section:hover,
-#urban-agriculture.content-section,
 #urban-agriculture.content-section:hover {
-  border: none;
-  box-shadow: none;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px #00000014;
 }
 .mission-block,
 .objectives-block {
@@ -2472,6 +2480,16 @@ footer a {
   margin-top: 0.5rem;
   font-size: 1rem;
 }
+.kpi-list,
+.farm-list {
+  --list-scale: 1.03;
+  --list-scale-duration: 0.8s;
+}
+.about-cards,
+#mission {
+  --card-scale: 1.03;
+  --card-scale-duration: 0.8s;
+}
 .kpi-list {
   margin: 1.2rem 0 0 1.2rem;
   padding: 0;
@@ -2485,6 +2503,11 @@ footer a {
   border-radius: 0.4rem;
   padding: 0.6rem 1rem;
   box-shadow: 0 1px 4px #2563eb0a;
+  position: relative;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform var(--list-scale-duration) ease;
+  will-change: transform;
 }
 .kpi-intro {
   color: #015941;
@@ -2500,11 +2523,56 @@ footer a {
 }
 .farm-list li {
   margin-bottom: 0.7rem;
-  color: #2563eb;
+  color: #000;
   background: #f1f5f9;
   border-radius: 0.4rem;
   padding: 0.6rem 1rem;
   box-shadow: 0 1px 4px #0159410a;
+  position: relative;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform var(--list-scale-duration) ease;
+  will-change: transform;
+}
+.about-card,
+.mission-block,
+.objectives-block {
+  position: relative;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform var(--card-scale-duration) ease;
+  will-change: transform;
+}
+.kpi-list li:hover,
+.kpi-list li:focus-visible,
+.kpi-list li:active,
+.farm-list li:hover,
+.farm-list li:focus-visible,
+.farm-list li:active {
+  transform: scale(var(--list-scale));
+  z-index: 1;
+}
+.about-card:hover,
+.about-card:focus-visible,
+.about-card:active,
+.mission-block:hover,
+.mission-block:focus-visible,
+.mission-block:active,
+.objectives-block:hover,
+.objectives-block:focus-visible,
+.objectives-block:active {
+  transform: scale(var(--card-scale));
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kpi-list li,
+  .farm-list li,
+  .about-card,
+  .mission-block,
+  .objectives-block {
+    transition: none;
+    transform: none;
+  }
 }
 @media (max-width: 700px) {
   #control-panel.compact {
