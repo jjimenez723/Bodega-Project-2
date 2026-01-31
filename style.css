@@ -2425,15 +2425,31 @@ footer a {
 /* Mission and KPI callouts */
 #mission h2 {
   color: #000;
+  text-align: center;
+}
+#mission.content-section,
+#mission.content-section:hover {
+  border: none;
+  box-shadow: none;
+}
+#kpis h2,
+#urban-agriculture h2 {
+  color: #000;
+  text-align: center;
+}
+#kpis.content-section,
+#kpis.content-section:hover,
+#urban-agriculture.content-section,
+#urban-agriculture.content-section:hover {
+  border: none;
+  box-shadow: none;
 }
 .mission-block,
 .objectives-block {
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 0.9rem;
   padding: 1.25rem 1.35rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
 }
 .mission-block h3,
 .objectives-block h3 {
