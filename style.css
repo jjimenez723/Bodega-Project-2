@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
   background: var(--page-bg);
-  color: #222;
+  color: #000;
 }
 
 /* Header and main navigation */
@@ -181,16 +181,16 @@ body {
 
 /* Footer menu */
 .site-footer {
-  --footer-bg: var(--brand-red);
-  --footer-link: #dbeafe;
-  --footer-accent: #a7f3d0;
-  --footer-muted: #cbd5f5;
+  --footer-bg: #fff;
+  --footer-link: #000;
+  --footer-accent: #000;
+  --footer-muted: #000;
   position: relative;
   overflow: hidden;
   margin-top: 3rem;
   padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.5rem, 6vw, 3rem) 2rem;
   background: var(--footer-bg) !important;
-  color: #f8fafc !important;
+  color: #000 !important;
   text-align: left;
 }
 .site-footer::before {
@@ -227,14 +227,14 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.72);
+  color: #000;
   font-weight: 600;
 }
 .footer-tagline {
   margin: 0;
   font-size: 1rem;
   line-height: 1.45;
-  color: #e2e8f0;
+  color: #000;
 }
 .footer-contact {
   display: flex;
@@ -254,7 +254,7 @@ body {
 .footer-nav-group h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
-  color: #f8fafc;
+  color: #000;
 }
 .footer-nav-group ul {
   list-style: none;
@@ -283,13 +283,13 @@ body {
 .footer-credits h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
-  color: #f8fafc;
+  color: #000;
 }
 .footer-credits p {
   margin: 0 0 0.4rem;
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #e2e8f0;
+  color: #000;
 }
 .footer-bottom {
   position: relative;
@@ -297,7 +297,7 @@ body {
   max-width: 1100px;
   margin: 1.75rem auto 0;
   padding-top: 1.15rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem 1.2rem;
@@ -438,14 +438,14 @@ body {
 
 /* Footer */
 footer {
-  background: #015941;
-  color: #fff;
+  background: #fff;
+  color: #000;
   text-align: center;
   padding: 1.5rem 0 1rem;
   margin-top: 3rem;
 }
 footer a {
-  color: #bae6fd;
+  color: #000;
   text-decoration: underline;
 }
 
@@ -1974,15 +1974,15 @@ body.map-page .sticky-header {
   }
 }
 footer {
-  background-color: #222 !important;
-  color: #eee !important;
+  background-color: #fff !important;
+  color: #000 !important;
   text-align: center;
   padding: 1rem;
   font-size: 0.95rem;
   margin-top: 3rem;
 }
 footer a {
-  color: #bae6fd !important;
+  color: #000 !important;
   text-decoration: underline;
 }
 @media (max-width: 768px) {
@@ -2431,22 +2431,19 @@ footer a {
   color: #000;
   text-align: center;
 }
-#mission.content-section,
-#mission.content-section:hover {
-  border: none;
-  box-shadow: none;
-}
 #kpis h2,
 #urban-agriculture h2 {
   color: #000;
   text-align: center;
 }
+#mission.content-section,
 #kpis.content-section,
 #urban-agriculture.content-section {
   border: 1px solid rgba(1, 89, 65, 0.1);
   border-radius: 12px;
   box-shadow: 0 2px 10px #0000000d;
 }
+#mission.content-section:hover,
 #kpis.content-section:hover,
 #urban-agriculture.content-section:hover {
   transform: translateY(-3px);
@@ -2455,7 +2452,9 @@ footer a {
 .mission-block,
 .objectives-block {
   background: #ffffff;
+  border: 1px solid rgba(1, 89, 65, 0.1);
   border-radius: 0.9rem;
+  box-shadow: 0 2px 10px #0000000d;
   padding: 1.25rem 1.35rem;
   margin-bottom: 1.5rem;
 }
@@ -2540,7 +2539,7 @@ footer a {
   position: relative;
   transform: scale(1);
   transform-origin: center;
-  transition: transform var(--card-scale-duration) ease;
+  transition: transform var(--card-scale-duration) ease, box-shadow 0.3s ease;
   will-change: transform;
 }
 .kpi-list li:hover,
@@ -2563,6 +2562,14 @@ footer a {
 .objectives-block:active {
   transform: scale(var(--card-scale));
   z-index: 1;
+}
+.mission-block:hover,
+.mission-block:focus-visible,
+.mission-block:active,
+.objectives-block:hover,
+.objectives-block:focus-visible,
+.objectives-block:active {
+  box-shadow: 0 6px 20px #00000014;
 }
 @media (prefers-reduced-motion: reduce) {
   .kpi-list li,
@@ -2836,7 +2843,7 @@ footer a {
 }
 /* Offcanvas nav variables */
 :root {
-  --page-bg: #f8fafc;
+  --page-bg: #fff;
   --brand-red: #c42d4d;
   --hamburger-size: 40px;
   --panel-width: 70vw;
@@ -2874,17 +2881,17 @@ body:not(.map-page) .logo-bar {
   background-color: var(--page-bg) !important;
 }
 .hero {
-  color: #1e293b;
+  color: #000;
 }
 .hero::before,
 .hero::after {
   background: none;
 }
 footer {
-  color: #1e293b;
+  color: #000;
 }
 footer a {
-  color: #015941;
+  color: #000;
 }
 .hamburger {
   position: fixed;
