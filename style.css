@@ -1000,7 +1000,7 @@ footer a {
   }
   .kpi-list li,
   .farm-list li {
-    padding: 1rem !important;
+    padding: 1rem 1rem 1rem 2.2rem !important;
     margin-bottom: 1rem !important;
     border-radius: 8px !important;
     font-size: 1rem !important;
@@ -2467,11 +2467,26 @@ footer a {
 .objectives-block ul {
   margin: 0 0 0.5rem 1.2rem;
   padding: 0;
-  list-style: disc inside;
+  list-style: none;
+}
+.objectives-block ul li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+.objectives-block ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid var(--nav-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(1, 89, 65, 0.35);
 }
 .program-dates {
-  background: #E6F4E6;
-  color: #4A7428;
+  background: rgba(1, 89, 65, 0.18);
+  color: var(--nav-accent);
   font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -2492,7 +2507,7 @@ footer a {
 .kpi-list {
   margin: 1.2rem 0 0 1.2rem;
   padding: 0;
-  list-style: square inside;
+  list-style: none;
   font-size: 1.08rem;
 }
 .kpi-list li {
@@ -2500,7 +2515,7 @@ footer a {
   color: #374151;
   background: #f9fafb;
   border-radius: 0.4rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1rem 0.6rem 2rem;
   box-shadow: 0 1px 4px #4A74280a;
   position: relative;
   transform: scale(1);
@@ -2508,8 +2523,19 @@ footer a {
   transition: transform var(--list-scale-duration) ease;
   will-change: transform;
 }
+.kpi-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  top: 1.05rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--nav-accent);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(1, 89, 65, 0.35);
+}
 .kpi-intro {
-  color: #015941;
+  color: var(--nav-accent);
   font-weight: 500;
   margin-bottom: 0.7rem;
   font-size: 1.08rem;
@@ -2517,7 +2543,7 @@ footer a {
 .farm-list {
   margin: 1.2rem 0 0 1.2rem;
   padding: 0;
-  list-style: circle inside;
+  list-style: none;
   font-size: 1.08rem;
 }
 .farm-list li {
@@ -2525,13 +2551,24 @@ footer a {
   color: #000;
   background: #f1f5f9;
   border-radius: 0.4rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1rem 0.6rem 2rem;
   box-shadow: 0 1px 4px #0159410a;
   position: relative;
   transform: scale(1);
   transform-origin: center;
   transition: transform var(--list-scale-duration) ease;
   will-change: transform;
+}
+.farm-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  top: 1.05rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 2px solid var(--nav-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(1, 89, 65, 0.35);
 }
 .about-card,
 .mission-block,
