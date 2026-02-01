@@ -6,8 +6,10 @@
 body {
   background-color: var(--bg);
   margin: 0;
+  padding-top: 0;
   font-family: "Inter", sans-serif;
   color: #000;
+  overflow-x: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
