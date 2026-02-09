@@ -415,30 +415,130 @@ body {
   color: #000;
 }
 
-/* Team cards */
+/* Team card layout inspired by Uiverse component */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1.25rem, 2vw, 1.75rem);
   margin-top: 2rem;
 }
-.team-card img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  border: 3px solid #4A7428;
+
+.team-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
-.team-card h3 {
-  margin: 0.5rem 0 0.25rem;
-  font-size: 1.1rem;
+
+.team-card:focus-visible {
+  outline: 3px solid rgba(74, 190, 151, 0.55);
+  outline-offset: 6px;
+}
+
+.card {
+  position: relative;
+  min-height: 320px;
+  border-radius: 18px;
+  border: 3px solid #0a7c67;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(74, 190, 151, 0.25), 0 10px 20px rgba(10, 124, 103, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 1.5vw, 1.5rem);
+  transition: transform 0.32s ease, box-shadow 0.32s ease;
+  isolation: isolate;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+.team-card:focus-visible .card,
+.team-card:hover .card {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 45px rgba(74, 190, 151, 0.35), 0 14px 28px rgba(10, 124, 103, 0.2);
+}
+
+.card .bg {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(10, 124, 103, 0.15);
+}
+
+.blob {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  background-color: rgba(10, 124, 103, 0.35);
+  border-radius: 50%;
+  filter: blur(18px);
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+  animation: blob-bounce 6s infinite ease-in-out;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.card-content img {
+  width: clamp(110px, 26vw, 140px);
+  height: clamp(110px, 26vw, 140px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  background: #fff;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-text h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: #063d2d;
   font-weight: 700;
 }
-.team-card p {
+
+.card-text p {
   margin: 0;
-  color: #64748b;
+  color: #1d3f33;
   font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate(-50%, -50%) translate3d(40%, -15%, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate3d(50%, 30%, 0);
+  }
+  75% {
+    transform: translate(-50%, -50%) translate3d(-10%, 40%, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  }
 }
 
 /* Footer */
