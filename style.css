@@ -410,6 +410,11 @@ body {
   margin-bottom: 1rem;
 }
 
+#team h2 {
+  text-align: center;
+  color: #000;
+}
+
 /* Team cards */
 .team-grid {
   display: grid;
