@@ -431,8 +431,8 @@ body {
 }
 
 .team-card:focus-visible {
-  outline: 3px solid rgba(74, 190, 151, 0.55);
-  outline-offset: 6px;
+  outline: none;
+  outline-offset: 0;
 }
 
 .card {
@@ -1272,17 +1272,17 @@ footer a {
   input:focus,
   select:focus,
   a:focus {
-    outline: 3px solid #4A7428 !important;
-    outline-offset: 2px !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
   .hamburger:focus {
-    outline: 3px solid #fff !important;
-    outline-offset: 2px !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
   .menu.open li a:focus,
   .menu.open li .menu-link:focus {
-    outline: 3px solid #fff !important;
-    outline-offset: 2px !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
 }
 button,
@@ -1301,11 +1301,10 @@ select {
 }
 button:focus,
 input:focus,
-select:focus {
-  outline: 2px solid #4A7428;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px #bae6fd;
-  border-color: #4A7428;
+select:focus,
+a:focus {
+  outline: none;
+  box-shadow: none;
   z-index: 2;
 }
 .sticky-header .menu .menu-link:focus,
@@ -1330,8 +1329,8 @@ button:active {
   color: #fff;
 }
 .panel-sub:focus {
-  outline: 2px solid #4A7428;
-  outline-offset: 2px;
+  outline: none;
+  outline-offset: 0;
 }
 #exportSpinner {
   display: none;
@@ -1715,6 +1714,9 @@ body.map-page .sticky-header {
   background-color: #fff3;
   border-radius: 5px;
   color: #fff !important;
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 .menu li a:focus,
 .menu li a:active,
@@ -2066,8 +2068,8 @@ body.map-page .sticky-header {
   transform: translateY(-1px);
 }
 .social-link:focus-visible {
-  outline: 2px solid #93c5fd;
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: none;
 }
 @media (max-width: 700px) {
   .team-card,
@@ -3672,4 +3674,23 @@ body.map-page .sticky-header .main-nav {
     width: 52px;
     height: 52px;
   }
+}
+
+/* Remove default focus outline for menu and logo */
+/* Remove default focus outline for menu and logo */
+.nav-brand:focus,
+.menu a:focus,
+.hamburger:focus,
+.offcanvas a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Global focus reset to satisfy user request "anyone component" */
+*:focus,
+*:focus-visible,
+*:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
