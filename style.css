@@ -3694,3 +3694,50 @@ body.map-page .sticky-header .main-nav {
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
 }
+
+/* Ensure equal height cards */
+.team-card {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.team-card .card {
+  flex: 1;
+  height: auto;
+  display: flex !important;
+  flex-direction: column;
+  padding-bottom: 40px; /* Ensure space at bottom as requested? Or just rely on flex... let's try pushing icon to bottom first. */
+  /* User said "distance of the bottom, like 40px". 
+     The card has default padding. Let's make sure the icon is pushed to the bottom. 
+  */
+}
+
+.team-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make card-text grow and organize its content so icon can be pushed down */
+.team-card .card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push the icon to the bottom of the card-text area */
+.linkedin-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: auto auto 0; /* Top auto pushes it down */
+  fill: #1d3f33;
+  transition: fill 0.3s ease;
+}
+
+.team-card:hover .linkedin-icon {
+  fill: #0a7c67;
+}
+
+
