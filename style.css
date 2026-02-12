@@ -3442,6 +3442,27 @@ body.resize-y {
   margin: 0 auto;
 }
 
+
+.home-page .hero {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: calc(clamp(4rem, 8vw, 6rem) + var(--header-height));
+  padding-left: clamp(1.5rem, 5vw, 3rem);
+  padding-right: clamp(1.5rem, 5vw, 3rem);
+  padding-bottom: clamp(3rem, 6vw, 4rem);
+  border-radius: 0;
+}
+
+.home-page .hero::before {
+  background-size: cover;
+  background-position: center;
+  background-image: url("images/plants.jpg");
+}
 /* Fixed header + brand layout */
 :root {
   --header-height: 88px;
@@ -3738,6 +3759,133 @@ body.map-page .sticky-header .main-nav {
 
 .team-card:hover .linkedin-icon {
   fill: #0a7c67;
+}
+
+/* Page shell + responsive framework overrides */
+:root {
+  --page-shell-max: 1180px;
+  --section-gap: clamp(1.5rem, 3vw, 3rem);
+  --content-padding: clamp(1.4rem, 2.5vw, 2.5rem);
+  --section-radius: 1.2rem;
+  --hero-min-height: clamp(52vh, 420px, 68vh);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main.page-content {
+  width: min(100%, var(--page-shell-max));
+  margin: 0 auto 3rem;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+main.page-content section {
+  width: 100%;
+}
+
+.hero {
+  min-height: var(--hero-min-height);
+  border-radius: var(--section-radius);
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.25;
+}
+
+.hero-text p {
+  font-size: clamp(1rem, 2.8vw, 1.3rem);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.content-section {
+  padding: var(--content-padding);
+  border-radius: var(--section-radius);
+  margin: 0;
+}
+
+.content-section h2 {
+  margin-top: 0;
+}
+
+.about-cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.mission-block,
+.objectives-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.carousel-section {
+  padding: 1rem 0 2rem;
+}
+
+.carousel-section h2 {
+  margin-bottom: 1rem;
+}
+
+.team-grid {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.team-card .card {
+  border-radius: 1.1rem;
+}
+
+.team-card img {
+  width: clamp(120px, 25vw, 160px);
+  height: clamp(120px, 25vw, 160px);
+}
+
+.kpi-list,
+.farm-list {
+  padding-left: 1rem;
+  gap: 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .hero,
+  .content-section,
+  .carousel-section {
+    border-radius: 1rem;
+  }
+  main.page-content {
+    gap: 1.25rem;
+    padding: 0 1rem 2rem;
+  }
+  .content-section {
+    padding: 1.35rem;
+  }
+  .mission-block,
+  .objectives-block {
+    gap: 0.5rem;
+  }
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
 }
 
 
