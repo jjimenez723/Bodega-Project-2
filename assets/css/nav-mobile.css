@@ -78,6 +78,18 @@
   line-height: 1.5rem;
   padding: 1rem;
   width: 100%;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#mobileNav a:hover,
+#mobileNav a:focus-visible {
+  background: rgba(10, 125, 103, 0.15);
+  color: #0a7c67;
+  outline: none;
+}
+
+#mobileNav a:active {
+  background: rgba(10, 125, 103, 0.25);
 }
 #mobileNav .mobile-nav-group {
   display: flex;
