@@ -157,13 +157,15 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: transparent;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .home-page .sticky-header nav {
   background: transparent;
-  justify-content: flex-end;
-  padding: 1.25rem clamp(1.5rem, 4vw, 3rem);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem clamp(1.25rem, 3vw, 2.5rem);
 }
 .home-page .menu {
   justify-content: flex-end;
@@ -171,13 +173,14 @@ body {
 }
 .home-page .menu li a,
 .home-page .menu li .menu-link {
-  color: #fff !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  color: var(--nav-text) !important;
+  text-shadow: none;
 }
 .home-page .menu li a:hover,
 .home-page .menu li .menu-link:hover,
 .home-page .menu li .menu-link:focus-visible {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(1, 89, 65, 0.08);
+  color: #015941 !important;
 }
 
 /* Footer menu */
@@ -923,21 +926,22 @@ footer a {
     width: 48px !important;
     height: 48px !important;
     border-radius: 8px !important;
-    background: #015941 !important;
-    border: none !important;
+    background: #fff !important;
+    border: 2px solid #0a7c67 !important;
+    padding: 10px !important;
     cursor: pointer !important;
     z-index: 3000 !important;
     position: fixed !important;
     top: 1rem !important;
     right: 1rem !important;
-    box-shadow: 0 2px 8px #00000026 !important;
+    box-shadow: 0 0 12px rgba(10, 124, 103, 0.25) !important;
   }
   .hamburger span {
-    width: 24px !important;
-    height: 3px !important;
-    background: #fff !important;
+    width: 32px !important;
+    height: 4px !important;
+    background: #0a7c67 !important;
     margin: 3px auto !important;
-    border-radius: 2px !important;
+    border-radius: 3px !important;
     transition: 0.3s ease !important;
   }
   .hamburger.active span:nth-child(1) {
@@ -960,9 +964,10 @@ footer a {
     left: 0 !important;
     width: 100% !important;
     height: 100vh !important;
-    background: #015941f2 !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+    background: linear-gradient(180deg, #ffffff, #f6fff8 70%, #e8ffe8 100%) !important;
+    box-shadow: 0 0 40px rgba(10, 124, 103, 0.2) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    backdrop-filter: blur(6px) !important;
     z-index: 2500 !important;
     padding: 5rem 2rem 2rem !important;
     box-sizing: border-box !important;
@@ -992,7 +997,7 @@ footer a {
 }
   .menu.open li a,
   .menu.open li .menu-link {
-    color: #fff !important;
+    color: #032f23 !important;
     font-size: 1.3rem !important;
     font-weight: 600 !important;
     padding: 1rem 1.5rem !important;
@@ -1004,8 +1009,11 @@ footer a {
   }
   .menu.open li a:hover,
   .menu.open li .menu-link:hover {
-    background: #fff3 !important;
+    background: rgba(10, 124, 103, 0.08) !important;
     transform: translateY(-2px) !important;
+  }
+  .menu.open li:not(:last-child) {
+    border-bottom: 1px dashed rgba(10, 124, 103, 0.35) !important;
   }
   .hero {
     padding: 2rem 1rem 1.5rem !important;
@@ -3046,21 +3054,25 @@ footer a {
   width: var(--hamburger-size);
   height: var(--hamburger-size);
   border-radius: 6px;
-  background: var(--brand-red);
-  border: none;
+  background: #fff;
+  border: 2px solid #0a7c67;
+  box-shadow: 0 0 12px rgba(10, 124, 103, 0.35);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 10px;
   gap: 5px;
   cursor: pointer;
   z-index: 3000;
   pointer-events: auto;
 }
 .hamburger span {
-  width: 60%;
-  height: 3px;
-  background: #000;
+  width: 70%;
+  height: 4px;
+  background: #0a7c67;
+  border-radius: 3px;
   margin: 0 auto;
+  box-shadow: inset 0 0 4px rgba(10, 124, 103, 0.6);
   transition:
     transform 0.35s ease,
     opacity 0.35s ease;
@@ -3081,7 +3093,10 @@ footer a {
   height: 100vh;
   width: var(--panel-width);
   max-width: var(--panel-max);
-  background: var(--brand-red);
+  background: linear-gradient(180deg, #ffffff, #f6fff8 60%, #e6ffe9);
+  border-left: 4px solid #0a7c67;
+  box-shadow: -14px 0 36px rgba(10, 124, 103, 0.35);
+  color: #032f23;
   transform: translate(100%);
   transition: transform 0.35s ease;
   padding-top: 4.5rem;
@@ -3090,15 +3105,20 @@ footer a {
   z-index: 2000;
 }
 .offcanvas a {
-  color: #fff;
+  color: #032f23;
   text-decoration: none;
   font-size: var(--link-fs);
   line-height: 1.5rem;
   padding: 1rem;
   width: 100%;
+  transition: color 0.2s ease;
 }
 .offcanvas.is-open {
   transform: translate(0);
+}
+.offcanvas a:hover,
+.offcanvas a:focus {
+  color: #0a7c67;
 }
 .overlay {
   position: fixed;
@@ -3140,21 +3160,25 @@ footer a {
   width: var(--hamburger-size, 40px) !important;
   height: var(--hamburger-size, 40px) !important;
   border-radius: 6px !important;
-  background: var(--brand-red, #c42d4d) !important;
-  border: none !important;
+  background: #fff !important;
+  border: 2px solid #0a7c67 !important;
+  box-shadow: 0 0 12px rgba(10, 124, 103, 0.35) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
+  padding: 10px !important;
   gap: 5px !important;
   cursor: pointer !important;
   z-index: 3000 !important;
   pointer-events: auto !important;
 }
 .hamburger span {
-  width: 60% !important;
-  height: 3px !important;
-  background: #000 !important;
+  width: 70% !important;
+  height: 4px !important;
+  background: #0a7c67 !important;
+  border-radius: 3px !important;
   margin: 0 auto !important;
+  box-shadow: inset 0 0 4px rgba(10, 124, 103, 0.5) !important;
   transition:
     transform 0.35s ease,
     opacity 0.35s ease !important;
@@ -3795,6 +3819,8 @@ main.page-content section {
 .hero {
   min-height: var(--hero-min-height);
   border-radius: var(--section-radius);
+  padding: clamp(3rem, 6vw, 4rem);
+  text-align: center;
 }
 
 .hero-text h1 {
@@ -3889,5 +3915,4 @@ main.page-content section {
     font-size: 1rem;
   }
 }
-
 
