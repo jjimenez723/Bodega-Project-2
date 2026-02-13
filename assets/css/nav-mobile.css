@@ -59,8 +59,8 @@
   height: 100vh;
   width: var(--panel-width);
   max-width: var(--panel-max);
-  background: #10131a;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border-left: 1px solid rgba(3, 47, 35, 0.1);
   backdrop-filter: blur(18px);
   transform: translateX(100%);
   transition: transform 0.35s ease;
@@ -72,7 +72,7 @@
   pointer-events: none;
 }
 #mobileNav a {
-  color: #fff;
+  color: #032f23;
   text-decoration: none;
   font-size: var(--link-fs);
   line-height: 1.5rem;
@@ -89,7 +89,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(3, 47, 35, 0.75);
   padding: 0.6rem 1rem 0.2rem;
 }
 #mobileNav .mobile-nav-group a {
