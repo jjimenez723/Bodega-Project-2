@@ -6,6 +6,26 @@ body {
   color: #000;
 }
 
+body.gallery-page {
+  padding-top: 0;
+}
+
+body.gallery-page .hero {
+  margin-top: -var(--header-height);
+  padding-top: calc(clamp(4rem, 8vw, 6rem) + var(--header-height));
+}
+
+body.gallery-page .gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+}
+
+body.gallery-page .gallery-thumb {
+  max-width: 280px;
+  height: 200px;
+  border-radius: 0.9rem;
+}
+
 /* Header and main navigation */
 .sticky-header {
   position: relative;
