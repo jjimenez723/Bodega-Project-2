@@ -2456,6 +2456,15 @@ footer a {
   box-shadow: 0 8px 24px #0159412e;
   border-color: #015941;
 }
+
+@media (max-width: 1024px) {
+  .gallery-section .gallery-thumb {
+    width: 42vw !important;
+    height: 13vh !important;
+    max-width: none !important;
+    min-height: 0 !important;
+  }
+}
 /* Lightbox overlay */
 .lightbox {
   position: fixed;
@@ -2533,8 +2542,10 @@ footer a {
     gap: 0.7rem;
   }
   .gallery-thumb {
-    max-width: 120px;
-    height: 80px;
+    width: 42vw !important;
+    height: 13vh !important;
+    max-width: none !important;
+    justify-self: center;
   }
   .lightbox-img {
     max-width: 98vw;
@@ -2548,6 +2559,20 @@ footer a {
   .lightbox-prev,
   .lightbox-next {
     font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 526px) {
+  .gallery-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  .gallery-thumb {
+    width: 50vw !important;
+    max-width: none !important;
+    justify-self: center;
   }
 }
 #control-panel.collapsed > *:not(#restorePanelBtn) {
