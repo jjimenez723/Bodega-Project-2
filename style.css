@@ -936,10 +936,13 @@ footer a {
     overflow-x: hidden;
   }
   .sticky-header {
-    position: static !important;
-    top: auto !important;
-    z-index: auto !important;
-    box-shadow: none;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3000;
+    background: var(--header-bg);
+    box-shadow: var(--header-shadow);
   }
   .hamburger {
     display: flex !important;
@@ -975,6 +978,9 @@ footer a {
   }
   .menu {
     display: none !important;
+  }
+  main.page-content {
+    margin-top: var(--header-height);
   }
   .menu.open {
     display: flex !important;
