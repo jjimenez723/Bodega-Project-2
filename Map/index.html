@@ -16,72 +16,6 @@
   <link rel="stylesheet" href="../assets/css/nav-mobile.css" />
   
   <style>
-    /* Beautiful Layer Toggle Styles for Map */
-    .layer-group {
-      display: flex;
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border: 1px solid #e9ecef;
-      margin-bottom: 1rem;
-    }
-    
-    .layer-toggle {
-      position: relative;
-      padding: 10px 20px;
-      background: transparent;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #6c757d;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      min-width: 100px;
-      text-align: center;
-      flex: 1;
-    }
-    
-    .layer-toggle:hover {
-      color: #015941;
-      background: rgba(1, 89, 65, 0.1);
-    }
-    
-    .layer-toggle.active {
-      background: #015941;
-      color: white;
-      box-shadow: 0 2px 8px rgba(1, 89, 65, 0.3);
-    }
-    
-    .layer-toggle.active:hover {
-      background: #004684;
-      transform: translateY(-1px);
-    }
-    
-    /* Responsive design for layer toggles */
-    @media (max-width: 768px) {
-      .layer-group {
-        flex-direction: column;
-        gap: 4px;
-        padding: 8px;
-      }
-      
-      .layer-toggle {
-        min-width: 80px;
-        padding: 8px 16px;
-        font-size: 0.85rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .layer-toggle {
-        min-width: 70px;
-        padding: 6px 12px;
-        font-size: 0.8rem;
-      }
-    }
-
     body.map-page {
       --map-header-offset: var(--header-height);
       --map-available-height: calc(100vh - var(--map-header-offset));
@@ -145,15 +79,20 @@
   </header>
   <div id="main-flex-container">
     <aside id="control-panel">
-      <button id="restorePanelBtn" title="Restore panel" aria-label="Restore panel" style="display:none;position:absolute;top:0.7em;left:0.7em;font-size:1.5em;z-index:10;background:none;border:none;cursor:pointer;">&raquo;</button>
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <h2 class="panel-title" tabindex="0">Map Controls</h2>
-        <div style="display: flex; gap: 0.5em; align-items: center;">
-          <button id="compactPanelBtn" title="Shrink/Expand panel" aria-label="Shrink/Expand panel" style="background:none;border:none;font-size:1.3em;cursor:pointer;padding:0.2em 0.5em;">
+      <button id="restorePanelBtn" class="panel-edge-button" title="Restore panel" aria-label="Restore panel">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+      <div class="panel-header">
+        <div class="panel-title-block">
+          <span class="panel-kicker">Newark Food Access</span>
+          <h2 class="panel-title" tabindex="0">Map Controls</h2>
+        </div>
+        <div class="panel-actions">
+          <button id="compactPanelBtn" class="panel-icon-button" title="Shrink/Expand panel" aria-label="Shrink/Expand panel">
             <i class="fas fa-compress-alt"></i>
           </button>
-          <button id="minimizePanelBtn" title="Minimize panel" aria-label="Minimize panel" style="background:none;border:none;font-size:2em;cursor:pointer;padding:0.2em 0.5em;line-height:1;">
-            <b>&mdash;</b>
+          <button id="minimizePanelBtn" class="panel-icon-button" title="Minimize panel" aria-label="Minimize panel">
+            <i class="fas fa-minus" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -164,7 +103,12 @@
           <div class="layer-group">
             <button class="layer-toggle active" data-layer="fresh" id="produceToggle">Fresh Food</button>
             <button class="layer-toggle active" data-layer="fast" id="fastfoodToggle">Fast Food</button>
-            <button class="layer-toggle active" data-layer="rutgers" id="rutgersToggle">Rutgers</button>
+            <button class="layer-toggle active" data-layer="rutgers" id="rutgersToggle">
+              <span class="rutgers-toggle-icon" aria-hidden="true">
+                <img src="../Rutgers_Scarlet_Knights_logo.svg" alt="" />
+              </span>
+              <span>Rutgers</span>
+            </button>
           </div>
         </div>
         <div class="controls" aria-label="Heatmap controls">
@@ -253,7 +197,9 @@
       </div>
     </aside>
     <div id="panel-resizer" data-axis="x" role="separator" aria-orientation="vertical" aria-label="Resize map control panel" tabindex="0"></div>
-    <button id="showPanelBtn" title="Show panel" aria-label="Show panel" style="display:none;position:fixed;left:0;top:50%;transform:translateY(-50%);font-size:2.2em;z-index:3001;background:#015941;color:#fff;border:none;border-radius:0 1.2em 1.2em 0;padding:0.2em 0.5em;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">&rarr;</button>
+    <button id="showPanelBtn" class="panel-show-button" title="Show panel" aria-label="Show panel">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
     <main id="map-area">
       <div id="map"></div>
     </main>
@@ -334,4 +280,3 @@
   <script type="module" src="/src/pages/map.js"></script>
 </body>
 </html>
-
