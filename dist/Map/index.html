@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Fresh-Produce Heatmap</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Leaflet CSS (force 1.5.1) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
-  <!-- MarkerCluster CSS (optional) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  <!-- Font Awesome for custom icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Your custom styles -->
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fresh-Produce Heatmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS (force 1.5.1) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <!-- MarkerCluster CSS (optional) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <!-- Font Awesome for custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Your custom styles -->
+  
   <style>
     /* Beautiful Layer Toggle Styles for Map */
-    .layer-toggle-group {
+    .layer-group {
       display: flex;
       background: #f8f9fa;
       border-radius: 12px;
@@ -59,7 +59,7 @@
     
     /* Responsive design for layer toggles */
     @media (max-width: 768px) {
-      .layer-toggle-group {
+      .layer-group {
         flex-direction: column;
         gap: 4px;
         padding: 8px;
@@ -81,7 +81,7 @@
     }
 
     body.map-page {
-      --map-header-offset: 0px;
+      --map-header-offset: var(--header-height);
       --map-available-height: calc(100vh - var(--map-header-offset));
     }
 
@@ -110,152 +110,229 @@
       }
     }
 
-  </style>
-  <script type="module" crossorigin src="/assets/map-CjyMk9fr.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/enhancements-m85IZWfI.js">
+  </style>
+  <script type="module" crossorigin src="/assets/map-Bu_VYaU0.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/enhancements-fXeyQw0l.js">
   <link rel="modulepreload" crossorigin href="/assets/paths-CH8zUY__.js">
-  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-C54aWS2Q.css">
-</head>
-<body class="map-page">
-  <header class="sticky-header">
-    <nav>
-      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="menu">
-        <li><a href="../">Home</a></li>
-        <li><a href="../story/">Story</a></li>
-        <li><a href="../gallery/">Gallery</a></li>
-        <li><a href="../kpi-builder/">KPI Builder</a></li>
-        <li><a href="./" class="active">Fast vs. Fresh Food Map</a></li>
-        <li><a href="../#kpis">Data Visualization</a></li>
-        <li><a href="../#team">Team</a></li>
-      </ul>
-    </nav>
-    <div class="logo-bar">
-      <img src="/assets/7-BxTG1g56.png" alt="NJ STEM Ecosystem Logo" />
-      <img src="/assets/6-C_IZFNb7.png" alt="USDA Logo" />
-      <img src="/assets/5-DZ5g2xn3.png" alt="Rutgers Logo" />
-      <img src="/assets/4-DF4RMAYx.png" alt="BCC Logo" />
-    </div>
-  </header>
-  <div id="main-flex-container">
-    <aside id="control-panel">
-      <button id="restorePanelBtn" title="Restore panel" aria-label="Restore panel" style="display:none;position:absolute;top:0.7em;left:0.7em;font-size:1.5em;z-index:10;background:none;border:none;cursor:pointer;">&raquo;</button>
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <h2 class="panel-title" tabindex="0">Map Controls</h2>
-        <div style="display: flex; gap: 0.5em; align-items: center;">
-          <button id="compactPanelBtn" title="Shrink/Expand panel" aria-label="Shrink/Expand panel" style="background:none;border:none;font-size:1.3em;cursor:pointer;padding:0.2em 0.5em;">
-            <i class="fas fa-compress-alt"></i>
-          </button>
-          <button id="minimizePanelBtn" title="Minimize panel" aria-label="Minimize panel" style="background:none;border:none;font-size:2em;cursor:pointer;padding:0.2em 0.5em;line-height:1;">
-            <b>&mdash;</b>
-          </button>
-        </div>
-      </div>
-      <div id="exportSpinner" role="status" aria-live="polite" aria-label="Exporting, please wait"></div>
-      <div class="panel-section">
-        <h3 class="panel-section-title">Layers</h3>
-        <div class="controls" aria-label="Layer toggles">
-          <div class="layer-toggle-group">
-            <button class="layer-toggle active" data-layer="fresh" id="produceToggle">Fresh Food</button>
-            <button class="layer-toggle active" data-layer="fast" id="fastfoodToggle">Fast Food</button>
-          </div>
-        </div>
-        <div class="controls" aria-label="Heatmap controls">
-          <div class="slider-compact-row">
-            <label class="slider-label">
-              <span class="long-label">Intensity:</span>
-              <span class="short-label">Int.</span>
-              <input type="range" id="intensitySlider" min="0.1" max="1" step="0.05" value="1">
-            </label>
-            <label class="slider-label">
-              <span class="long-label">Size:</span>
-              <span class="short-label">Sz.</span>
-              <input type="range" id="sizeSlider" min="5" max="60" step="1" value="60">
-            </label>
-          </div>
-        </div>
-      </div>
-      <hr class="panel-divider" />
-      <div class="panel-section">
-        <h3 class="panel-section-title">Filter & Center</h3>
-        <button id="centerFilterBtn">Center / Filter</button>
-        <div class="center-controls" aria-label="Filter controls">
-          <div class="row">
-            <label>Address: <input type="text" id="addressInput" placeholder="Enter address" style="width:100%" /></label>
-            <label>Radius (km): <input type="number" id="radiusInput" min="0" step="any" value="1" style="width:100%" /></label>
-          </div>
-          <div class="row">
-            <label>Lat: <input type="number" id="latInput" step="any" placeholder="Latitude" style="width:100%" /></label>
-            <label>Lng: <input type="number" id="lngInput" step="any" placeholder="Longitude" style="width:100%" /></label>
-          </div>
-        </div>
-      </div>
-      <hr class="panel-divider" />
-      <div class="panel-section">
-        <h3 class="panel-section-title">Export & Share</h3>
-        <div class="export-controls" aria-label="Export and share controls">
-          <button id="exportImgBtn">Export as Image</button>
-          <button id="shareLinkBtn">
-            <span class="long-label">Share Map Link</span>
-          </button>
-          <button id="printBtn">
-            <span class="long-label">Print</span>
-          </button>
-        </div>
-        <div class="legend-export-controls">
-          <label for="legendPosition"><strong>Legend Position for Export:</strong></label>
-          <select id="legendPosition" aria-label="Legend position for export" style="width:100%">
-            <option value="top-right">Top Right</option>
-            <option value="top-left">Top Left</option>
-            <option value="bottom-right">Bottom Right</option>
-            <option value="bottom-left" selected>Bottom Left</option>
-          </select>
-        </div>
-      </div>
-      <hr class="panel-divider" />
-      <div class="panel-section">
-        <h3 class="panel-section-title">Map Display</h3>
-        <div class="layer-controls" aria-label="Map display controls">
-          <button id="layerModeBtn">Switch to Cluster View</button>
-          <button id="borderToggleBtn">Hide Newark Border</button>
-          <button id="legendToggleBtn" aria-pressed="true">Hide Map Legend</button>
-        </div>
-      </div>
-    </aside>
-    <div id="panel-resizer" data-axis="x" role="separator" aria-orientation="vertical" aria-label="Resize map control panel" tabindex="0"></div>
-    <button id="showPanelBtn" title="Show panel" aria-label="Show panel" style="display:none;position:fixed;left:0;top:50%;transform:translateY(-50%);font-size:2.2em;z-index:3001;background:#015941;color:#fff;border:none;border-radius:0 1.2em 1.2em 0;padding:0.2em 0.5em;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">&rarr;</button>
-    <main id="map-area">
-      <div id="map"></div>
-    </main>
-  </div>
-  <!-- Leaflet JS (force 1.5.1) -->
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
-  <!-- leaflet-image for export as image (must come right after Leaflet) -->
-  <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
-  <!-- Heat plugin -->
-  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
-  <!-- MarkerCluster plugin -->
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- leaflet-pip for point-in-polygon -->
-  <script src="https://unpkg.com/leaflet-pip/leaflet-pip.min.js"></script>
-  <!-- html2canvas for export as image (for legend) -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" crossorigin="anonymous"></script>
-  <!-- Your map logic -->
-
-  <nav id="mobileNav" class="offcanvas" aria-label="Site">
-    <a href="../">Home</a>
-    <a href="../story/">Story</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../kpi-builder/">KPI Builder</a>
-    <a href="./" class="active">Fast vs. Fresh Food Map</a>
-    <a href="../#kpis">Data Visualization</a>
-    <a href="../#team">Team</a>
-  </nav>
-  <div id="navOverlay" class="overlay" hidden></div>
-</body>
-</html>
-
-
-
+  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-Bw-dYGQy.css">
+</head>
+<body class="map-page">
+  <header class="sticky-header">
+    <nav class="main-nav">
+      <a class="nav-brand" href="../" aria-label="Rutgers Newark Bodega Project">
+        <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="nav-logo" />
+        <span class="nav-brand-text">
+          <span class="nav-eyebrow">Rutgers Newark</span>
+          <span class="nav-title">Bodega Project</span>
+        </span>
+      </a>
+      <ul class="menu">
+        <li><a href="../">Home</a></li>
+        <li><a href="../story/">Story</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li class="menu-item has-submenu">
+          <button class="menu-link menu-toggle" type="button" aria-haspopup="true">Tools</button>
+          <ul class="submenu">
+            <li><a href="./" class="active">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+          </ul>
+        </li>
+        <li><a href="../#team">Team</a></li>
+      </ul>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <div id="main-flex-container">
+    <aside id="control-panel">
+      <button id="restorePanelBtn" title="Restore panel" aria-label="Restore panel" style="display:none;position:absolute;top:0.7em;left:0.7em;font-size:1.5em;z-index:10;background:none;border:none;cursor:pointer;">&raquo;</button>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h2 class="panel-title" tabindex="0">Map Controls</h2>
+        <div style="display: flex; gap: 0.5em; align-items: center;">
+          <button id="compactPanelBtn" title="Shrink/Expand panel" aria-label="Shrink/Expand panel" style="background:none;border:none;font-size:1.3em;cursor:pointer;padding:0.2em 0.5em;">
+            <i class="fas fa-compress-alt"></i>
+          </button>
+          <button id="minimizePanelBtn" title="Minimize panel" aria-label="Minimize panel" style="background:none;border:none;font-size:2em;cursor:pointer;padding:0.2em 0.5em;line-height:1;">
+            <b>&mdash;</b>
+          </button>
+        </div>
+      </div>
+      <div id="exportSpinner" role="status" aria-live="polite" aria-label="Exporting, please wait"></div>
+      <div class="panel-section">
+        <h3 class="panel-sub">Layers</h3>
+        <div class="controls" aria-label="Layer toggles">
+          <div class="layer-group">
+            <button class="layer-toggle active" data-layer="fresh" id="produceToggle">Fresh Food</button>
+            <button class="layer-toggle active" data-layer="fast" id="fastfoodToggle">Fast Food</button>
+            <button class="layer-toggle active" data-layer="rutgers" id="rutgersToggle">Rutgers</button>
+          </div>
+        </div>
+        <div class="controls" aria-label="Heatmap controls">
+          <div class="slider-row">
+            <label class="slider-label">
+              <span class="long-label">Intensity:</span>
+              <span class="short-label">Int.</span>
+              <input type="range" id="intensitySlider" min="0.1" max="1" step="0.05" value="1">
+            </label>
+            <label class="slider-label">
+              <span class="long-label">Size:</span>
+              <span class="short-label">Sz.</span>
+              <input type="range" id="sizeSlider" min="5" max="60" step="1" value="60">
+            </label>
+          </div>
+        </div>
+        <div class="rutgers-filter" aria-label="Rutgers place filters">
+          <button id="rutgersMainBtn" type="button">Main Rutgers Locations</button>
+          <label for="rutgersPlaceSelect">
+            Rutgers places
+            <select id="rutgersPlaceSelect">
+              <option value="all" selected>All Places of Note</option>
+              <option value="main">Main Locations</option>
+              <option value="note">Additional Places Only</option>
+              <option value="rutgers-new-jersey-medical-school">Rutgers New Jersey Medical School</option>
+              <option value="rutgers-newark-campus">Rutgers University - Newark Campus</option>
+              <option value="rutgers-business-school">Rutgers Business School</option>
+              <option value="john-cotton-dana-library">John Cotton Dana Library</option>
+              <option value="center-for-law-and-justice">Center for Law &amp; Justice</option>
+              <option value="school-of-dental-medicine">School of Dental Medicine</option>
+              <option value="school-of-public-health-riverfront-plaza">School of Public Health - Riverfront Plaza</option>
+              <option value="rutgers-cooperative-extension-essex-county">Rutgers Cooperative Extension of Essex County</option>
+              <option value="rutgers-community-health-center">Rutgers Community Health Center</option>
+              <option value="university-hospital">University Hospital</option>
+              <option value="hahne-express-newark">Hahne and Company / Express Newark</option>
+              <option value="woodward-residence-hall-dining">Woodward Residence Hall &amp; Stonsby Dining Facility</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <hr class="panel-divider" />
+      <div class="panel-section">
+        <h3 class="panel-sub">Filter & Center</h3>
+        <button id="centerFilterBtn">Center / Filter</button>
+        <div class="center-controls" aria-label="Filter controls">
+          <div class="row">
+            <label>Address: <input type="text" id="addressInput" placeholder="Enter address" style="width:100%" /></label>
+            <label>Radius (km): <input type="number" id="radiusInput" min="0" step="any" value="1" style="width:100%" /></label>
+          </div>
+          <div class="row">
+            <label>Lat: <input type="number" id="latInput" step="any" placeholder="Latitude" style="width:100%" /></label>
+            <label>Lng: <input type="number" id="lngInput" step="any" placeholder="Longitude" style="width:100%" /></label>
+          </div>
+        </div>
+      </div>
+      <hr class="panel-divider" />
+      <div class="panel-section">
+        <h3 class="panel-sub">Export & Share</h3>
+        <div class="export-controls" aria-label="Export and share controls">
+          <button id="exportImgBtn">Export as Image</button>
+          <button id="shareLinkBtn">
+            <span class="long-label">Share Map Link</span>
+          </button>
+          <button id="printBtn">
+            <span class="long-label">Print</span>
+          </button>
+        </div>
+        <div class="legend-tools">
+          <label for="legendPosition"><strong>Legend Position for Export:</strong></label>
+          <select id="legendPosition" aria-label="Legend position for export" style="width:100%">
+            <option value="top-right">Top Right</option>
+            <option value="top-left">Top Left</option>
+            <option value="bottom-right">Bottom Right</option>
+            <option value="bottom-left" selected>Bottom Left</option>
+          </select>
+        </div>
+      </div>
+      <hr class="panel-divider" />
+      <div class="panel-section">
+        <h3 class="panel-sub">Map Display</h3>
+        <div class="layer-controls" aria-label="Map display controls">
+          <button id="layerModeBtn">Switch to Cluster View</button>
+          <button id="borderToggleBtn">Hide Newark Border</button>
+          <button id="legendToggleBtn" aria-pressed="true">Hide Map Legend</button>
+        </div>
+      </div>
+    </aside>
+    <div id="panel-resizer" data-axis="x" role="separator" aria-orientation="vertical" aria-label="Resize map control panel" tabindex="0"></div>
+    <button id="showPanelBtn" title="Show panel" aria-label="Show panel" style="display:none;position:fixed;left:0;top:50%;transform:translateY(-50%);font-size:2.2em;z-index:3001;background:#015941;color:#fff;border:none;border-radius:0 1.2em 1.2em 0;padding:0.2em 0.5em;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">&rarr;</button>
+    <main id="map-area">
+      <div id="map"></div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-header">
+          <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <p class="footer-eyebrow">Rutgers Newark</p>
+            <p class="footer-title">Bodega Project</p>
+          </div>
+        </div>
+        <p class="footer-tagline">Building a sustainable, data-informed, and hyperlocal food supply chain linking farms to bodegas.</p>
+        <div class="footer-contact">
+          <a href="mailto:esanchez2@bergen.edu">esanchez2@bergen.edu</a>
+          <span>Newark, NJ</span>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-nav-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../story/">Story</a></li>
+            <li><a href="../gallery/">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+            <li><a href="../#team">Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-credits">
+        <h3>Credits</h3>
+        <p>Lead Full-Stack Developer: <a href="https://www.linkedin.com/in/jensy-jimenez/" target="_blank" rel="noopener">Jensy Jimenez</a></p>
+        <p>Assistant Front-End Developer: <a href="https://www.linkedin.com/in/yulissa-aguila-31099136a/" target="_blank" rel="noopener">Yulissa Aguila</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rutgers&ndash;Bergen Bodega Project</p>
+      <p>Supported by NJ STEM Ecosystem, USDA, Rutgers, and Bergen Community College.</p>
+    </div>
+  </footer>
+  <!-- Leaflet JS (force 1.5.1) -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <!-- leaflet-image for export as image (must come right after Leaflet) -->
+  <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+  <!-- Heat plugin -->
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <!-- MarkerCluster plugin -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- leaflet-pip for point-in-polygon -->
+  <script src="https://unpkg.com/leaflet-pip/leaflet-pip.min.js"></script>
+  <!-- html2canvas for export as image (for legend) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" crossorigin="anonymous"></script>
+  <!-- Your map logic -->
+
+  <nav id="mobileNav" class="offcanvas" aria-label="Site">
+    <a href="../">Home</a>
+    <a href="../story/">Story</a>
+    <a href="../gallery/">Gallery</a>
+    <div class="mobile-nav-group" role="group" aria-label="Tools">
+      <span class="mobile-nav-title">Tools</span>
+      <a href="./" class="active">Fast vs. Fresh Food Map</a>
+      <a href="../kpi-builder/">KPI Builder</a>
+      <a href="../#kpis">Data Visualization</a>
+    </div>
+    <a href="../#team">Team</a>
+  </nav>
+  <div id="navOverlay" class="overlay" hidden></div>
+</body>
+</html>
+

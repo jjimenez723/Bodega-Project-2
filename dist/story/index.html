@@ -3,36 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Story | Rutgers Newark Bodega Project</title>
+  <title>The Bodega Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script type="module" crossorigin src="/assets/story-D9rzss8w.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/enhancements-m85IZWfI.js">
-  <link rel="stylesheet" crossorigin href="/assets/story-PkoPAUmr.css">
-  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-C54aWS2Q.css">
+  <script type="module" crossorigin src="/assets/story-DDLSUCl8.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/enhancements-fXeyQw0l.js">
+  <link rel="stylesheet" crossorigin href="/assets/story-omOqTGyg.css">
+  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-Bw-dYGQy.css">
 </head>
 <body>
   <header class="sticky-header">
-    <nav>
-      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <nav class="main-nav">
+      <a class="nav-brand" href="../" aria-label="Rutgers Newark Bodega Project">
+        <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="nav-logo" />
+        <span class="nav-brand-text">
+          <span class="nav-eyebrow">Rutgers Newark</span>
+          <span class="nav-title">Bodega Project</span>
+        </span>
+      </a>
       <ul class="menu">
         <li><a href="../">Home</a></li>
         <li><a href="../story/" class="active">Story</a></li>
         <li><a href="../gallery/">Gallery</a></li>
-        <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
-        <li><a href="../kpi-builder/">KPI Builder</a></li>
-        <li><a href="../#kpis">Data Visualization</a></li>
+        <li class="menu-item has-submenu">
+          <button class="menu-link menu-toggle" type="button" aria-haspopup="true">Tools</button>
+          <ul class="submenu">
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+          </ul>
+        </li>
         <li><a href="../#team">Team</a></li>
       </ul>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
-    <div class="logo-bar">
-      <img src="/assets/7-BxTG1g56.png" alt="NJ STEM Ecosystem Logo" />
-      <img src="/assets/6-C_IZFNb7.png" alt="USDA Logo" />
-      <img src="/assets/5-DZ5g2xn3.png" alt="Rutgers Logo" />
-      <img src="/assets/4-DF4RMAYx.png" alt="BCC Logo" />
-    </div>
   </header>
   <main>
     <svg class="storyline" viewBox="0 0 200 2000" preserveAspectRatio="xMidYMin slice">
@@ -90,14 +97,64 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-header">
+          <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <p class="footer-eyebrow">Rutgers Newark</p>
+            <p class="footer-title">Bodega Project</p>
+          </div>
+        </div>
+        <p class="footer-tagline">Building a sustainable, data-informed, and hyperlocal food supply chain linking farms to bodegas.</p>
+        <div class="footer-contact">
+          <a href="mailto:esanchez2@bergen.edu">esanchez2@bergen.edu</a>
+          <span>Newark, NJ</span>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-nav-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../story/">Story</a></li>
+            <li><a href="../gallery/">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+            <li><a href="../#team">Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-credits">
+        <h3>Credits</h3>
+        <p>Lead Full-Stack Developer: <a href="https://www.linkedin.com/in/jensy-jimenez/" target="_blank" rel="noopener">Jensy Jimenez</a></p>
+        <p>Assistant Front-End Developer: <a href="https://www.linkedin.com/in/yulissa-aguila-31099136a/" target="_blank" rel="noopener">Yulissa Aguila</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rutgers&ndash;Bergen Bodega Project</p>
+      <p>Supported by NJ STEM Ecosystem, USDA, Rutgers, and Bergen Community College.</p>
+    </div>
+  </footer>
   
   <nav id="mobileNav" class="offcanvas" aria-label="Site">
     <a href="../">Home</a>
     <a href="../story/">Story</a>
     <a href="../gallery/">Gallery</a>
-    <a href="../Map/">Fast vs. Fresh Food Map</a>
-    <a href="../kpi-builder/">KPI Builder</a>
-    <a href="../#kpis">Data Visualization</a>
+    <div class="mobile-nav-group" role="group" aria-label="Tools">
+      <span class="mobile-nav-title">Tools</span>
+      <a href="../Map/">Fast vs. Fresh Food Map</a>
+      <a href="../kpi-builder/">KPI Builder</a>
+      <a href="../#kpis">Data Visualization</a>
+    </div>
     <a href="../#team">Team</a>
   </nav>
   <div id="navOverlay" class="overlay" hidden></div>

@@ -1,15 +1,104 @@
 import { onDocumentReady } from "../utils/dom.js";
 import { loadGeoJson, toHeatmapPoints } from "./dataService.mjs";
 import { withBasePath } from "../utils/paths.js";
+import rutgersLogoUrl from "../../../Rutgers_Scarlet_Knights_logo.svg";
 
 const DATA_URLS = {
   produce: withBasePath("data/fixed_fresh_food.geojson"),
   fastFood: withBasePath("data/fast_food.geojson"),
   boundary: withBasePath("data/newark_boundary_corrected.geojson"),
+  rutgers: withBasePath("data/rutgers_newark_buildings.geojson"),
 };
 
 const DEFAULT_HEAT_INTENSITY = 1;
 const DEFAULT_HEAT_RADIUS = 60;
+
+const RUTGERS_LOCATION_FILTER = Object.freeze([
+  {
+    key: "rutgers-new-jersey-medical-school",
+    sourceName: "Medical Science Building MSB",
+    displayName: "Rutgers New Jersey Medical School",
+    courseAbbrv: "NJMS",
+    group: "main",
+  },
+  {
+    key: "rutgers-newark-campus",
+    sourceName: "Paul Robeson Campus Center PRCC",
+    displayName: "Rutgers University - Newark Campus",
+    courseAbbrv: "Newark",
+    group: "main",
+  },
+  {
+    key: "rutgers-business-school",
+    sourceName: "One Washington Park",
+    displayName: "Rutgers Business School",
+    courseAbbrv: "RBS",
+    group: "main",
+  },
+  {
+    key: "john-cotton-dana-library",
+    sourceName: "John Cotton Dana Library",
+    displayName: "John Cotton Dana Library",
+    courseAbbrv: "Library",
+    group: "note",
+  },
+  {
+    key: "center-for-law-and-justice",
+    sourceName: "Center for Law & Justice CLJ",
+    displayName: "Center for Law & Justice",
+    courseAbbrv: "CLJ",
+    group: "note",
+  },
+  {
+    key: "school-of-dental-medicine",
+    sourceName: "School of Dental Medicine",
+    displayName: "School of Dental Medicine",
+    courseAbbrv: "RSDM",
+    group: "note",
+  },
+  {
+    key: "school-of-public-health-riverfront-plaza",
+    sourceName: "School of Public Health - Riverfront Plaza",
+    displayName: "School of Public Health - Riverfront Plaza",
+    courseAbbrv: "SPH",
+    group: "note",
+  },
+  {
+    key: "rutgers-cooperative-extension-essex-county",
+    sourceName: "Rutgers Cooperative Extension of Essex County EFNEP",
+    displayName: "Rutgers Cooperative Extension of Essex County",
+    courseAbbrv: "RCE",
+    group: "note",
+  },
+  {
+    key: "rutgers-community-health-center",
+    sourceName: "Rutgers Community Health Center",
+    displayName: "Rutgers Community Health Center",
+    courseAbbrv: "RCHC",
+    group: "note",
+  },
+  {
+    key: "university-hospital",
+    sourceName: "University Hospital UH",
+    displayName: "University Hospital",
+    courseAbbrv: "UH",
+    group: "note",
+  },
+  {
+    key: "hahne-express-newark",
+    sourceName: "Hahne and Company HAH - Express Newark",
+    displayName: "Hahne and Company / Express Newark",
+    courseAbbrv: "HAH",
+    group: "note",
+  },
+  {
+    key: "woodward-residence-hall-dining",
+    sourceName: "Woodward Residence Hall & Stonsby Dining Facility",
+    displayName: "Woodward Residence Hall & Stonsby Dining Facility",
+    courseAbbrv: "Dining",
+    group: "note",
+  },
+]);
 
 const NEWARK_BOUNDARY_BOX = Object.freeze({
   southWest: [40.6737966266808, -74.2513883524854],
@@ -26,6 +115,110 @@ function createCustomIcon(className, iconHtml) {
     iconSize: [24, 24],
     iconAnchor: [12, 12],
   });
+}
+
+function createRutgersIcon() {
+  return L.divIcon({
+    html:
+      '<span class="rutgers-marker"><img src="' +
+      escapeHtml(rutgersLogoUrl) +
+      '" alt="" aria-hidden="true"></span>',
+    className: "rutgers-map-icon",
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -18],
+  });
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function getSafeExternalUrl(url) {
+  if (!url) return "";
+  try {
+    const parsed = new URL(url, window.location.origin);
+    return ["http:", "https:"].includes(parsed.protocol) ? parsed.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function getCuratedRutgersLocations(features) {
+  return RUTGERS_LOCATION_FILTER.map((location) => {
+    const feature = features.find(
+      (item) => item?.properties?.name === location.sourceName,
+    );
+    if (!feature) return null;
+    return {
+      ...feature,
+      properties: {
+        ...feature.properties,
+        name: location.displayName,
+        course_abbrv: location.courseAbbrv,
+        rutgers_key: location.key,
+        rutgers_group: location.group,
+        source_anchor_name: feature.properties.name,
+      },
+    };
+  }).filter(Boolean);
+}
+
+function getSelectedRutgersFeatures(state) {
+  const selection = state.rutgers.selection || "all";
+  if (selection === "all") return state.rutgers.raw;
+  if (selection === "main") {
+    return state.rutgers.raw.filter(
+      (feature) => feature?.properties?.rutgers_group === "main",
+    );
+  }
+  if (selection === "note") {
+    return state.rutgers.raw.filter(
+      (feature) => feature?.properties?.rutgers_group === "note",
+    );
+  }
+  return state.rutgers.raw.filter(
+    (feature) => feature?.properties?.rutgers_key === selection,
+  );
+}
+
+function getFeaturesInsideActiveFilter(features, state) {
+  const activeFilter = state.activeFilter;
+  if (!activeFilter) return features;
+
+  return features.filter((feature) => {
+    const coordinates = feature?.geometry?.coordinates;
+    if (!coordinates) return false;
+    const lon = coordinates[0];
+    const lat = coordinates[1];
+    if (typeof lat !== "number" || typeof lon !== "number") return false;
+
+    const insideRadius =
+      activeFilter.center.distanceTo([lat, lon]) <=
+      activeFilter.radiusKm * 1000;
+    if (!insideRadius) return false;
+    if (!state.overlays.boundaryGhost) return true;
+
+    const matches =
+      leafletPip.pointInLayer([lon, lat], state.overlays.boundaryGhost) || [];
+    return matches.length > 0;
+  });
+}
+
+function updateRutgersCluster(state) {
+  const selectedFeatures = getSelectedRutgersFeatures(state);
+  const visibleFeatures = getFeaturesInsideActiveFilter(selectedFeatures, state);
+  populateCluster(
+    state.rutgers.cluster,
+    visibleFeatures,
+    state.rutgers.icon,
+    buildRutgersPopup,
+  );
 }
 
 function buildProducePopup(feature) {
@@ -73,6 +266,63 @@ function buildFastFoodPopup(feature) {
     lon +
     "' target='_blank'>Directions</a>"
   );
+}
+
+function buildRutgersPopup(feature) {
+  const coordinates = feature?.geometry?.coordinates;
+  if (!coordinates) return "";
+  const [lon, lat] = coordinates;
+  const props = feature.properties ?? {};
+  const category = [props.primary_category, props.secondary_category]
+    .filter(Boolean)
+    .join(" / ");
+  const websiteUrl = getSafeExternalUrl(props.website);
+  const directionsUrl =
+    getSafeExternalUrl(props.directions_url) ||
+    "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
+  const sourceUrl = getSafeExternalUrl(props.source_url);
+
+  let html =
+    "<strong>" + escapeHtml(props.name || "Rutgers Building") + "</strong>";
+  if (props.course_abbrv) {
+    html += " <small>(" + escapeHtml(props.course_abbrv) + ")</small>";
+  }
+  if (category) html += "<br>" + escapeHtml(category);
+  if (props.address) html += "<br>" + escapeHtml(props.address);
+  if (props.campus) {
+    html += "<br><small>" + escapeHtml(props.campus) + "</small>";
+  }
+  if (props.source_anchor_name) {
+    html +=
+      "<br><small>Map point: " +
+      escapeHtml(props.source_anchor_name) +
+      "</small>";
+  }
+  if (websiteUrl) {
+    html +=
+      "<br><a href='" +
+      websiteUrl +
+      "' target='_blank' rel='noopener'>Website</a>";
+  }
+  html +=
+    "<br><a href='" +
+    directionsUrl +
+    "' target='_blank' rel='noopener'>Directions</a>";
+  if (props.source) {
+    html += "<br><small>Source: ";
+    if (sourceUrl) {
+      html +=
+        "<a href='" +
+        sourceUrl +
+        "' target='_blank' rel='noopener'>" +
+        escapeHtml(props.source) +
+        "</a>";
+    } else {
+      html += escapeHtml(props.source);
+    }
+    html += "</small>";
+  }
+  return html;
 }
 
 function setHeatmapCanvasOpacity(intensity) {
@@ -196,6 +446,7 @@ export function initMapPage() {
       showHeatmap: true,
       showBorder: true,
       showLegend: true,
+      activeFilter: null,
       heatSettings: {
         radius: DEFAULT_HEAT_RADIUS,
         intensity: DEFAULT_HEAT_INTENSITY,
@@ -214,6 +465,12 @@ export function initMapPage() {
         cluster: L.markerClusterGroup({ chunkedLoading: true }),
         icon: null,
       },
+      rutgers: {
+        raw: [],
+        selection: "all",
+        cluster: L.markerClusterGroup({ chunkedLoading: true }),
+        icon: null,
+      },
       overlays: {
         boundary: null,
         boundaryGhost: null,
@@ -223,14 +480,19 @@ export function initMapPage() {
 
     try {
       // Fetch geojson datasets in parallel.
-      const [produceData, fastFoodData, boundaryData] = await Promise.all([
-        loadGeoJson(DATA_URLS.produce),
-        loadGeoJson(DATA_URLS.fastFood),
-        loadGeoJson(DATA_URLS.boundary),
-      ]);
+      const [produceData, fastFoodData, boundaryData, rutgersData] =
+        await Promise.all([
+          loadGeoJson(DATA_URLS.produce),
+          loadGeoJson(DATA_URLS.fastFood),
+          loadGeoJson(DATA_URLS.boundary),
+          loadGeoJson(DATA_URLS.rutgers),
+        ]);
 
       state.produce.raw = produceData.features ?? [];
       state.fastFood.raw = fastFoodData.features ?? [];
+      state.rutgers.raw = getCuratedRutgersLocations(
+        rutgersData.features ?? [],
+      );
 
       state.produce.icon = createCustomIcon(
         "map-icon",
@@ -240,6 +502,7 @@ export function initMapPage() {
         "map-icon",
         "<i class='fas fa-hamburger fast-icon' style='font-size:24px;'></i>",
       );
+      state.rutgers.icon = createRutgersIcon();
 
       populateCluster(
         state.produce.cluster,
@@ -253,6 +516,7 @@ export function initMapPage() {
         state.fastFood.icon,
         buildFastFoodPopup,
       );
+      updateRutgersCluster(state);
 
       state.produce.heatData = toHeatmapPoints(
         state.produce.raw,
@@ -311,6 +575,7 @@ export function initMapPage() {
         heatmapControls,
         legendControls,
       );
+      setupRutgersPlaceControls(state, layerControls);
       setupAccessibilityToggle(map, state, baseLayers, heatmapControls);
       setupFilterControls(map, state, layerControls, heatmapControls);
       setupExportControls(
@@ -399,6 +664,7 @@ function setupHeatmapControls(map, state) {
 function setupLayerToggles(map, state, heatmapControls, legendControls) {
   const produceToggle = document.getElementById("produceToggle");
   const fastfoodToggle = document.getElementById("fastfoodToggle");
+  const rutgersToggle = document.getElementById("rutgersToggle");
   const layerModeBtn = document.getElementById("layerModeBtn");
   const legendToggleBtn = document.getElementById("legendToggleBtn");
 
@@ -452,6 +718,17 @@ function setupLayerToggles(map, state, heatmapControls, legendControls) {
     }
   };
 
+  const updateRutgers = () => {
+    const active = isActive(rutgersToggle);
+    if (!active) {
+      map.removeLayer(state.rutgers.cluster);
+      return;
+    }
+    if (!map.hasLayer(state.rutgers.cluster)) {
+      map.addLayer(state.rutgers.cluster);
+    }
+  };
+
   const refreshLegendToggle = () => {
     if (legendToggleBtn) {
       legendToggleBtn.textContent = state.showLegend
@@ -478,6 +755,7 @@ function setupLayerToggles(map, state, heatmapControls, legendControls) {
     }
     updateProduce();
     updateFastFood();
+    updateRutgers();
     refreshLegendToggle();
     if (state.showHeatmap) heatmapControls.refresh();
   };
@@ -492,6 +770,13 @@ function setupLayerToggles(map, state, heatmapControls, legendControls) {
   if (fastfoodToggle) {
     fastfoodToggle.addEventListener("click", () => {
       fastfoodToggle.classList.toggle("active");
+      refresh();
+    });
+  }
+
+  if (rutgersToggle) {
+    rutgersToggle.addEventListener("click", () => {
+      rutgersToggle.classList.toggle("active");
       refresh();
     });
   }
@@ -515,6 +800,32 @@ function setupLayerToggles(map, state, heatmapControls, legendControls) {
   return { refresh };
 }
 
+function setupRutgersPlaceControls(state, layerControls) {
+  const rutgersMainBtn = document.getElementById("rutgersMainBtn");
+  const rutgersPlaceSelect = document.getElementById("rutgersPlaceSelect");
+
+  const applySelection = (selection) => {
+    state.rutgers.selection = selection || "all";
+    if (rutgersPlaceSelect) {
+      rutgersPlaceSelect.value = state.rutgers.selection;
+    }
+    updateRutgersCluster(state);
+    layerControls.refresh();
+  };
+
+  if (rutgersMainBtn) {
+    rutgersMainBtn.addEventListener("click", () => {
+      applySelection("main");
+    });
+  }
+
+  if (rutgersPlaceSelect) {
+    rutgersPlaceSelect.addEventListener("change", (event) => {
+      applySelection(event.target.value);
+    });
+  }
+}
+
 function setupLegend(map, state) {
   let legendElement = null;
   const legendControl = L.control({ position: "bottomright" });
@@ -524,6 +835,9 @@ function setupLegend(map, state) {
       "" +
       "<div><i class='fas fa-apple-alt fresh-icon' style='font-size: 16px; margin-right: 6px;'></i> Fresh Food</div>" +
       "<div><i class='fas fa-hamburger fast-icon' style='font-size: 16px; margin-right: 6px;'></i> Fast Food</div>" +
+      '<div><span class="legend-rutgers-logo"><img src="' +
+      escapeHtml(rutgersLogoUrl) +
+      '" alt=""></span> Rutgers</div>' +
       "<div><span class='legend-line' style='border-color:#008000'></span> Newark</div>" +
       "<div><span class='legend-circle'></span> Filter</div>" +
       "<div><span class='legend-cluster'></span> Clusters</div>";
@@ -592,6 +906,8 @@ function setupFilterControls(map, state, layerControls, heatmapControls) {
   const applyFilter = (center, radiusKm) => {
     if (!center || Number.isNaN(radiusKm)) return;
 
+    state.activeFilter = { center, radiusKm };
+
     if (state.overlays.radiusCircle) {
       map.removeLayer(state.overlays.radiusCircle);
     }
@@ -601,23 +917,8 @@ function setupFilterControls(map, state, layerControls, heatmapControls) {
       dashArray: "4",
     }).addTo(map);
 
-    const withinBounds = (lat, lon) => {
-      if (!state.overlays.boundaryGhost) return true;
-      const matches =
-        leafletPip.pointInLayer([lon, lat], state.overlays.boundaryGhost) || [];
-      return matches.length > 0;
-    };
-
     const filterFeatures = (features) =>
-      features.filter((feature) => {
-        const coordinates = feature?.geometry?.coordinates;
-        if (!coordinates) return false;
-        const lon = coordinates[0];
-        const lat = coordinates[1];
-        if (typeof lat !== "number" || typeof lon !== "number") return false;
-        const insideRadius = center.distanceTo([lat, lon]) <= radiusKm * 1000;
-        return insideRadius && withinBounds(lat, lon);
-      });
+      getFeaturesInsideActiveFilter(features, state);
 
     const produceFiltered = filterFeatures(state.produce.raw);
     const fastFoodFiltered = filterFeatures(state.fastFood.raw);
@@ -634,6 +935,7 @@ function setupFilterControls(map, state, layerControls, heatmapControls) {
       state.fastFood.icon,
       buildFastFoodPopup,
     );
+    updateRutgersCluster(state);
 
     state.produce.heatData = toHeatmapPoints(
       produceFiltered,
@@ -881,7 +1183,7 @@ function setupExportControls(
       heatmapControls.refresh();
 
       window.setTimeout(() => {
-        map.setView([40.7357, -73.413], 13, { animate: false });
+        map.setView([40.7357, -74.17], 13, { animate: false });
         map.invalidateSize();
         document.getElementById("map").scrollIntoView({
           behavior: "instant",

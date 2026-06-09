@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KPI Builder | Rutgers Newark Bodega Project</title>
-  <!-- Google Font & Core Site Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-
-  <!-- External Libraries -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@14.3.0/dist/handsontable.full.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/handsontable@14.3.0/dist/handsontable.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPI Builder | Rutgers Newark Bodega Project</title>
+  <!-- Google Font & Core Site Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@14.3.0/dist/handsontable.full.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/handsontable@14.3.0/dist/handsontable.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
   <style>
     /* KPI Builder specific tweaks */
-    html,body{height:100%}
-    body{display:flex;flex-direction:column}
-    #hot{height:calc(100vh - 200px);width:100%} /* Dynamic height to show all rows */
+    html, body { min-height: 100%; height: auto; }
+    body { display: flex; flex-direction: column; min-height: 100vh; overflow-y: auto; }
+    #hot { width: 100%; height: clamp(360px, 55vh, 640px); min-height: 360px; }
     .offcanvas.draggable{transition:none!important}
     
     /* Ensure the table takes up available space */
@@ -25,12 +25,6 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-    }
-    
-    /* Make the table container flexible */
-    #hot {
-      flex: 1;
-      min-height: 400px;
     }
     
     /* Reduce spacing for more table space */
@@ -43,7 +37,7 @@
     }
     
     /* Beautiful Role Toggle Styles */
-    .role-selector-container {
+    .role-bar {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -51,7 +45,7 @@
       padding: 1rem;
     }
     
-    .role-toggle-group {
+    .role-group {
       display: flex;
       background: #f8f9fa;
       border-radius: 12px;
@@ -93,7 +87,7 @@
     
     /* Responsive design for role toggles */
     @media (max-width: 768px) {
-      .role-toggle-group {
+      .role-group {
         flex-direction: column;
         gap: 4px;
         padding: 8px;
@@ -286,295 +280,351 @@
         width: 100% !important;
       }
     }
-  </style>
-  <script type="module" crossorigin src="/assets/kpi-BvZHB8kF.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/enhancements-m85IZWfI.js">
+  </style>
+  <script type="module" crossorigin src="/assets/kpi-CiHFOnDE.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/enhancements-fXeyQw0l.js">
   <link rel="modulepreload" crossorigin href="/assets/paths-CH8zUY__.js">
-  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-C54aWS2Q.css">
-</head>
-<body>
-  <!-- Header / Navigation -->
-  <header class="sticky-header">
-    <nav>
-      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="menu">
-        <li><a href="../">Home</a></li>
-        <li><a href="../story/">Story</a></li>
-        <li><a href="../gallery/">Gallery</a></li>
-        <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
-        <li><a href="../kpi-builder/" class="active">KPI Builder</a></li>
-        <li><a href="../#kpis">Data Visualization</a></li>
-        <li><a href="../#team">Team</a></li>
-      </ul>
-    </nav>
-    <div class="logo-bar">
-      <img src="/assets/7-BxTG1g56.png" alt="NJ STEM Ecosystem Logo" />
-      <img src="/assets/6-C_IZFNb7.png" alt="USDA Logo" />
-      <img src="/assets/5-DZ5g2xn3.png" alt="Rutgers Logo" />
-      <img src="/assets/4-DF4RMAYx.png" alt="BCC Logo" />
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero hero--kpi">
-    <div class="hero-text">
-      <h1>KPI Builder</h1>
-      <p>Interactively model supply-chain margins across roles&mdash;from farm to distributor to bodega.</p>
-    </div>
-  </section>
-
-  <!-- Main container for KPI Builder -->
-  <div class="container-fluid mt-4 flex-grow-1 d-flex flex-column">
-    <!-- Beautiful Role Toggle Selector -->
-    <div class="role-selector-container">
-      <div class="role-toggle-group">
-        <button class="role-toggle" data-role="Farm" id="roleFarm">Farm</button>
-        <button class="role-toggle" data-role="Distributor" id="roleDistributor">Distributor</button>
-        <button class="role-toggle" data-role="Bodega" id="roleBodega">Bodega</button>
-      </div>
-      <button class="btn btn-outline-secondary ms-3" id="gearBtn" aria-label="Column options" style="border-radius: 8px; padding: 8px 12px;">&#9881;</button>
-    </div>
-
-    <!-- Handsontable Grid -->
-    <div id="hot"></div>
-
-    <!-- Totals Card -->
-    <div class="card mt-3 d-none" id="totalsCard">
-      <div class="card-body">
-        <h5 class="card-title">Totals</h5>
-        <div id="totalsContent" class="card-text"></div>
-      </div>
-    </div>
-
-    <!-- Accordion -->
-    <div class="accordion mt-4" id="definitionsAccordion">
-      <!-- Column Definitions -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingCols">
-          <button class="accordion-button collapsed" type="button">Column Definitions</button>
-        </h2>
-        <div class="accordion-collapse collapse" id="collapseCols">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-sm align-middle">
-                <thead class="table-light">
-                  <tr><th>Column name</th><th>What it captures</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Produce</strong></td><td>The exact crop or item (acts as the unique key).</td></tr>
-                  <tr><td><strong>Category</strong></td><td>Broad food group (<em>Fruit, Vegetable, Herb, etc.</em>) so the dashboard can apply group-level assumptions.</td></tr>
-                  <tr><td><strong>Retail Price $/lb</strong></td><td>Shelf price shoppers pay per pound, taken from USDA-ERS national averages (editable).</td></tr>
-                  <tr><td><strong>Retail Margin %</strong></td><td>Retailer's target gross-profit percentage on that item (default &asymp; 37 %).</td></tr>
-                  <tr><td><strong>Retail Handling $/lb</strong></td><td>In-store labor, utilities, packaging, and other costs per pound (default $0.15 for fruit/veg, $0.50 for herbs).</td></tr>
-                  <tr><td><strong>Bodega Shrink %</strong></td><td>Percent of product lost inside the store to spoilage or theft; model subtracts this before profit calc (defaults &asymp; 11&ndash;12 %).</td></tr>
-                  <tr><td><strong>Farm Markup %</strong></td><td>Grower's desired markup added to production cost (default 15 %).</td></tr>
-                  <tr><td><strong>Farm Cost $/lb</strong></td><td>Estimated cost for the farm to grow, harvest, cool, and pack one retail-ready pound.</td></tr>
-                  <tr><td><strong>Farm Sale $/lb</strong></td><td>Actual price the farm receives: <code>Farm Cost &times; (1 + Farm Markup %)</code>.</td></tr>
-                  <tr><td><strong>Farm Shrink %</strong></td><td>Post-harvest loss before the load leaves the farm (default 2 %).</td></tr>
-                  <tr><td><strong>Dist. Handling $/lb</strong></td><td>Cooling, storage, trucking, and admin cost for the distributor (default $0.22 fruit, $0.20 veg, $1.00 herbs).</td></tr>
-                  <tr><td><strong>Dist. Margin %</strong></td><td>Distributor's target gross-profit percentage (default 12 %).</td></tr>
-                  <tr><td><strong>Dist. Sale $/lb</strong></td><td>Price charged by the distributor: <code>(Farm Sale + Dist. Handling) &times; (1 + Dist. Margin %)</code>.</td></tr>
-                  <tr><td><strong>Dist. Shrink %</strong></td><td>Loss in the warehouse or during transit (default 4 %).</td></tr>
-                  <tr><td><strong>Qty lbs</strong></td><td>Planned volume in pounds you expect to move for this item (user editable; powers the totals).</td></tr>
-                  <tr><td><strong>Farm Gross Profit $/lb</strong></td><td>Extra cents the farm keeps on each pound after costs: <code>Farm Sale &minus; Farm Cost</code> (read-only).</td></tr>
-                  <tr><td><strong>Farm Gross Margin %</strong></td><td>Farm gross profit expressed as a percent of Farm Sale price.</td></tr>
-                  <tr><td><strong>Dist. Gross Profit $/lb</strong></td><td>Distributor's leftover cents per pound after paying the farm and its own handling cost.</td></tr>
-                  <tr><td><strong>Dist. Gross Margin %</strong></td><td>Distributor gross profit as a percent of Dist. Sale price.</td></tr>
-                  <tr><td><strong>Bodega Gross Profit $/lb</strong></td><td>Store's leftover cents per pound after paying the distributor, subtracting shrink, and covering retail handling costs.</td></tr>
-                  <tr><td><strong>Bodega Gross Margin %</strong></td><td>That gross profit written as a percent of the shelf price.</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- KPI Definitions -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingKPIs">
-          <button class="accordion-button collapsed" type="button">KPI Definitions</button>
-        </h2>
-        <div class="accordion-collapse collapse" id="collapseKPIs">
-          <div class="accordion-body">
-<div class="table-responsive">
-  <table class="table table-sm align-middle">
-    <thead class="table-light">
-      <tr>
-        <th>KPI</th>
-        <th>Formula (column names)</th>
-        <th>Why it matters &amp; how to read</th>
-        <th>If the number looks <strong>too low</strong> &hellip;</th>
-        <th>If the number looks <strong>very high</strong> &hellip;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Farm&nbsp;Gross&nbsp;Profit&nbsp;per&nbsp;Pound</strong></td>
-        <td><code>Farm Sale $/lb &minus; Farm Cost $/lb</code></td>
-        <td>How many cents the farm retains on each pound after all growing, harvesting, cooling, and packing costs.</td>
-        <td>
-          Raise sale price to distributor; trim production costs (inputs, labor, packaging); improve yield to spread fixed costs.
-        </td>
-        <td>Consider reinvesting in quality upgrades or paying down debt&mdash;avoid over-pricing the market.</td>
-      </tr>
-      <tr>
-        <td><strong>Farm Gross Margin&nbsp;%</strong></td>
-        <td><code>(Farm GP $/lb &divide; Farm Sale $/lb) &times; 100</code></td>
-        <td>Percentage profit. Many produce farms aim for <strong>15&ndash;25&nbsp;%</strong>.</td>
-        <td>Same levers as above; also verify markup&nbsp;% is realistic.</td>
-        <td>If above 30&nbsp;% for a staple crop you may risk losing buyers.</td>
-      </tr>
-      <tr>
-        <td><strong>Distributor Gross Profit&nbsp;per&nbsp;Pound</strong></td>
-        <td><code>Dist. Sale $/lb &minus; Farm Sale $/lb &minus; Dist. Handling $/lb</code></td>
-        <td>Left-over cents for wholesaler after paying the farm and covering cooling, storage, trucking, and labor (goal&nbsp;8&ndash;15 &cent;).</td>
-        <td>Negotiate lower farm price; raise distributor margin&nbsp;% ; cut fuel or warehouse costs.</td>
-        <td>Use cushion to offer volume discounts or invest in better cold-chain equipment.</td>
-      </tr>
-      <tr>
-        <td><strong>Distributor Gross Margin&nbsp;%</strong></td>
-        <td><code>(Dist. GP $/lb &divide; Dist. Sale $/lb) &times; 100</code></td>
-        <td>Efficiency score&mdash;most regional produce houses run <strong>10&ndash;15&nbsp;%</strong>.</td>
-        <td>Below 8&nbsp;%: route may be unprofitable&mdash;revisit prices or drop slow items.</td>
-        <td>Over 18&nbsp;% could trigger retailer push-back; consider strategic discounts.</td>
-      </tr>
-      <tr>
-        <td><strong>Bodega Gross Profit&nbsp;per&nbsp;Pound</strong></td>
-        <td><code>(Retail Price $/lb &times; (1 &minus; Bodega Shrink % /100)) &minus; Dist. Sale $/lb &minus; Retail Handling $/lb</code></td>
-        <td>Store's cents after paying distributor, factoring spoilage/theft, and in-store handling. Target <strong>35&ndash;45 &cent;</strong>.</td>
-        <td>Raise shelf price; run promos to cut shrink; reduce handling costs.</td>
-        <td>Leverage surplus for specials to draw traffic or upgrade displays.</td>
-      </tr>
-      <tr>
-        <td><strong>Bodega Gross Margin&nbsp;%</strong></td>
-        <td><code>(Bodega GP $/lb &divide; Retail Price $/lb) &times; 100</code></td>
-        <td>Percent margin. Supermarkets average ~<strong>37&nbsp;%</strong>.</td>
-        <td>Below 25&nbsp;%: under-pricing or wasting too much.</td>
-        <td>Above 45&nbsp;%: check competitiveness; shoppers may trade down.</td>
-      </tr>
-      <tr>
-        <td><strong>Total Quantity&nbsp;(lbs)</strong></td>
-        <td>&Sigma; Quantity lbs for visible rows</td>
-        <td>Planned volume for selected crops.</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
-      </tr>
-      <tr>
-        <td><strong>Total Revenue&nbsp;($)</strong></td>
-        <td>If Farm &rarr; &Sigma;(Farm Sale $/lb &times; Qty) <br>Distributor &rarr; &Sigma;(Dist. Sale $/lb &times; Qty) <br>Bodega &rarr; &Sigma;(Retail Price $/lb &times; (1 &minus; Shrink&nbsp;%) &times; Qty)</td>
-        <td>Top-line sales dollars for chosen role, adjusted for shrink when viewing as Bodega.</td>
-        <td>Increase quantity, price, or both; trim shrink (retail role).</td>
-        <td>Check capacity (acreage, truck or shelf space) to handle volume.</td>
-      </tr>
-      <tr>
-        <td><strong>Total Gross Profit&nbsp;($)</strong></td>
-        <td>Role-specific GP per pound &times; Qty, summed for visible rows</td>
-        <td>Absolute earnings for the batch.</td>
-        <td>Adjust per-pound GP levers starting with highest-volume items.</td>
-        <td>Reinvest; ensure long-term demand isn't hurt.</td>
-      </tr>
-      <tr>
-        <td><strong>Average Gross Margin&nbsp;%</strong></td>
-        <td>(Total Gross Profit &divide; Total Revenue) &times; 100</td>
-        <td>Weighted margin across everything selected&mdash;big-picture health.</td>
-        <td>Below benchmark: focus on low-margin items or renegotiate large contracts.</td>
-        <td>Above benchmark: great&mdash;monitor competitor prices to stay sustainable.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-          </div>
-        </div>
-      </div>
-      <!-- Citations -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingCite">
-          <button class="accordion-button collapsed" type="button">Citations</button>
-        </h2>
-        <div class="accordion-collapse collapse" id="collapseCite">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-sm align-middle">
-                <thead class="table-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Source description</th>
-                    <th scope="col">Verified link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><strong>USDA ERS &ndash; Fruit &amp; Vegetable Prices</strong> (interactive tables with national average retail prices per pound)</td>
-                    <td><a href="https://www.ers.usda.gov/data-products/fruit-and-vegetable-prices" target="_blank" rel="noopener">View</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td><strong>USDA ERS &ndash; Price Spreads from Farm to Consumer</strong> (farm-share percentages for fresh fruits and vegetables)</td>
-                    <td><a href="https://www.ers.usda.gov/data-products/price-spreads-from-farm-to-consumer" target="_blank" rel="noopener">View</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td><strong>USDA ERS &ndash; Food Dollar Series, 2023 Chart of Note</strong> (wholesale-trade share = 11.4 &cent; of the food dollar)</td>
-                    <td><a href="https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=110567" target="_blank" rel="noopener">View</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td><strong>USDA ERS &ndash; Chart of Note: Supermarket shrink varies by type of fresh fruit and vegetable</strong> (shrink averages = 12.6 % fruit / 11.6 % veg)</td>
-                    <td><a href="https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=79033" target="_blank" rel="noopener">View</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td><strong>USDA ERS &ndash; Updated Supermarket Shrink Estimates for Fresh Foods</strong> (full methodology PDF, EIB-155)</td>
-                    <td><a href="https://www.ers.usda.gov/sites/default/files/_laserfiche/publications/44100/EIB-155.pdf" target="_blank" rel="noopener">PDF</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td><strong>International Fresh Produce Association &ndash; Supermarket Produce Department Benchmarks (2024)</strong> (reports 37 % average produce gross margin)</td>
-                    <td><a href="https://www.freshproduce.com/resources/retail/supermarket-produce-department-benchmarks/" target="_blank" rel="noopener">View</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Off-canvas (Column Options) -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="columnOptions">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title">Column Options</h5>
-      <button type="button" class="btn-close" id="closeCanvas" aria-label="Close">&times;</button>
-    </div>
-    <div class="offcanvas-body">
-      <h6 class="mb-2">Column Visibility</h6>
-      <div id="columnToggles" class="mb-3"></div>
-      <hr/>
-      <h6 class="mb-2">Crop Filter</h6>
-      <div id="cropToggles" style="max-height:200px;overflow:auto;"></div>
-    </div>
-  </div>
-  
-  <!-- Backdrop for offcanvas -->
-  <div class="offcanvas-backdrop" id="offcanvasBackdrop"></div>
-
-  <nav id="mobileNav" class="offcanvas" aria-label="Site">
-    <a href="../">Home</a>
-    <a href="../story/">Story</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../Map/">Fast vs. Fresh Food Map</a>
-    <a href="../kpi-builder/">KPI Builder</a>
-    <a href="../#kpis">Data Visualization</a>
-    <a href="../#team">Team</a>
-  </nav>
-  <div id="navOverlay" class="overlay" hidden></div>
-
-  <!-- KPI Builder Script -->
-
-  <!-- Site-wide JS (hamburger & misc) -->
-</body>
-</html> 
-
+  <link rel="stylesheet" crossorigin href="/assets/nav-mobile-Bw-dYGQy.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="sticky-header">
+    <nav class="main-nav">
+      <a class="nav-brand" href="../" aria-label="Rutgers Newark Bodega Project">
+        <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="nav-logo" />
+        <span class="nav-brand-text">
+          <span class="nav-eyebrow">Rutgers Newark</span>
+          <span class="nav-title">Bodega Project</span>
+        </span>
+      </a>
+      <ul class="menu">
+        <li><a href="../">Home</a></li>
+        <li><a href="../story/">Story</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li class="menu-item has-submenu">
+          <button class="menu-link menu-toggle" type="button" aria-haspopup="true">Tools</button>
+          <ul class="submenu">
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="./" class="active">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+          </ul>
+        </li>
+        <li><a href="../#team">Team</a></li>
+      </ul>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero hero--kpi">
+    <div class="hero-text">
+      <h1>KPI Builder</h1>
+      <p>Interactively model supply-chain margins across roles&mdash;from farm to distributor to bodega.</p>
+    </div>
+  </section>
+
+  <!-- Main container for KPI Builder -->
+  <div class="container-fluid mt-4 flex-grow-1 d-flex flex-column">
+    <!-- Beautiful Role Toggle Selector -->
+    <div class="role-bar">
+      <div class="role-group">
+        <button class="role-toggle" data-role="Farm" id="roleFarm">Farm</button>
+        <button class="role-toggle" data-role="Distributor" id="roleDistributor">Distributor</button>
+        <button class="role-toggle" data-role="Bodega" id="roleBodega">Bodega</button>
+      </div>
+      <button class="btn btn-outline-secondary ms-3" id="gearBtn" aria-label="Column options" style="border-radius: 8px; padding: 8px 12px;">&#9881;</button>
+    </div>
+
+    <!-- Handsontable Grid -->
+    <div id="hot"></div>
+
+    <!-- Totals Card -->
+    <div class="card mt-3 d-none" id="totalsCard">
+      <div class="card-body">
+        <h5 class="card-title">Totals</h5>
+        <div id="totalsContent" class="card-text"></div>
+      </div>
+    </div>
+
+    <!-- Accordion -->
+    <div class="accordion mt-4" id="definitionsAccordion">
+      <!-- Column Definitions -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingCols">
+          <button class="accordion-button collapsed" type="button">Column Definitions</button>
+        </h2>
+        <div class="accordion-collapse collapse" id="collapseCols">
+          <div class="accordion-body">
+            <div class="table-responsive">
+              <table class="table table-sm align-middle">
+                <thead class="table-light">
+                  <tr><th>Column name</th><th>What it captures</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Produce</strong></td><td>The exact crop or item (acts as the unique key).</td></tr>
+                  <tr><td><strong>Category</strong></td><td>Broad food group (<em>Fruit, Vegetable, Herb, etc.</em>) so the dashboard can apply group-level assumptions.</td></tr>
+                  <tr><td><strong>Retail Price $/lb</strong></td><td>Shelf price shoppers pay per pound, taken from USDA-ERS national averages (editable).</td></tr>
+                  <tr><td><strong>Retail Margin %</strong></td><td>Retailer's target gross-profit percentage on that item (default &asymp; 37 %).</td></tr>
+                  <tr><td><strong>Retail Handling $/lb</strong></td><td>In-store labor, utilities, packaging, and other costs per pound (default $0.15 for fruit/veg, $0.50 for herbs).</td></tr>
+                  <tr><td><strong>Bodega Shrink %</strong></td><td>Percent of product lost inside the store to spoilage or theft; model subtracts this before profit calc (defaults &asymp; 11&ndash;12 %).</td></tr>
+                  <tr><td><strong>Farm Markup %</strong></td><td>Grower's desired markup added to production cost (default 15 %).</td></tr>
+                  <tr><td><strong>Farm Cost $/lb</strong></td><td>Estimated cost for the farm to grow, harvest, cool, and pack one retail-ready pound.</td></tr>
+                  <tr><td><strong>Farm Sale $/lb</strong></td><td>Actual price the farm receives: <code>Farm Cost &times; (1 + Farm Markup %)</code>.</td></tr>
+                  <tr><td><strong>Farm Shrink %</strong></td><td>Post-harvest loss before the load leaves the farm (default 2 %).</td></tr>
+                  <tr><td><strong>Dist. Handling $/lb</strong></td><td>Cooling, storage, trucking, and admin cost for the distributor (default $0.22 fruit, $0.20 veg, $1.00 herbs).</td></tr>
+                  <tr><td><strong>Dist. Margin %</strong></td><td>Distributor's target gross-profit percentage (default 12 %).</td></tr>
+                  <tr><td><strong>Dist. Sale $/lb</strong></td><td>Price charged by the distributor: <code>(Farm Sale + Dist. Handling) &times; (1 + Dist. Margin %)</code>.</td></tr>
+                  <tr><td><strong>Dist. Shrink %</strong></td><td>Loss in the warehouse or during transit (default 4 %).</td></tr>
+                  <tr><td><strong>Qty lbs</strong></td><td>Planned volume in pounds you expect to move for this item (user editable; powers the totals).</td></tr>
+                  <tr><td><strong>Farm Gross Profit $/lb</strong></td><td>Extra cents the farm keeps on each pound after costs: <code>Farm Sale &minus; Farm Cost</code> (read-only).</td></tr>
+                  <tr><td><strong>Farm Gross Margin %</strong></td><td>Farm gross profit expressed as a percent of Farm Sale price.</td></tr>
+                  <tr><td><strong>Dist. Gross Profit $/lb</strong></td><td>Distributor's leftover cents per pound after paying the farm and its own handling cost.</td></tr>
+                  <tr><td><strong>Dist. Gross Margin %</strong></td><td>Distributor gross profit as a percent of Dist. Sale price.</td></tr>
+                  <tr><td><strong>Bodega Gross Profit $/lb</strong></td><td>Store's leftover cents per pound after paying the distributor, subtracting shrink, and covering retail handling costs.</td></tr>
+                  <tr><td><strong>Bodega Gross Margin %</strong></td><td>That gross profit written as a percent of the shelf price.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- KPI Definitions -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingKPIs">
+          <button class="accordion-button collapsed" type="button">KPI Definitions</button>
+        </h2>
+        <div class="accordion-collapse collapse" id="collapseKPIs">
+          <div class="accordion-body">
+<div class="table-responsive">
+  <table class="table table-sm align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>KPI</th>
+        <th>Formula (column names)</th>
+        <th>Why it matters &amp; how to read</th>
+        <th>If the number looks <strong>too low</strong> &hellip;</th>
+        <th>If the number looks <strong>very high</strong> &hellip;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Farm&nbsp;Gross&nbsp;Profit&nbsp;per&nbsp;Pound</strong></td>
+        <td><code>Farm Sale $/lb &minus; Farm Cost $/lb</code></td>
+        <td>How many cents the farm retains on each pound after all growing, harvesting, cooling, and packing costs.</td>
+        <td>
+          Raise sale price to distributor; trim production costs (inputs, labor, packaging); improve yield to spread fixed costs.
+        </td>
+        <td>Consider reinvesting in quality upgrades or paying down debt&mdash;avoid over-pricing the market.</td>
+      </tr>
+      <tr>
+        <td><strong>Farm Gross Margin&nbsp;%</strong></td>
+        <td><code>(Farm GP $/lb &divide; Farm Sale $/lb) &times; 100</code></td>
+        <td>Percentage profit. Many produce farms aim for <strong>15&ndash;25&nbsp;%</strong>.</td>
+        <td>Same levers as above; also verify markup&nbsp;% is realistic.</td>
+        <td>If above 30&nbsp;% for a staple crop you may risk losing buyers.</td>
+      </tr>
+      <tr>
+        <td><strong>Distributor Gross Profit&nbsp;per&nbsp;Pound</strong></td>
+        <td><code>Dist. Sale $/lb &minus; Farm Sale $/lb &minus; Dist. Handling $/lb</code></td>
+        <td>Left-over cents for wholesaler after paying the farm and covering cooling, storage, trucking, and labor (goal&nbsp;8&ndash;15 &cent;).</td>
+        <td>Negotiate lower farm price; raise distributor margin&nbsp;% ; cut fuel or warehouse costs.</td>
+        <td>Use cushion to offer volume discounts or invest in better cold-chain equipment.</td>
+      </tr>
+      <tr>
+        <td><strong>Distributor Gross Margin&nbsp;%</strong></td>
+        <td><code>(Dist. GP $/lb &divide; Dist. Sale $/lb) &times; 100</code></td>
+        <td>Efficiency score&mdash;most regional produce houses run <strong>10&ndash;15&nbsp;%</strong>.</td>
+        <td>Below 8&nbsp;%: route may be unprofitable&mdash;revisit prices or drop slow items.</td>
+        <td>Over 18&nbsp;% could trigger retailer push-back; consider strategic discounts.</td>
+      </tr>
+      <tr>
+        <td><strong>Bodega Gross Profit&nbsp;per&nbsp;Pound</strong></td>
+        <td><code>(Retail Price $/lb &times; (1 &minus; Bodega Shrink % /100)) &minus; Dist. Sale $/lb &minus; Retail Handling $/lb</code></td>
+        <td>Store's cents after paying distributor, factoring spoilage/theft, and in-store handling. Target <strong>35&ndash;45 &cent;</strong>.</td>
+        <td>Raise shelf price; run promos to cut shrink; reduce handling costs.</td>
+        <td>Leverage surplus for specials to draw traffic or upgrade displays.</td>
+      </tr>
+      <tr>
+        <td><strong>Bodega Gross Margin&nbsp;%</strong></td>
+        <td><code>(Bodega GP $/lb &divide; Retail Price $/lb) &times; 100</code></td>
+        <td>Percent margin. Supermarkets average ~<strong>37&nbsp;%</strong>.</td>
+        <td>Below 25&nbsp;%: under-pricing or wasting too much.</td>
+        <td>Above 45&nbsp;%: check competitiveness; shoppers may trade down.</td>
+      </tr>
+      <tr>
+        <td><strong>Total Quantity&nbsp;(lbs)</strong></td>
+        <td>&Sigma; Quantity lbs for visible rows</td>
+        <td>Planned volume for selected crops.</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>Total Revenue&nbsp;($)</strong></td>
+        <td>If Farm &rarr; &Sigma;(Farm Sale $/lb &times; Qty) <br>Distributor &rarr; &Sigma;(Dist. Sale $/lb &times; Qty) <br>Bodega &rarr; &Sigma;(Retail Price $/lb &times; (1 &minus; Shrink&nbsp;%) &times; Qty)</td>
+        <td>Top-line sales dollars for chosen role, adjusted for shrink when viewing as Bodega.</td>
+        <td>Increase quantity, price, or both; trim shrink (retail role).</td>
+        <td>Check capacity (acreage, truck or shelf space) to handle volume.</td>
+      </tr>
+      <tr>
+        <td><strong>Total Gross Profit&nbsp;($)</strong></td>
+        <td>Role-specific GP per pound &times; Qty, summed for visible rows</td>
+        <td>Absolute earnings for the batch.</td>
+        <td>Adjust per-pound GP levers starting with highest-volume items.</td>
+        <td>Reinvest; ensure long-term demand isn't hurt.</td>
+      </tr>
+      <tr>
+        <td><strong>Average Gross Margin&nbsp;%</strong></td>
+        <td>(Total Gross Profit &divide; Total Revenue) &times; 100</td>
+        <td>Weighted margin across everything selected&mdash;big-picture health.</td>
+        <td>Below benchmark: focus on low-margin items or renegotiate large contracts.</td>
+        <td>Above benchmark: great&mdash;monitor competitor prices to stay sustainable.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+          </div>
+        </div>
+      </div>
+      <!-- Citations -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingCite">
+          <button class="accordion-button collapsed" type="button">Citations</button>
+        </h2>
+        <div class="accordion-collapse collapse" id="collapseCite">
+          <div class="accordion-body">
+            <div class="table-responsive">
+              <table class="table table-sm align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Source description</th>
+                    <th scope="col">Verified link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><strong>USDA ERS &ndash; Fruit &amp; Vegetable Prices</strong> (interactive tables with national average retail prices per pound)</td>
+                    <td><a href="https://www.ers.usda.gov/data-products/fruit-and-vegetable-prices" target="_blank" rel="noopener">View</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td><strong>USDA ERS &ndash; Price Spreads from Farm to Consumer</strong> (farm-share percentages for fresh fruits and vegetables)</td>
+                    <td><a href="https://www.ers.usda.gov/data-products/price-spreads-from-farm-to-consumer" target="_blank" rel="noopener">View</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td><strong>USDA ERS &ndash; Food Dollar Series, 2023 Chart of Note</strong> (wholesale-trade share = 11.4 &cent; of the food dollar)</td>
+                    <td><a href="https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=110567" target="_blank" rel="noopener">View</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td><strong>USDA ERS &ndash; Chart of Note: Supermarket shrink varies by type of fresh fruit and vegetable</strong> (shrink averages = 12.6 % fruit / 11.6 % veg)</td>
+                    <td><a href="https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=79033" target="_blank" rel="noopener">View</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td><strong>USDA ERS &ndash; Updated Supermarket Shrink Estimates for Fresh Foods</strong> (full methodology PDF, EIB-155)</td>
+                    <td><a href="https://www.ers.usda.gov/sites/default/files/_laserfiche/publications/44100/EIB-155.pdf" target="_blank" rel="noopener">PDF</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6</th>
+                    <td><strong>International Fresh Produce Association &ndash; Supermarket Produce Department Benchmarks (2024)</strong> (reports 37 % average produce gross margin)</td>
+                    <td><a href="https://www.freshproduce.com/resources/retail/supermarket-produce-department-benchmarks/" target="_blank" rel="noopener">View</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Off-canvas (Column Options) -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="columnOptions">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Column Options</h5>
+      <button type="button" class="btn-close" id="closeCanvas" aria-label="Close">&times;</button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-2">Column Visibility</h6>
+      <div id="columnToggles" class="mb-3"></div>
+      <hr/>
+      <h6 class="mb-2">Crop Filter</h6>
+      <div id="cropToggles" style="max-height:200px;overflow:auto;"></div>
+    </div>
+  </div>
+  
+  <!-- Backdrop for offcanvas -->
+  <div class="offcanvas-backdrop" id="offcanvasBackdrop"></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-header">
+          <img src="/assets/logo-bodega-project-CcaAoWEY.jpeg" alt="Rutgers Newark Bodega Project logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <p class="footer-eyebrow">Rutgers Newark</p>
+            <p class="footer-title">Bodega Project</p>
+          </div>
+        </div>
+        <p class="footer-tagline">Building a sustainable, data-informed, and hyperlocal food supply chain linking farms to bodegas.</p>
+        <div class="footer-contact">
+          <a href="mailto:esanchez2@bergen.edu">esanchez2@bergen.edu</a>
+          <span>Newark, NJ</span>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-nav-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../story/">Story</a></li>
+            <li><a href="../gallery/">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+            <li><a href="../#team">Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-credits">
+        <h3>Credits</h3>
+        <p>Lead Full-Stack Developer: <a href="https://www.linkedin.com/in/jensy-jimenez/" target="_blank" rel="noopener">Jensy Jimenez</a></p>
+        <p>Assistant Front-End Developer: <a href="https://www.linkedin.com/in/yulissa-aguila-31099136a/" target="_blank" rel="noopener">Yulissa Aguila</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rutgers&ndash;Bergen Bodega Project</p>
+      <p>Supported by NJ STEM Ecosystem, USDA, Rutgers, and Bergen Community College.</p>
+    </div>
+  </footer>
+
+  <nav id="mobileNav" class="offcanvas" aria-label="Site">
+    <a href="../">Home</a>
+    <a href="../story/">Story</a>
+    <a href="../gallery/">Gallery</a>
+    <div class="mobile-nav-group" role="group" aria-label="Tools">
+      <span class="mobile-nav-title">Tools</span>
+      <a href="../Map/">Fast vs. Fresh Food Map</a>
+      <a href="./" class="active">KPI Builder</a>
+      <a href="../#kpis">Data Visualization</a>
+    </div>
+    <a href="../#team">Team</a>
+  </nav>
+  <div id="navOverlay" class="overlay" hidden></div>
+
+  <!-- KPI Builder Script -->
+
+  <!-- Site-wide JS (hamburger & misc) -->
+</body>
+</html> 
+

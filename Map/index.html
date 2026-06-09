@@ -164,6 +164,7 @@
           <div class="layer-group">
             <button class="layer-toggle active" data-layer="fresh" id="produceToggle">Fresh Food</button>
             <button class="layer-toggle active" data-layer="fast" id="fastfoodToggle">Fast Food</button>
+            <button class="layer-toggle active" data-layer="rutgers" id="rutgersToggle">Rutgers</button>
           </div>
         </div>
         <div class="controls" aria-label="Heatmap controls">
@@ -179,6 +180,29 @@
               <input type="range" id="sizeSlider" min="5" max="60" step="1" value="60">
             </label>
           </div>
+        </div>
+        <div class="rutgers-filter" aria-label="Rutgers place filters">
+          <button id="rutgersMainBtn" type="button">Main Rutgers Locations</button>
+          <label for="rutgersPlaceSelect">
+            Rutgers places
+            <select id="rutgersPlaceSelect">
+              <option value="all" selected>All Places of Note</option>
+              <option value="main">Main Locations</option>
+              <option value="note">Additional Places Only</option>
+              <option value="rutgers-new-jersey-medical-school">Rutgers New Jersey Medical School</option>
+              <option value="rutgers-newark-campus">Rutgers University - Newark Campus</option>
+              <option value="rutgers-business-school">Rutgers Business School</option>
+              <option value="john-cotton-dana-library">John Cotton Dana Library</option>
+              <option value="center-for-law-and-justice">Center for Law &amp; Justice</option>
+              <option value="school-of-dental-medicine">School of Dental Medicine</option>
+              <option value="school-of-public-health-riverfront-plaza">School of Public Health - Riverfront Plaza</option>
+              <option value="rutgers-cooperative-extension-essex-county">Rutgers Cooperative Extension of Essex County</option>
+              <option value="rutgers-community-health-center">Rutgers Community Health Center</option>
+              <option value="university-hospital">University Hospital</option>
+              <option value="hahne-express-newark">Hahne and Company / Express Newark</option>
+              <option value="woodward-residence-hall-dining">Woodward Residence Hall &amp; Stonsby Dining Facility</option>
+            </select>
+          </label>
         </div>
       </div>
       <hr class="panel-divider" />
@@ -310,6 +334,4 @@
   <script type="module" src="/src/pages/map.js"></script>
 </body>
 </html>
-
-
 

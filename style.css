@@ -1517,7 +1517,8 @@ button:active {
 .controls,
 .center-controls,
 .export-controls,
-.layer-controls {
+.layer-controls,
+.rutgers-filter {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -1532,11 +1533,13 @@ button:active {
 .controls label,
 .center-controls label,
 .export-controls label,
-.layer-controls label {
+.layer-controls label,
+.rutgers-filter label {
   margin-bottom: 0.1em;
 }
 .export-controls button,
 .layer-controls button,
+.rutgers-filter button,
 #centerFilterBtn {
   width: 100%;
   margin-bottom: 0.2em;
@@ -1582,6 +1585,22 @@ select {
   border-radius: 0.4em;
   border: 1px solid #cbd5e1;
   font-size: 1em;
+}
+.rutgers-filter {
+  margin-top: 0.35rem;
+}
+.rutgers-filter label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+.rutgers-filter select {
+  padding: 0.45em;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.4em;
+  font: inherit;
 }
 @media (max-width: 900px) {
   #control-panel {
@@ -1647,7 +1666,8 @@ select {
 .controls,
 .center-controls,
 .layer-controls,
-.export-controls {
+.export-controls,
+.rutgers-filter {
   position: static !important;
   left: unset !important;
   bottom: unset !important;
@@ -2190,6 +2210,51 @@ footer a {
 .fast-icon {
   color: #dc2626 !important;
 }
+.rutgers-map-icon {
+  background: none;
+  border: none;
+}
+.rutgers-marker {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cc0033;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.28);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.rutgers-marker img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+.rutgers-marker:hover {
+  transform: scale(1.12);
+  box-shadow: 0 9px 22px rgba(15, 23, 42, 0.34);
+}
+.legend-rutgers-logo {
+  width: 1.4em;
+  height: 1.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #cc0033;
+  flex: 0 0 auto;
+}
+.legend-rutgers-logo img {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  display: block;
+}
 #control-panel.compact {
   width: 120px !important;
   min-width: 100px !important;
@@ -2211,13 +2276,15 @@ footer a {
 #control-panel.compact input[type="text"],
 #control-panel.compact input[type="number"],
 #control-panel.compact .legend-tools,
+#control-panel.compact .rutgers-filter label,
 #control-panel.compact .center-controls,
 #control-panel.compact .panel-divider {
   display: none !important;
 }
 #control-panel.compact button,
 #control-panel.compact .export-controls button,
-#control-panel.compact .layer-controls button {
+#control-panel.compact .layer-controls button,
+#control-panel.compact .rutgers-filter button {
   font-size: 1em !important;
   padding: 0.4em 0.3em !important;
   min-width: 0 !important;
@@ -2232,7 +2299,8 @@ footer a {
 #control-panel.compact .controls,
 #control-panel.compact .slider-row,
 #control-panel.compact .export-controls,
-#control-panel.compact .layer-controls {
+#control-panel.compact .layer-controls,
+#control-panel.compact .rutgers-filter {
   margin-bottom: 1.5em !important;
   padding: 0.5em 0 !important;
 }
@@ -3996,4 +4064,3 @@ main.page-content section {
     font-size: 1rem;
   }
 }
-

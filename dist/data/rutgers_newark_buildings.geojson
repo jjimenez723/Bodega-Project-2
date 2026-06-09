@@ -1,0 +1,1908 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Rutgers buildings in Newark, NJ",
+    "source": "Rutgers University Maps",
+    "source_url": "https://maps.rutgers.edu/buildingsearch.aspx",
+    "source_sync": "1780956014097 (Jun 8, 2026, 6:00 PM EDT)",
+    "generated_on": "2026-06-09"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "7230",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.177517,
+          40.73998359608863
+        ]
+      },
+      "properties": {
+        "id": "7230",
+        "name": "110 Warren",
+        "address": "110 Warren Street, Newark, NJ, 07102-1809",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "BRD",
+        "website": "http://www.ncas.rutgers.edu/bradley-hall-computer-labs",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=110+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7260",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.186455,
+          40.7408726459277
+        ]
+      },
+      "properties": {
+        "id": "7260",
+        "name": "180 West Market",
+        "address": "180 West Market Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://housing.newark.rutgers.edu/180-west-market-street",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=180+West+Market+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7239",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17167148,
+          40.74433284
+        ]
+      },
+      "properties": {
+        "id": "7239",
+        "name": "25 James Street Garage",
+        "address": "25 James Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=25+James+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "9980",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17632255,
+          40.73874139
+        ]
+      },
+      "properties": {
+        "id": "9980",
+        "name": "261 University Avenue Parking Deck",
+        "address": "261 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=261+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7241",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17290135564545,
+          40.74188305390523
+        ]
+      },
+      "properties": {
+        "id": "7241",
+        "name": "45 Bleeker",
+        "address": "45 Bleeker Street, Newark, NJ, 07102-1913",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=45+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7327",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.172076,
+          40.74023900494319
+        ]
+      },
+      "properties": {
+        "id": "7327",
+        "name": "48 New Street",
+        "address": "48 New Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://hllc.newark.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=48+New+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7214",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173459,
+          40.74141391269527
+        ]
+      },
+      "properties": {
+        "id": "7214",
+        "name": "Ackerson Hall",
+        "address": "180 University Avenue, Newark, NJ, 07102-1897",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "ACK",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=180+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7298",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18968494,
+          40.74284023
+        ]
+      },
+      "properties": {
+        "id": "7298",
+        "name": "Administration Building ADMB (under construction)",
+        "address": "75 12th Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=75+12th+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7267",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18951393,
+          40.74471001
+        ]
+      },
+      "properties": {
+        "id": "7267",
+        "name": "Administration Complex ADMC 1",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7286",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1884103,
+          40.74326151
+        ]
+      },
+      "properties": {
+        "id": "7286",
+        "name": "Administration Complex ADMC 17",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Utilities",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7268",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1887475,
+          40.744321
+        ]
+      },
+      "properties": {
+        "id": "7268",
+        "name": "Administration Complex ADMC 2",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7269",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18892051,
+          40.74420266
+        ]
+      },
+      "properties": {
+        "id": "7269",
+        "name": "Administration Complex ADMC 3",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7270",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18824261,
+          40.74394218
+        ]
+      },
+      "properties": {
+        "id": "7270",
+        "name": "Administration Complex ADMC 4",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7271",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18845951,
+          40.74357322
+        ]
+      },
+      "properties": {
+        "id": "7271",
+        "name": "Administration Complex ADMC 5",
+        "address": "30 Bergen Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7499",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.175123,
+          40.740781301788566
+        ]
+      },
+      "properties": {
+        "id": "7499",
+        "name": "Aidekman Research Center",
+        "address": "197 University Avenue, Newark, NJ, 07102-1814",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Research",
+        "secondary_category": "",
+        "course_abbrv": "ADK",
+        "website": "http://cmbn.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=197+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7289",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17139,
+          40.74225567534001
+        ]
+      },
+      "properties": {
+        "id": "7289",
+        "name": "Alumni Center",
+        "address": "72 Washington Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Student Life",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://www.alumni.rutgers.edu/s/896/2016/interior.aspx?sid=896&gid=1&pgid=8853",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=72+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7265",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.191889,
+          40.74060091946122
+        ]
+      },
+      "properties": {
+        "id": "7265",
+        "name": "Ambulatory Care Center ACC",
+        "address": "140 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://www.uhnj.org/ACC/index.htm",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=140+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7821",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176283,
+          40.73920308101843
+        ]
+      },
+      "properties": {
+        "id": "7821",
+        "name": "Athletic Field House / Restrooms",
+        "address": "249A University Avenue, Newark, NJ, 07102-1896",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=249A+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7494",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.175613,
+          40.739981387086786
+        ]
+      },
+      "properties": {
+        "id": "7494",
+        "name": "Athletic Field Press Box",
+        "address": "247 University Avenue, Newark, NJ, 07102-1896",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=247+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7235",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176681,
+          40.739315234007606
+        ]
+      },
+      "properties": {
+        "id": "7235",
+        "name": "Athletic Storage Shed",
+        "address": "249 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=249+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7258",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.189874,
+          40.739259516512845
+        ]
+      },
+      "properties": {
+        "id": "7258",
+        "name": "Behavioral Health Science Building BHSB",
+        "address": "183 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=183+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7493",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.175788,
+          40.73908895846682
+        ]
+      },
+      "properties": {
+        "id": "7493",
+        "name": "Blumenthal Hall",
+        "address": "249 University Avenue, Newark, NJ, 07102-1896",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Information Center",
+        "secondary_category": "Student Life, Health Care",
+        "course_abbrv": "BLM",
+        "website": "https://businessoffice.newark.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=249+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7217",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174578,
+          40.741040046519174
+        ]
+      },
+      "properties": {
+        "id": "7217",
+        "name": "Boyden Hall",
+        "address": "195 University Avenue, Newark, NJ, 07102-1814",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "BOY",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=195+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7492",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173173,
+          40.7405198694368
+        ]
+      },
+      "properties": {
+        "id": "7492",
+        "name": "Center for Law & Justice CLJ",
+        "address": "123 Washington Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "CLJ",
+        "website": "https://www.newark.rutgers.edu/about-us/have-you-met-rutgers-newark/center-law-and-justice",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=123+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7488",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.172831,
+          40.74106119096188
+        ]
+      },
+      "properties": {
+        "id": "7488",
+        "name": "Center for Urban & Public Service CPS",
+        "address": "111 Washington Street, Newark, NJ, 07102-3027",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.newark.rutgers.edu/about-us/have-you-met-rutgers-newark/center-urban-and-public-service",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=111+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7226",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176732,
+          40.7410405797991
+        ]
+      },
+      "properties": {
+        "id": "7226",
+        "name": "Central Heating Plant",
+        "address": "107 Warren Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Utilities",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=107+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7221",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17451785,
+          40.74140073
+        ]
+      },
+      "properties": {
+        "id": "7221",
+        "name": "Chiller Plant",
+        "address": "187 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Utilities",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=187+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7243",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173084,
+          40.741908099038994
+        ]
+      },
+      "properties": {
+        "id": "7243",
+        "name": "Clement Price Institute",
+        "address": "49 Bleeker Street, Newark, NJ, 07102-1913",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://sasn.rutgers.edu/research/centers-institutes/clement-price-institute-ethnicity-culture-and-modern-experience",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=49+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7218",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174197,
+          40.74169669668114
+        ]
+      },
+      "properties": {
+        "id": "7218",
+        "name": "Conklin Hall",
+        "address": "175 University Avenue, Newark, NJ, 07102-1814",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "CON",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=175+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7242",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.172977,
+          40.741926139681915
+        ]
+      },
+      "properties": {
+        "id": "7242",
+        "name": "Cornwall Center For Metropolitan Studies",
+        "address": "47 Bleeker Street, Newark, NJ, 07102-1913",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.cornwall.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=47+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7251",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.191243,
+          40.74158369026627
+        ]
+      },
+      "properties": {
+        "id": "7251",
+        "name": "Doctors Office Center DOC",
+        "address": "90 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=90+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7227",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173795,
+          40.740865195379826
+        ]
+      },
+      "properties": {
+        "id": "7227",
+        "name": "Engelhard Hall",
+        "address": "190 University Avenue, Newark, NJ, 07102-1813",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Information Center",
+        "secondary_category": "Academic",
+        "course_abbrv": "ENG",
+        "website": "https://ncs.newark.rutgers.edu/engelhard313",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=190+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7228",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.172695,
+          40.744652394386236
+        ]
+      },
+      "properties": {
+        "id": "7228",
+        "name": "Facilities Operations & Services - Newark",
+        "address": "85 University Avenue, Newark, NJ, 07102-2108",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=85+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7254",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.188031,
+          40.740499646399726
+        ]
+      },
+      "properties": {
+        "id": "7254",
+        "name": "George F. Smith Library",
+        "address": "30 12th Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.libraries.rutgers.edu/health-sciences/visit-study/george-f-smith-library",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=30+12th+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7233",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174252,
+          40.73931375004826
+        ]
+      },
+      "properties": {
+        "id": "7233",
+        "name": "Golden Dome Athletic Center",
+        "address": "42 Warren Street, Newark, NJ, 07102-1807",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "NKG",
+        "website": "https://rutgersnewarkathletics.com/sports/2009/9/8/REC_0908095232.aspx",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=42+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7487",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.171943,
+          40.74432565286975
+        ]
+      },
+      "properties": {
+        "id": "7487",
+        "name": "Graduate Student Housing - 29 James",
+        "address": "29 James Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://housing.newark.rutgers.edu/family-housing",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=29+James+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7236",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174251,
+          40.7423056479436
+        ]
+      },
+      "properties": {
+        "id": "7236",
+        "name": "Graduate Student Housing - 77 Bleeker",
+        "address": "77 Bleeker Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=77+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8734",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.170337,
+          40.74049870240097
+        ]
+      },
+      "properties": {
+        "id": "8734",
+        "name": "Hahne and Company HAH - Express Newark",
+        "address": "54 Halsey Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "HAH",
+        "website": "https://www.expressnewark.org/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=54+Halsey+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7225",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176382,
+          40.741326115218484
+        ]
+      },
+      "properties": {
+        "id": "7225",
+        "name": "Hill Hall",
+        "address": "360 Martin Luther King Boulevard, Newark, NJ, 07102-1801",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "HIL",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=360+Martin+Luther+King+Boulevard+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7255",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.182883,
+          40.74334384371152
+        ]
+      },
+      "properties": {
+        "id": "7255",
+        "name": "International Center for Public Health ICPH",
+        "address": "225 Warren Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Research",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://phri.njms.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=225+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7219",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1749623867572,
+          40.74179925434112
+        ]
+      },
+      "properties": {
+        "id": "7219",
+        "name": "John Cotton Dana Library",
+        "address": "185 University Avenue, Newark, NJ, 07102-1814",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.libraries.rutgers.edu/newark",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=185+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7321",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.192397,
+          40.74393604581585
+        ]
+      },
+      "properties": {
+        "id": "7321",
+        "name": "KinderCare Learning Center CCLC at Newark",
+        "address": "132 Cabinet Street, Newark, NJ, 07107",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=132+Cabinet+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7250",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174771,
+          40.74051962326691
+        ]
+      },
+      "properties": {
+        "id": "7250",
+        "name": "Life Sciences 2 - LS2",
+        "address": "205 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "LS2",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=205+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7245",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174994,
+          40.740192112538864
+        ]
+      },
+      "properties": {
+        "id": "7245",
+        "name": "Life Sciences Center LSC1",
+        "address": "225 University Avenue, Newark, NJ, 07102-1814",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "LSC",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=225+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7257",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18945,
+          40.740188430784315
+        ]
+      },
+      "properties": {
+        "id": "7257",
+        "name": "Medical Science Building MSB",
+        "address": "185 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "Academic",
+        "course_abbrv": "MSB",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=185+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7240",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17282712950676,
+          40.74184437400354
+        ]
+      },
+      "properties": {
+        "id": "7240",
+        "name": "MFA in Creative Writing",
+        "address": "43 Bleeker Street, Newark, NJ, 07102-1913",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=43+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7259",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19121912254319,
+          40.739303810669654
+        ]
+      },
+      "properties": {
+        "id": "7259",
+        "name": "NJMS Cancer Center",
+        "address": "205 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "Academic",
+        "course_abbrv": "NCC",
+        "website": "http://njms.rutgers.edu/rcinj/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=205+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7229",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.175403,
+          40.74033298640968
+        ]
+      },
+      "properties": {
+        "id": "7229",
+        "name": "Olson Hall",
+        "address": "73 Warren Street, Newark, NJ, 07102-1811",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "OLS",
+        "website": "http://chemistry.rutgers.edu/info/contact_info",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=73+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7491",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.170462,
+          40.74506031140886
+        ]
+      },
+      "properties": {
+        "id": "7491",
+        "name": "One Washington Park",
+        "address": "1 Washington Park, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "1WP",
+        "website": "http://www.business.rutgers.edu/undergraduate-newark",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=1+Washington+Park+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7262",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.186698,
+          40.740372629164575
+        ]
+      },
+      "properties": {
+        "id": "7262",
+        "name": "P1-Norfolk Parking Deck",
+        "address": "255 Norfolk Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=255+Norfolk+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7263",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.192373,
+          40.739550753910486
+        ]
+      },
+      "properties": {
+        "id": "7263",
+        "name": "P2-Bergen Parking Deck",
+        "address": "160 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=160+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7264",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.190477,
+          40.741957326386576
+        ]
+      },
+      "properties": {
+        "id": "7264",
+        "name": "P3-Doctors Office Center Parking Deck",
+        "address": "90 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=90+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7220",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176045,
+          40.74206447889521
+        ]
+      },
+      "properties": {
+        "id": "7220",
+        "name": "Paul Robeson Campus Center PRCC",
+        "address": "350 Martin Luther King Boulevard, Newark, NJ, 07102-1898",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Information Center",
+        "secondary_category": "Student Life",
+        "course_abbrv": "",
+        "website": "https://robeson.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=350+Martin+Luther+King+Boulevard+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7261",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.187273,
+          40.739320746877766
+        ]
+      },
+      "properties": {
+        "id": "7261",
+        "name": "Power Plant/Cogeneration",
+        "address": "295 Norfolk Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Utilities",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=295+Norfolk+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7231.01",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174137,
+          40.74021078825799
+        ]
+      },
+      "properties": {
+        "id": "7231.01",
+        "name": "Public Safety",
+        "address": "200 University Avenue, Newark, NJ, 07102-1813",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Information Center",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://rupd.rutgers.edu/newark.php",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=200+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7291",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.18888212,
+          40.73903631
+        ]
+      },
+      "properties": {
+        "id": "7291",
+        "name": "RBHS Lot 1 Security Booth",
+        "address": "183 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=183+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7292",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19069545,
+          40.73906989
+        ]
+      },
+      "properties": {
+        "id": "7292",
+        "name": "RBHS MSB Loading Dock Security Booth",
+        "address": "185 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=185+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8735",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1959315726,
+          40.73866369195043
+        ]
+      },
+      "properties": {
+        "id": "8735",
+        "name": "Rutgers Community Health Center",
+        "address": "274 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "South Orange Avenue",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=274+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7238.04",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17313149,
+          40.73910021
+        ]
+      },
+      "properties": {
+        "id": "7238.04",
+        "name": "Rutgers Cooperative Extension of Essex County EFNEP",
+        "address": "162 Washington Street, Newark, NJ, 07102",
+        "campus": "Rutgers Cooperative Extension",
+        "primary_category": "Agricultural",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=162+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8756",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17359425,
+          40.73978377
+        ]
+      },
+      "properties": {
+        "id": "8756",
+        "name": "Rutgers University Newark - Admissions",
+        "address": "35 Warren Street, Newark, NJ, 07102-3050",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.newark.rutgers.edu/contact-us",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=35+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7498",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.171089,
+          40.744322288270865
+        ]
+      },
+      "properties": {
+        "id": "7498",
+        "name": "Ruth Bader Ginsburg Hall",
+        "address": "15 Washington Street, Newark, NJ, 07102-3026",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "Student Life",
+        "course_abbrv": "WSH",
+        "website": "https://housing.newark.rutgers.edu/15-washington-apartments",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=15+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7253",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.189523,
+          40.74141588770767
+        ]
+      },
+      "properties": {
+        "id": "7253",
+        "name": "School of Dental Medicine",
+        "address": "110 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://sdm.rutgers.edu/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=110+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8744",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1643804055,
+          40.73583665110497
+        ]
+      },
+      "properties": {
+        "id": "8744",
+        "name": "School of Public Health - Riverfront Plaza",
+        "address": "One Riverfront Plaza, Newark, NJ, 07102",
+        "campus": "School of Public Health - Riverfront Plaza",
+        "primary_category": "Administrative",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=One+Riverfront+Plaza+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7248",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.171742,
+          40.74421904646374
+        ]
+      },
+      "properties": {
+        "id": "7248",
+        "name": "Small Business Development Center SBDC",
+        "address": "25 James Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=25+James+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7223",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17581,
+          40.740745452620374
+        ]
+      },
+      "properties": {
+        "id": "7223",
+        "name": "Smith Hall",
+        "address": "101 Warren Street, Newark, NJ, 07102-1811",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "SMT",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=101+Warren+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7234",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.176653,
+          40.73931933375455
+        ]
+      },
+      "properties": {
+        "id": "7234",
+        "name": "Softball Field Press Box",
+        "address": "249 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=249+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7313",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1912936,
+          40.74378843
+        ]
+      },
+      "properties": {
+        "id": "7313",
+        "name": "Stanley S Bergen SSB Utilities Trailer",
+        "address": "65 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Utilities",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://www.rutgers.edu/rbhs",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=65+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7252",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.191888,
+          40.74340103907744
+        ]
+      },
+      "properties": {
+        "id": "7252",
+        "name": "Stanley S. Bergen Jr. Building SSB",
+        "address": "65 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Academic",
+        "secondary_category": "",
+        "course_abbrv": "SSB",
+        "website": "https://www.rutgers.edu/rbhs",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=65+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7237",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.175432,
+          40.74297241858601
+        ]
+      },
+      "properties": {
+        "id": "7237",
+        "name": "Talbott Apartments",
+        "address": "101 Bleeker Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "https://housing.newark.rutgers.edu/talbott-apartments",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=101+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8876",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1899071132,
+          40.73265137744705
+        ]
+      },
+      "properties": {
+        "id": "8876",
+        "name": "UBHC Adult Apartments - Newark",
+        "address": "44-60 Livingston Street, Newark, NJ, 07103",
+        "campus": "UBHC Adult Apartments - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=44-60+Livingston+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7266",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19102898,
+          40.73972004
+        ]
+      },
+      "properties": {
+        "id": "7266",
+        "name": "UBHC Gym",
+        "address": "205 South Orange Avenue, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Athletic",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=205+South+Orange+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7231",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174137,
+          40.74021078825799
+        ]
+      },
+      "properties": {
+        "id": "7231",
+        "name": "University Ave Parking Deck 1",
+        "address": "200 University Avenue, Newark, NJ, 07102-1813",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://rupd.rutgers.edu/newark.php",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=200+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7284",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19085735416019,
+          40.74031431670593
+        ]
+      },
+      "properties": {
+        "id": "7284",
+        "name": "University Hospital UH",
+        "address": "150 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Health Care",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "http://www.uhnj.org/",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=150+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7297",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19068779,
+          40.74095451
+        ]
+      },
+      "properties": {
+        "id": "7297",
+        "name": "University Hospital UH Parking Booth",
+        "address": "150 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Rutgers Building",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=150+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7296",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19064457,
+          40.74080173
+        ]
+      },
+      "properties": {
+        "id": "7296",
+        "name": "University Hospital UH Valet Parking Booth",
+        "address": "150 Bergen Street, Newark, NJ, 07103",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Rutgers Building",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=150+Bergen+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7247",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173783,
+          40.74249187442503
+        ]
+      },
+      "properties": {
+        "id": "7247",
+        "name": "University Square Residence Hall",
+        "address": "155 University Avenue, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=155+University+Avenue+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7238",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.17272042,
+          40.73889794
+        ]
+      },
+      "properties": {
+        "id": "7238",
+        "name": "Washington St Parking Deck 2",
+        "address": "166 Washington Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=166+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7249",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.173316,
+          40.73844282113065
+        ]
+      },
+      "properties": {
+        "id": "7249",
+        "name": "Washington St Parking Deck 3",
+        "address": "180 Washington Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Parking",
+        "secondary_category": "",
+        "course_abbrv": "",
+        "website": "",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=180+Washington+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7496",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.174497,
+          40.74272045529725
+        ]
+      },
+      "properties": {
+        "id": "7496",
+        "name": "Woodward Residence Hall & Stonsby Dining Facility",
+        "address": "91 Bleeker Street, Newark, NJ, 07102",
+        "campus": "Rutgers University - Newark",
+        "primary_category": "Housing",
+        "secondary_category": "Student Life",
+        "course_abbrv": "",
+        "website": "https://housing.newark.rutgers.edu/woodward-hall",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&destination=91+Bleeker+Street+NEWARK+NJ",
+        "source": "Rutgers University Maps",
+        "source_url": "https://maps.rutgers.edu/buildingsearch.aspx"
+      }
+    }
+  ]
+}
