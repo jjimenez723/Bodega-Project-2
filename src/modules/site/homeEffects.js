@@ -93,6 +93,13 @@ export function initHomeEffects() {
         origin: "bottom",
         interval: 100,
       });
+      sr.reveal(".tool-funnel-card", {
+        distance: "36px",
+        duration: 800,
+        easing: "ease-out",
+        origin: "bottom",
+        interval: 160,
+      });
       sr.reveal(".team-card", {
         distance: "30px",
         duration: 600,
