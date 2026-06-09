@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         story: resolve(__dirname, "story/index.html"),
+        blog: resolve(__dirname, "blog/index.html"),
         gallery: resolve(__dirname, "gallery/index.html"),
         kpi: resolve(__dirname, "kpi-builder/index.html"),
         test: resolve(__dirname, "Test.html"),
