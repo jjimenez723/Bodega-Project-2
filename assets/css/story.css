@@ -156,3 +156,68 @@ main {
     transition: none;
   }
 }
+
+/* Chapter 6 Generators tags */
+.generators-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.generator-tag {
+  background: rgba(10, 124, 103, 0.08);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.generator-tag i {
+  font-size: 1rem;
+}
+
+.generator-tag:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 124, 103, 0.2);
+}
+
+/* Demo Button styling */
+.demo-button-container {
+  margin-top: 1.5rem;
+}
+
+.btn-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--accent) 0%, #0d9078 100%);
+  color: #fff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(10, 124, 103, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 124, 103, 0.4);
+  background: linear-gradient(135deg, #0d9078 0%, var(--accent) 100%);
+}
+
+@media (max-width: 768px) {
+  .generators-grid {
+    justify-content: center;
+  }
+}

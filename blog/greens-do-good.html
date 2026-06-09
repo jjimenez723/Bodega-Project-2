@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering the Future of Urban Agriculture | Rutgers Newark Bodega Project</title>
+  <meta name="description" content="Read about Bergen Community College's partnership with Greens do Good in Hackensack, where students apply data analysis to optimize hydroponic farming." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/nav-mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
+</head>
+<body class="blog-page">
+  <header class="sticky-header">
+    <nav class="main-nav">
+      <a class="nav-brand" href="../" aria-label="Rutgers Newark Bodega Project">
+        <img src="../logo-bodega-project.jpeg" alt="Rutgers Newark Bodega Project logo" class="nav-logo" />
+        <span class="nav-brand-text">
+          <span class="nav-eyebrow">Rutgers Newark</span>
+          <span class="nav-title">Bodega Project</span>
+        </span>
+      </a>
+      <ul class="menu">
+        <li><a href="../">Home</a></li>
+        <li><a href="../story/">Story</a></li>
+        <li><a href="../blog/" class="active">Blog</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li class="menu-item has-submenu">
+          <button class="menu-link menu-toggle" type="button" aria-haspopup="true">Tools</button>
+          <ul class="submenu">
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+          </ul>
+        </li>
+        <li><a href="../#team">Team</a></li>
+      </ul>
+      <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <!-- Hero Section -->
+    <section class="hero blog-hero" aria-labelledby="blog-post-title">
+      <div class="hero-text">
+        <span class="blog-kicker">Partnership & Engineering</span>
+        <h1 id="blog-post-title">Engineering the Future: BCC and Greens do Good Partner for High-Efficiency Hydroponics</h1>
+        <p class="blog-intro-p">Students at Bergen Community College are taking hydroponic farming to the next level by applying rigorous data analysis to real-world urban agricultural challenges.</p>
+        <div class="post-meta">
+          <span class="meta-item"><i class="far fa-calendar"></i> June 9, 2026</span>
+          <span class="meta-item"><i class="far fa-clock"></i> 3 min read</span>
+          <span class="meta-item"><i class="far fa-user"></i> Team Flow Chain</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="blog-container">
+      <article class="blog-article">
+        <!-- Featured Image -->
+        <div class="blog-featured-media">
+          <img src="../images/optimized/IMG_2368.JPG" alt="BCC student developer and researchers inspecting growing systems and crop health in the hydroponics facility" class="featured-image" id="featured-image" />
+          <span class="media-caption">BCC students apply technical engineering principles and data-driven methods to optimize crop production.</span>
+        </div>
+
+        <div class="blog-text-section">
+          <p class="dropcap-paragraph">Urban agriculture is about more than just planting seeds; it’s about engineering sustainable, high-efficiency systems for the future. We are thrilled to highlight <strong>Bergen Community College’s</strong> partnership with <strong>Greens do Good</strong> in Hackensack, where our students are taking hydroponic farming to the next level by applying rigorous data analysis to real-world agricultural challenges.</p>
+        </div>
+
+        <!-- Section: Data-Driven Agriculture -->
+        <section class="blog-section" aria-labelledby="heading-optimization">
+          <h2 id="heading-optimization">Data-Driven Agriculture: Optimizing Light Flux</h2>
+          <p>In our latest video series, you can get a behind-the-scenes look at the Greens do Good hydroponic center. The footage showcases BCC students actively conducting data analysis to optimize Light Flux in open hydroponic systems. By tracking and fine-tuning these critical environmental variables, students are maximizing crop efficiency and pushing the boundaries of controlled-environment agriculture. It is a fantastic demonstration of how analytical problem-solving directly impacts sustainability.</p>
+          
+          <div class="feature-box">
+            <h3><i class="fas fa-chart-line"></i> Optimization Variables</h3>
+            <div class="feature-box-grid">
+              <div class="feature-box-item">
+                <span class="item-number">PPFD</span>
+                <span class="item-label">Light Flux (PAR)</span>
+              </div>
+              <div class="feature-box-item">
+                <span class="item-number">pH/EC</span>
+                <span class="item-label">Nutrient Solutions</span>
+              </div>
+              <div class="feature-box-item">
+                <span class="item-number">CFM</span>
+                <span class="item-label">Airflow Velocity</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Interactive Video Showcase -->
+        <section class="blog-section" aria-labelledby="heading-videos">
+          <h2 id="heading-videos">Greens do Good Video Showcase</h2>
+          <p>Watch BCC students in action as they manage layout operations, clean components, perform data diagnostics, and harvest crops in Hackensack:</p>
+          
+          <div class="video-showcase-container" id="video-showcase">
+            <h3><i class="fas fa-video"></i> Hydroponics Engineering Video Showcase</h3>
+            <p class="video-helper-text">Select a tab below to watch students manage system metrics and harvest crops:</p>
+            
+            <div class="video-player-wrapper">
+              <video id="showcase-video" controls playsinline preload="metadata">
+                <source id="showcase-video-src" src="../images/blog/Greens%20do%20Good%20Short.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay-caption" id="showcase-caption">
+                <strong>Facility Overview</strong> &mdash; Explore the Greens do Good facility in Hackensack and the vertical hydroponic farming setup.
+              </div>
+            </div>
+
+            <!-- Video Tabs Grid -->
+            <div class="video-tabs-grid" role="tablist" aria-label="Greens do Good Videos">
+              <button class="video-tab active" role="tab" aria-selected="true" data-video-src="../images/blog/Greens%20do%20Good%20Short.mov" data-video-title="Facility Overview" data-video-desc="Explore the Greens do Good facility in Hackensack and the vertical hydroponic farming setup." id="tab-gdg-overview">
+                <span class="tab-icon"><i class="fas fa-building"></i></span>
+                <span class="tab-label">1. Facility Overview</span>
+              </button>
+              <button class="video-tab" role="tab" aria-selected="false" data-video-src="../images/blog/Jensy%20Moving%20Hydroponics.MOV" data-video-title="System Spacing & Layout" data-video-desc="Jensy Jimenez adjusts the hydroponics system, optimizing layout for maximum light exposure and air circulation." id="tab-spacing">
+                <span class="tab-icon"><i class="fas fa-arrows-alt"></i></span>
+                <span class="tab-label">2. Spacing & Layout</span>
+              </button>
+              <button class="video-tab" role="tab" aria-selected="false" data-video-src="../images/blog/Jensy%20Cleaning%20Hydropnics.MOV" data-video-title="Cleaning & Maintenance" data-video-desc="Maintenance in action: Jensy cleans the hydroponics grow channels to maintain system health." id="tab-cleaning">
+                <span class="tab-icon"><i class="fas fa-broom"></i></span>
+                <span class="tab-label">3. System Cleaning</span>
+              </button>
+              <button class="video-tab" role="tab" aria-selected="false" data-video-src="../images/blog/Michel%20Lynch%20being%20a%20G.MOV" data-video-title="Michel Lynch Harvesting" data-video-desc="Michel Lynch demonstrates harvesting nutrient-rich kale directly from the optimized system." id="tab-harvest">
+                <span class="tab-icon"><i class="fas fa-hand-holding-heart"></i></span>
+                <span class="tab-label">4. Kale Harvest</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Crop Results & Harvest -->
+        <section class="blog-section" aria-labelledby="heading-harvest">
+          <h2 id="heading-harvest">Real Results: The Harvest</h2>
+          <p>But it’s not all just numbers, sensors, and spreadsheets—the proof is in the harvest. The videos also capture the rewarding moment our students harvest fresh, nutrient-rich kale directly from the systems they’ve helped optimize. This partnership perfectly highlights how applying technical engineering principles to urban agriculture yields tangible, healthy results for our local communities.</p>
+
+          <div class="crop-grid">
+            <div class="crop-card">
+              <span class="crop-icon">🥬</span>
+              <h4>Nutrient-Rich Kale</h4>
+              <p>Optimum Light Flux yields thick, fibrous, dark green kale packed with vitamins A, C, and K.</p>
+            </div>
+            <div class="crop-card">
+              <span class="crop-icon">🧬</span>
+              <h4>Data Analytics</h4>
+              <p>Empirical tracking of environmental parameters removes guess-work from controlled farming.</p>
+            </div>
+            <div class="crop-card">
+              <span class="crop-icon">🌱</span>
+              <h4>Local Impact</h4>
+              <p>Translating engineering principles into fresh food output delivered straight to corner bodegas.</p>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sidebar widgets -->
+      <aside class="blog-sidebar">
+        <div class="sidebar-widget widget-posts">
+          <h3>All Blog Posts</h3>
+          <ul class="widget-links">
+            <li><a href="../blog/"><i class="fas fa-arrow-right"></i> BCC Students Revolutionize Urban Agriculture</a></li>
+            <li><a href="greens-do-good.html" class="active"><i class="fas fa-arrow-right"></i> Partnership with Greens do Good</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget widget-quote">
+          <p class="quote-text">"Applying technical engineering principles to urban agriculture yields tangible, healthy results."</p>
+          <p class="quote-author">&mdash; Greens do Good Partnership</p>
+        </div>
+        
+        <div class="sidebar-widget widget-explore">
+          <h3>Explore the Project</h3>
+          <p>Discover how we track and model this hyper-local supply chain using data tools built by our student developers.</p>
+          <ul class="widget-links">
+            <li><a href="../Map/"><i class="fas fa-map-marked-alt"></i> Food Access Map</a></li>
+            <li><a href="../kpi-builder/"><i class="fas fa-chart-bar"></i> KPI Builder</a></li>
+            <li><a href="../story/"><i class="fas fa-history"></i> Read Our Story</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget widget-partners">
+          <h3>Sponsors & Partners</h3>
+          <div class="partners-logos">
+            <span class="partner-badge">Bergen CC</span>
+            <span class="partner-badge">Rutgers Newark</span>
+            <span class="partner-badge">USDA</span>
+            <span class="partner-badge">NJ STEM</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Call to Action Section -->
+    <section class="blog-cta" aria-labelledby="cta-title">
+      <div class="cta-content">
+        <h2 id="cta-title">Connect supply chain signals to real-world community impact</h2>
+        <p>Use our open-source tools to see Newark's food landscape or simulate logistics metrics for our urban gardens.</p>
+        <div class="cta-actions">
+          <a href="../Map/" class="cta-button primary-cta">Explore the Food Access Map</a>
+          <a href="../kpi-builder/" class="cta-button secondary-cta">Build Supply Chain KPIs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-header">
+          <img src="../logo-bodega-project.jpeg" alt="Rutgers Newark Bodega Project logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <p class="footer-eyebrow">Rutgers Newark</p>
+            <p class="footer-title">Bodega Project</p>
+          </div>
+        </div>
+        <p class="footer-tagline">Building a sustainable, data-informed, and hyperlocal food supply chain linking farms to bodegas.</p>
+        <div class="footer-contact">
+          <a href="mailto:esanchez2@bergen.edu">esanchez2@bergen.edu</a>
+          <span>Newark, NJ</span>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-nav-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../story/">Story</a></li>
+            <li><a href="../blog/">Blog</a></li>
+            <li><a href="../gallery/">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="../Map/">Fast vs. Fresh Food Map</a></li>
+            <li><a href="../kpi-builder/">KPI Builder</a></li>
+            <li><a href="../#kpis">Data Visualization</a></li>
+            <li><a href="../#team">Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-credits">
+        <h3>Credits</h3>
+        <p>Lead Full-Stack Developer: <a href="https://www.linkedin.com/in/jensy-jimenez/" target="_blank" rel="noopener">Jensy Jimenez</a></p>
+        <p>Assistant Front-End Developer: <a href="https://www.linkedin.com/in/yulissa-aguila-31099136a/" target="_blank" rel="noopener">Yulissa Aguila</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rutgers&ndash;Bergen Bodega Project</p>
+      <p>Supported by NJ STEM Ecosystem, USDA, Rutgers, and Bergen Community College.</p>
+    </div>
+  </footer>
+  
+  <nav id="mobileNav" class="offcanvas" aria-label="Site">
+    <a href="../">Home</a>
+    <a href="../story/">Story</a>
+    <a href="../blog/" class="active">Blog</a>
+    <a href="../gallery/">Gallery</a>
+    <div class="mobile-nav-group" role="group" aria-label="Tools">
+      <span class="mobile-nav-title">Tools</span>
+      <a href="../Map/">Fast vs. Fresh Food Map</a>
+      <a href="../kpi-builder/">KPI Builder</a>
+      <a href="../#kpis">Data Visualization</a>
+    </div>
+    <a href="../#team">Team</a>
+  </nav>
+  <div id="navOverlay" class="overlay" hidden></div>
+  <script type="module" src="/src/pages/blog.js"></script>
+</body>
+</html>
