@@ -1,0 +1,297 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function currentUser() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function hasRole(allowedRoles) {
+      return signedIn()
+        && currentUser().active == true
+        && currentUser().role in allowedRoles;
+    }
+
+    function validSettings(data) {
+      return data.keys().hasOnly([
+          'defaultPricePerLb',
+          'defaultSeedCost',
+          'defaultMaterialsCost',
+          'waterRatePerGallon',
+          'laborRatePerHour',
+          'electricityRatePerKwh',
+          'gasRatePerGallon',
+          'fossilFuelExternalityPerGallon',
+          'updatedAt',
+          'updatedBy'
+        ])
+        && data.defaultPricePerLb is number
+        && data.defaultPricePerLb >= 0
+        && data.defaultSeedCost is number
+        && data.defaultSeedCost >= 0
+        && data.defaultMaterialsCost is number
+        && data.defaultMaterialsCost >= 0
+        && data.waterRatePerGallon is number
+        && data.waterRatePerGallon >= 0
+        && data.laborRatePerHour is number
+        && data.laborRatePerHour >= 0
+        && data.electricityRatePerKwh is number
+        && data.electricityRatePerKwh >= 0
+        && data.gasRatePerGallon is number
+        && data.gasRatePerGallon >= 0
+        && data.fossilFuelExternalityPerGallon is number
+        && data.fossilFuelExternalityPerGallon >= 0
+        && data.updatedAt == request.time
+        && data.updatedBy == request.auth.uid;
+    }
+
+    function validUser(data) {
+      return data.keys().hasOnly([
+          'email',
+          'displayName',
+          'organizationName',
+          'role',
+          'active',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.email is string
+        && data.displayName is string
+        && data.displayName.size() > 0
+        && data.organizationName is string
+        && data.role in ['admin', 'project_manager', 'partner']
+        && data.active is bool
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function validMetrics(data) {
+      return data.keys().hasOnly([
+          'totalWeightLb',
+          'missedWeightLb',
+          'compostableWeightLb'
+        ])
+        && data.totalWeightLb is number
+        && data.missedWeightLb is number
+        && data.compostableWeightLb is number
+        && data.totalWeightLb >= 0
+        && data.missedWeightLb >= 0
+        && data.compostableWeightLb >= 0
+        && data.missedWeightLb <= data.totalWeightLb
+        && data.compostableWeightLb <= data.missedWeightLb;
+    }
+
+    function validInputs(data, method) {
+      return data.keys().hasOnly([
+          'seedCost',
+          'waterGallons',
+          'laborHours',
+          'materialsCost',
+          'transportGasGallons',
+          'electricityKwh'
+        ])
+        && data.seedCost is number
+        && data.waterGallons is number
+        && data.laborHours is number
+        && data.materialsCost is number
+        && data.transportGasGallons is number
+        && data.electricityKwh is number
+        && data.seedCost >= 0
+        && data.waterGallons >= 0
+        && data.laborHours >= 0
+        && data.materialsCost >= 0
+        && data.transportGasGallons >= 0
+        && data.electricityKwh >= 0
+        && (method == 'hydroponic' || data.electricityKwh == 0);
+    }
+
+    function validRates(data) {
+      return data.keys().hasOnly([
+          'pricePerLb',
+          'waterRatePerGallon',
+          'laborRatePerHour',
+          'electricityRatePerKwh',
+          'gasRatePerGallon',
+          'fossilFuelExternalityPerGallon'
+        ])
+        && data.pricePerLb is number
+        && data.waterRatePerGallon is number
+        && data.laborRatePerHour is number
+        && data.electricityRatePerKwh is number
+        && data.gasRatePerGallon is number
+        && data.fossilFuelExternalityPerGallon is number
+        && data.pricePerLb >= 0
+        && data.waterRatePerGallon >= 0
+        && data.laborRatePerHour >= 0
+        && data.electricityRatePerKwh >= 0
+        && data.gasRatePerGallon >= 0
+        && data.fossilFuelExternalityPerGallon >= 0;
+    }
+
+    function validCosts(data, method) {
+      return data.keys().hasOnly([
+          'seedCost',
+          'waterCost',
+          'laborCost',
+          'materialsCost',
+          'transportGasCost',
+          'fossilFuelExternalityCost',
+          'electricityCost'
+        ])
+        && data.seedCost is number
+        && data.waterCost is number
+        && data.laborCost is number
+        && data.materialsCost is number
+        && data.transportGasCost is number
+        && data.fossilFuelExternalityCost is number
+        && data.electricityCost is number
+        && data.seedCost >= 0
+        && data.waterCost >= 0
+        && data.laborCost >= 0
+        && data.materialsCost >= 0
+        && data.transportGasCost >= 0
+        && data.fossilFuelExternalityCost >= 0
+        && data.electricityCost >= 0
+        && (method == 'hydroponic' || data.electricityCost == 0);
+    }
+
+    function validFinancials(data) {
+      let totalCosts = data.costs.seedCost
+        + data.costs.waterCost
+        + data.costs.laborCost
+        + data.costs.materialsCost
+        + data.costs.transportGasCost
+        + data.costs.fossilFuelExternalityCost
+        + data.costs.electricityCost;
+      let sellable = data.metrics.totalWeightLb - data.metrics.missedWeightLb;
+      let revenue = data.rates.pricePerLb * sellable;
+
+      return data.financials.keys().hasOnly([
+          'sellableYieldLb',
+          'revenue',
+          'totalCosts',
+          'profit'
+        ])
+        && data.financials.sellableYieldLb is number
+        && data.financials.revenue is number
+        && data.financials.totalCosts is number
+        && data.financials.profit is number
+        && data.financials.sellableYieldLb == sellable
+        && data.financials.totalCosts == totalCosts
+        && data.financials.revenue == revenue
+        && data.financials.profit == revenue - totalCosts;
+    }
+
+    function validBatch(data) {
+      return data.keys().hasOnly([
+          'method',
+          'siteName',
+          'cropName',
+          'harvestDate',
+          'reportingPeriod',
+          'assignedPartnerId',
+          'inputs',
+          'rates',
+          'costs',
+          'metrics',
+          'financials',
+          'createdBy',
+          'updatedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.method in ['soil', 'hydroponic']
+        && data.siteName is string
+        && data.siteName.size() > 0
+        && data.cropName is string
+        && data.cropName.size() > 0
+        && data.harvestDate is timestamp
+        && data.reportingPeriod in ['daily', 'weekly']
+        && data.assignedPartnerId is string
+        && validInputs(data.inputs, data.method)
+        && validRates(data.rates)
+        && validCosts(data.costs, data.method)
+        && data.costs.seedCost == data.inputs.seedCost
+        && data.costs.waterCost
+          == data.inputs.waterGallons * data.rates.waterRatePerGallon
+        && data.costs.laborCost
+          == data.inputs.laborHours * data.rates.laborRatePerHour
+        && data.costs.materialsCost == data.inputs.materialsCost
+        && data.costs.transportGasCost
+          == data.inputs.transportGasGallons * data.rates.gasRatePerGallon
+        && data.costs.fossilFuelExternalityCost
+          == data.inputs.transportGasGallons
+            * data.rates.fossilFuelExternalityPerGallon
+        && data.costs.electricityCost
+          == data.inputs.electricityKwh * data.rates.electricityRatePerKwh
+        && validMetrics(data.metrics)
+        && validFinancials(data);
+    }
+
+    match /settings/{settingsId} {
+      allow read: if hasRole(['admin', 'project_manager', 'partner']);
+      allow create, update: if settingsId == 'global'
+        && hasRole(['admin'])
+        && validSettings(request.resource.data);
+      allow delete: if false;
+    }
+
+    match /users/{userId} {
+      allow get: if signedIn()
+        && (request.auth.uid == userId || hasRole(['admin', 'project_manager']));
+      allow list: if hasRole(['admin', 'project_manager']);
+      allow create: if hasRole(['admin'])
+        && validUser(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if hasRole(['admin'])
+        && validUser(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if hasRole(['admin']);
+    }
+
+    match /harvestBatches/{batchId} {
+      allow get, list: if hasRole(['admin', 'project_manager'])
+        || (hasRole(['partner'])
+          && resource.data.assignedPartnerId == request.auth.uid);
+
+      allow create: if hasRole(['admin', 'project_manager'])
+        && validBatch(request.resource.data)
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.updatedBy == request.auth.uid
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if validBatch(request.resource.data)
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedBy == request.auth.uid
+        && request.resource.data.updatedAt == request.time
+        && (
+          hasRole(['admin', 'project_manager'])
+          || (
+            hasRole(['partner'])
+            && resource.data.assignedPartnerId == request.auth.uid
+            && request.resource.data.assignedPartnerId == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'metrics',
+              'financials',
+              'updatedAt',
+              'updatedBy'
+            ])
+          )
+        );
+
+      allow delete: if hasRole(['admin']);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
